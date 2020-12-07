@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 
 
-const Shipping = props =>{
+const Cart = props =>{
 
 
     return (
         <div>
-            <h1>Shipping</h1>
+            <h1>Cart</h1>
         </div>
     )
 }
 
-export default Shipping;
+export default Cart;
