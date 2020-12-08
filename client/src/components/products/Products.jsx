@@ -1,13 +1,15 @@
-import React, {useState} from 'react';
-
+import React from 'react';
+import ProductList from './ProductList';
+import { Container } from 'react-bootstrap';
+import './Product.css';
 
 const Products = props =>{
 
-
     return (
-        <div>
+        <Container>
             <h1>Products</h1>
-        </div>
+            <ProductList/>
+        </Container>
     )
 }
 
