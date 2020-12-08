@@ -2,6 +2,7 @@
 
 .vscode/launch.json
 
+.eslintcache
 
 #React
 .DS_STORE
