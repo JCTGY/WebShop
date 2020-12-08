@@ -1,20 +1,56 @@
 
-
 *{
     margin: 0;
     padding: 0;
 }
 
 .NavBar{
+    position: sticky;
     width: 100%;
-    background-color: grey;
+    background-color: rgb(61, 59, 59);
     display: flex;
     justify-content: space-between;
-    min-height: 3rem;
+    height: 10vh;
+    box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
 
 .NavBar a{
     padding: 1rem;
-    color: white;
+    color: rgb(253, 244, 230);
+}
+
+.img-wrapper{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    height: 90vh;
+    background: url("./images/home-page-img5.jpg")  no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#shop-now{
+    position: sticky;
+    top: 66%;
+    background: none;
+    padding:0.5em 3em;
+    border:0.2em solid white;
+    margin:0 0.3em 0.3em 0;
+    box-sizing: border-box;
+    text-decoration:none;
+    text-transform:uppercase;
+    font-family:'Roboto',sans-serif;
+    font-weight:bold;
+    color:white;
+    text-align:center;
+    transition: all 0.15s;
+}
+
+#shop-now:hover{
+    background-color: white;
+    color: black;
+    border-color:#DDDDDD;
 }
