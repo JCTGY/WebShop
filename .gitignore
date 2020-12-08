@@ -1,4 +1,10 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 /.metadata/
+=======
+=======
+/.metadata/
+>>>>>>> a936c9f58d0d367668894311fb298102186622d6
 
 .vscode/launch.json
 
@@ -207,4 +213,10 @@ $RECYCLE.BIN/
 *.msp
 
 # Windows shortcuts
+<<<<<<< HEAD
 *.lnk
+
+>>>>>>> main
+=======
+*.lnk
+>>>>>>> a936c9f58d0d367668894311fb298102186622d6
