@@ -1,0 +1,5 @@
+package com.jump.controller.advice;
+
+public class ProductControllerAdvice {
+
+}
