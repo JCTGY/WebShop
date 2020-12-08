@@ -4,16 +4,18 @@ import Products from './products/Products';
 import ProductItemPage from './products/ProductItemPage';
 import Order from './orders/Order';
 import Cart from './cart/Cart';
+import Shipping from './shipping/Shipping';
 
 const NavBar = props => {
 
 
     return (
         <Router>
-            <div class="NavBar">
+            <div className="NavBar">
                 <Link to="/"><h2>WebShop</h2></Link>
                 <Link to="/products">Products</Link>
                 <Link to="/orders">Orders</Link>
+                <Link to="/shipping">Shipping</Link>
                 <Link to="/cart">Cart</Link>
             </div>
 

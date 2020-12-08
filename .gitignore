@@ -1,3 +1,4 @@
+/.metadata/
 
 .vscode/launch.json
 
@@ -206,4 +207,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
