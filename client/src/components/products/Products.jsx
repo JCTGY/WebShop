@@ -1,6 +1,7 @@
 import React from 'react';
-import ProductList from './ProductList';
 import { Container } from 'react-bootstrap';
+
+import ProductList from './ProductList';
 import './Product.css';
 
 const Products = props =>{
