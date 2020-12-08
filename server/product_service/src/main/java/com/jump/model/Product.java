@@ -34,6 +34,11 @@ public class Product {
 	@NotEmpty
 	private String name;
 	
+	@Column(name = "description")
+	@NotNull
+	@NotEmpty
+	private String description;
+	
 	@Column(name = "img_url")
 	@URL
 	private String imgUrl;
