@@ -15,8 +15,8 @@ const Shipping = props =>{
         state: "",
         postalCode: "",
         specialInstructions: "",
-        shippingType: "ground",
-        shippingCost: 2.99
+        shippingType: "",
+        shippingCost: 0
     });
 
     const handleChange = ({ target: { name, value } }) => {
@@ -35,6 +35,7 @@ const Shipping = props =>{
                 console.log(res.data);
             })
     }
+
 
     const changeShipState = event => {
         setFormData({
@@ -144,7 +145,7 @@ const Shipping = props =>{
                             </textarea>                        
                         </div>
                     </div>
-                                          {/* <div className="col-10"> 
+                    <div className="col-10"> 
                             <legend class="col-form-label col-sm-2 pt-0">Shipping</legend>
                             <div class="col-sm-10">
                                 <div class="form-check">
