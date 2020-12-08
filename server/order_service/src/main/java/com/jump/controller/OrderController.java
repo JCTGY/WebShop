@@ -8,6 +8,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,13 +23,15 @@ import com.jump.exceptions.OrderIdMismatchException;
 import com.jump.model.Orders;
 import com.jump.services.OrderService;
 
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
 
 	@Autowired
 	OrderService orderService;
-	//CREATE
+	
+	
 	
 	@PostMapping
 	public ResponseEntity<Orders> createOrder(@Valid @RequestBody Orders order) throws URISyntaxException{
@@ -45,15 +49,24 @@ public class OrderController {
 				.build();
 	}
 	
-	//READ
+	
 	
 	@GetMapping
 	public ResponseEntity<List<Orders>> getOrders(){
 		return ResponseEntity.ok(orderService.getOrders());
 	}
 	
-	//UPDATE
-	@PutMapping("/{order_id}")
+	@GetMapping("/{id}")
+	public ResponseEntity<?> getOrderById(@PathVariable long id){
+		Orders result = orderService.getOrderById(id);
+			
+		return ResponseEntity.ok(result);
+		
+	}
+	
+	
+	
+	@PutMapping("/{id}")
 	public ResponseEntity<?> updateOrder(@PathVariable long id, @Valid @RequestBody Orders order){
 		if(id == order.getId()) {
 			orderService.upateOrder(order);
@@ -64,5 +77,17 @@ public class OrderController {
 		}
 	}
 	
-	//DELETE
+	
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteOrder(@PathVariable long id){
+		orderService.deleteOrder(id);
+		return ResponseEntity.noContent().build();
+	}
+
+
+
+
+
+
 }

@@ -42,6 +42,9 @@ public class Product {
 	@Column(name = "price")
 	private double price;
 	
+	@Column(name="count")
+	private int count;
+	
 	@ManyToOne(targetEntity = Orders.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id")
 	@JsonBackReference

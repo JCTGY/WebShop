@@ -21,6 +21,6 @@ public class ProductService {
 			productRepository.save(product);
 		}
 		
-		return null;
+		return products.get(products.size()-1);
 	}
 }

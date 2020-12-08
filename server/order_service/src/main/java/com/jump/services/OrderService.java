@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jump.exceptions.OrderNotFoundException;
 import com.jump.model.Orders;
 import com.jump.repositories.OrderRepository;
 
@@ -26,8 +27,9 @@ public class OrderService {
 		return orderRepository.findAll();
 	}
 	
-	public Optional<Orders> getOrderById(Long order_id) {
-		return orderRepository.findById(order_id);
+	public Orders getOrderById(long id) {
+		return orderRepository.findById(id)
+				.orElseThrow(OrderNotFoundException::new);
 	}
 	
 	//UPDATE
@@ -35,5 +37,15 @@ public class OrderService {
 	public boolean upateOrder(Orders order) {
 		getOrderById(order.getId());
 		return orderRepository.save(order) != null;
+	}
+	
+	//DELETE
+
+	public boolean deleteOrder(long id) {
+
+		getOrderById(id);
+		orderRepository.deleteById(id);
+		return true;
+		
 	}
 }
