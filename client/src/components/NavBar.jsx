@@ -4,6 +4,7 @@ import Products from './products/Products';
 import Order from './orders/Order';
 import Cart from './cart/Cart';
 import Shipping from './shipping/Shipping';
+import bg from '../images/home-page-img.jpg';
 
 const NavBar = props =>{
 
@@ -32,9 +33,10 @@ const NavBar = props =>{
                   <Cart />
                </Route>
               <Route exact path="/">
-                    <div>
-                        <h1>Home</h1>
-                    </div>
+              
+                <div className="img-wrapper">
+                   <Link id="shop-now" to="/products">Shop Now</Link>
+                </div>
               </Route>
           </Switch>
         </Router>
