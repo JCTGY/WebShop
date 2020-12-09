@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
+@RequestMapping("/")
 public class ShippingController {
     
     @Autowired
@@ -54,6 +56,8 @@ public class ShippingController {
             .path("/{shippingId}")
             .buildAndExpand(result.getShippingId())
             .toUri();
+        
         return ResponseEntity.created(location).body(result);
+        
     }
 }
