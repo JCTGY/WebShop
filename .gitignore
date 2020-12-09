@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 /.metadata/
-=======
-=======
-/.metadata/
->>>>>>> a936c9f58d0d367668894311fb298102186622d6
 
 .vscode/launch.json
 
-.eslintcache
+*/.eslintcache
 
 #React
 .DS_STORE
@@ -219,5 +213,4 @@ $RECYCLE.BIN/
 >>>>>>> main
 =======
 *.lnk
->>>>>>> a936c9f58d0d367668894311fb298102186622d6
 client/.eslintcache

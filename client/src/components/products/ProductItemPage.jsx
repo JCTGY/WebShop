@@ -33,9 +33,20 @@ const ProductItemPage = () => {
                             <hr></hr>
                             <p>{product.description}</p>
                             <label htmlFor="product_qty">Quantity</label>
-                            <input onChange={e => setQty(e.target.value)} id="product_qty" type="number" min="1" max="15" value={qty}/>
+                            <input 
+                                onChange={e => setQty(e.target.value)} 
+                                id="product_qty" 
+                                type="number" 
+                                min="1" 
+                                max="15" 
+                                value={qty}
+                            />
                             <h6>{`$${product.price.toFixed(2)}`}</h6>
-                            <AddToCartButton qty={qty} setQty={setQty}/>
+                            <AddToCartButton 
+                                product={product} 
+                                qty={qty} 
+                                setQty={setQty}
+                            />
                         </Col>
                     </Row>
                 </div>
