@@ -29,10 +29,10 @@ const Shipping = props =>{
     const handleSubmit = event =>{
         event.preventDefault();
         console.log(formData);
-        axios.post(`http://localhost:7062/shipping/`, formData)
+        axios.post(`http://localhost:9000/api/shipping/shipping`, formData)
             .then(res =>{
                 console.log(res);
-                console.log(res.data);
+                console.log(res.data)
             })
     }
 
@@ -43,7 +43,6 @@ const Shipping = props =>{
             state: event
         })    
     }
-
 
     return (
         <div className="container col-8">
@@ -134,7 +133,7 @@ const Shipping = props =>{
                     </div>
                     <div className="form-group">
                         <div className="col-10">
-                            <label htmlFor="specialInstructions">Example textarea</label>
+                            <label htmlFor="specialInstructions">Special Instructions</label>
                             <textarea 
                                 className="form-control" 
                                 id="specialInstructions" 
@@ -145,7 +144,7 @@ const Shipping = props =>{
                             </textarea>                        
                         </div>
                     </div>
-                    <div className="col-10"> 
+                    {/* <div className="col-10"> 
                             <legend class="col-form-label col-sm-2 pt-0">Shipping</legend>
                             <div class="col-sm-10">
                                 <div class="form-check">
@@ -167,12 +166,13 @@ const Shipping = props =>{
                                 </label>
                                 </div>
                             </div>
-                        </div>  */}
+                        </div> */}
                 </div>
                 <button type="submit">Complete Order</button>
             </form>
         </div>
     )
+
 }
 
 export default Shipping;
