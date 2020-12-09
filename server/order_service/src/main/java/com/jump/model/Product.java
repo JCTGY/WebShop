@@ -28,10 +28,10 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "db_id")
-	private long dbID;
+	private long dbId;
 	
 	@Column(name = "product_id")
-	private long productID;
+	private long productId;
 	
 	@Column(name = "name")
 	private String name;
