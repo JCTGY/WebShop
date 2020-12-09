@@ -24,7 +24,11 @@ const Order = props =>{
        // console.log(event);
         
         setTheOrder(order);
+        document.getElementById("orderDetails").style.display = "block";
     }
+
+    
+
 
     return (
         <div>
@@ -41,7 +45,20 @@ const Order = props =>{
                     })}
                 </Col>
                 <Col>
-                    <div>{order && order.id}</div>
+                     <div id="orderDetails">
+                            <h2>ORDER #: {order && order.id}</h2>
+                            <p>Date: {order && order.date}</p>
+                            <p>Order Total: ${order && order.total}</p>
+                            <p>Tracking Number: {order && order.trackingID}</p>
+                            {order && order.products.map( product => {
+                                return <div key={product.productID}>
+                                    <img src={product.imgUrl}></img>
+                                    <h4>{product.name}</h4>
+                                    <p>${product.price}</p>
+                                    <p>Quantity: {product.count}</p>
+                                </div>
+                            })}
+                        </div>
                 </Col>
             </Row>
         </div>

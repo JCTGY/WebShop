@@ -54,3 +54,7 @@
     color: black;
     border-color:#DDDDDD;
 }
+
+#orderDetails{
+    display: none;
+}
