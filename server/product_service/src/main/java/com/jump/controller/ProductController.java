@@ -23,8 +23,9 @@ import com.jump.exception.ProductIdNotMatchException;
 import com.jump.model.Product;
 import com.jump.service.ProductService;
 
+// Prodcut controller for product service
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/")
 public class ProductController {
 
 	@Autowired
