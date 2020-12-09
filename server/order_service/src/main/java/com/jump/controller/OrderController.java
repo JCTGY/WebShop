@@ -21,19 +21,26 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.jump.exceptions.OrderIdMismatchException;
 import com.jump.model.Orders;
+import com.jump.services.CartService;
 import com.jump.services.OrderService;
 
 @CrossOrigin("http://localhost:3000")
 @RestController
+@RequestMapping("/orders")
 public class OrderController {
 
 	@Autowired
 	OrderService orderService;
 	
+	@Autowired
+	CartService cartService;
+	
 	
 	
 	@PostMapping
 	public ResponseEntity<Orders> createOrder(@Valid @RequestBody Orders order) throws URISyntaxException{
+		
+		System.out.println(cartService.getTotal());
 		
 		Orders result = orderService.createOrder(order);
 		
