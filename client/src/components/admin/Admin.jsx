@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tab, Row, Col, Nav } from 'react-bootstrap';
 
-import ProductAdmin from './ProductAdmin';
+import ProductAdmin from './adminProduct/ProductAdmin';
 
 const Admin = () => {
     return (
