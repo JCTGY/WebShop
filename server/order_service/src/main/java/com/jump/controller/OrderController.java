@@ -24,7 +24,6 @@ import com.jump.model.Orders;
 import com.jump.services.OrderService;
 
 @RestController
-@RequestMapping("/orders")
 public class OrderController {
 
 	@Autowired
