@@ -48,7 +48,7 @@ public class ShippingController {
     public ResponseEntity<ShippingInfo> save(@RequestBody ShippingInfo shippingInfo){
         ShippingInfo result = shippingService.addShippingInfo(shippingInfo);
         Orders order = new Orders();
-        order.setTrackingID(shippingInfo.getShippingId());
+        order.setShippingId(shippingInfo.getShippingId());
         Orders orderResult = orderService.createOrder(order);
         shippingInfo.setOrderId(orderResult.getId());
         shippingService.updateShippingInfo(shippingInfo);

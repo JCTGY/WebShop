@@ -25,6 +25,6 @@ public class Orders implements Serializable{
 	
 	Double total;
 	
-	Long trackingID;
+	Long shippingId;
 	
 }
