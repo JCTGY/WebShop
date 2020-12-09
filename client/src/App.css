@@ -58,3 +58,10 @@
 #orderDetails{
     display: none;
 }
+#shippingDetails{
+    display: none;
+}
+
+#ordersRow{
+    display: none;
+}
