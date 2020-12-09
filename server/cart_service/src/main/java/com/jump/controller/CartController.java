@@ -23,9 +23,9 @@ import com.jump.exceptions.CartIDMismatchException;
 import com.jump.model.Product;
 import com.jump.service.CartService;
 
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("v1/cart")
-@CrossOrigin("http://localhost:3000")
 public class CartController {
 	@Autowired
 	CartService cartservice;
