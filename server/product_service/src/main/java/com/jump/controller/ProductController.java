@@ -24,7 +24,7 @@ import com.jump.model.Product;
 import com.jump.service.ProductService;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/")
 public class ProductController {
 
 	@Autowired

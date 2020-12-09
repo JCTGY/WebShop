@@ -23,3 +23,9 @@ zuul:
     order-service:
       path: /order/**
       service-id: order-service
+    cart-service:
+      path: /cart/**
+      service-id: cart-service
+    shipping-service:
+      path: /shipping/**
+      service-id: shipping-service
