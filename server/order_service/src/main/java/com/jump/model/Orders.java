@@ -28,8 +28,8 @@ public class Orders {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-	private Long id;
+    @Column(name = "Id")
+	private Long Id;
 	
 	@Column(name = "date")
 	private LocalDate date;
@@ -37,8 +37,8 @@ public class Orders {
 	@Column(name = "total")
 	double total;
 	
-	@Column(name = "tracking_id")
-	private Long trackingID;
+	@Column(name = "shipping_id")
+	private Long shippingId;
 	
 	@OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Product> products;
