@@ -31,4 +31,5 @@ public class ShippingInfo {
     private String specialInstructions;
     private String shippingType;
     private double shippingCost;
+    private long orderId;
 }

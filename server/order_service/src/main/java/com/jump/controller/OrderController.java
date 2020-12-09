@@ -67,9 +67,8 @@ public class OrderController {
 		
 		return ResponseEntity
 				.created(location)
-				.body(result);
+				.body(result);	
 	}
-	
 	
 	
 	@GetMapping
