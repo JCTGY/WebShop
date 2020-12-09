@@ -20,6 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping("shipping")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ShippingController {
     
     @Autowired
@@ -47,6 +48,8 @@ public class ShippingController {
             .path("/{shippingId}")
             .buildAndExpand(result.getShippingId())
             .toUri();
+        
         return ResponseEntity.created(location).body(result);
+        
     }
 }

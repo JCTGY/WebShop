@@ -5,7 +5,7 @@ import {Col,Row} from 'react-bootstrap';
 
 const Order = props =>{
 
-    const ordersUrl = "http://localhost:7061/orders";
+    const ordersUrl = "http://localhost:9000/api/order/";
     const[orders, setOrders] = useState([]);
 
     const[order, setTheOrder] = useState();
@@ -52,7 +52,7 @@ const Order = props =>{
                             <p>Tracking Number: {order && order.trackingID}</p>
                             {order && order.products.map( product => {
                                 return <div key={product.productID}>
-                                    <img src={product.imgUrl}></img>
+                                    <img src={product.imgUrl} className="product-img"></img>
                                     <h4>{product.name}</h4>
                                     <p>${product.price}</p>
                                     <p>Quantity: {product.count}</p>

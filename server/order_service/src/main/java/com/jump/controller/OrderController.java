@@ -2,13 +2,13 @@ package com.jump.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,15 +21,20 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.jump.exceptions.OrderIdMismatchException;
 import com.jump.model.Orders;
+import com.jump.model.Product;
 import com.jump.services.CartService;
 import com.jump.services.OrderService;
+import com.jump.services.ProductService;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/")
 public class OrderController {
 
 	@Autowired
 	OrderService orderService;
+	
+	@Autowired
+	ProductService productService;
 	
 	@Autowired
 	CartService cartService;
@@ -39,9 +44,20 @@ public class OrderController {
 	@PostMapping
 	public ResponseEntity<Orders> createOrder(@Valid @RequestBody Orders order) throws URISyntaxException{
 		
-		System.out.println(cartService.getTotal());
+//		System.out.println(cartService.getTotal());
+		order.setTotal(cartService.getTotal());
+		order.setDate(LocalDate.now());
+		
+		List<Product> products = cartService.getProduct();
 		
 		Orders result = orderService.createOrder(order);
+		
+		for(Product product : products) {
+			product.setOrders(result);
+		}
+		
+		productService.createProducts(products);
+		result.setProducts(products);
 		
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
@@ -51,7 +67,7 @@ public class OrderController {
 		
 		return ResponseEntity
 				.created(location)
-				.build();
+				.body(result);
 	}
 	
 	
@@ -89,10 +105,6 @@ public class OrderController {
 		orderService.deleteOrder(id);
 		return ResponseEntity.noContent().build();
 	}
-
-
-
-
 
 
 }
