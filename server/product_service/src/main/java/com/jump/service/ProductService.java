@@ -28,6 +28,10 @@ public class ProductService {
 				.orElseThrow(ProductNotFoundException::new);
 	}
 	
+	public List<Product> getProductsByContaingName(String name) {
+		return productRepository.findByNameContainingIgnoreCase(name);
+	}
+	
 	public Product getProductById(Long id) {
 		return productRepository.findById(id)
 				.orElseThrow(ProductNotFoundException::new);

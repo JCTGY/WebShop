@@ -46,6 +46,11 @@ public class ProductController {
 		return ResponseEntity.created(location).body(result);
 	}
 	
+	@GetMapping("/search")
+	public ResponseEntity<List<Product>>  findProductsByContainingName(@RequestParam String name) {
+		return ResponseEntity.ok(productService.getProductsByContaingName(name));
+	}
+	
 	@GetMapping("/category")
 	public List<Product> findAllProductsByCategory(@RequestParam String category) {
 		return productService.getProductsByCategory(category);

@@ -1,13 +1,15 @@
 import axios from 'axios';
 
-export const fetchProductList = (term, index) => {
-    // return axios.get(`http://localhost:7060/product/`);
+export const fetchProductList = () => {
     return axios.get(`http://localhost:9000/api/product/product`);
+}
 
+export const fetchProductsByName = (term) => {
+    return axios.get(`http://localhost:9000/api/product/product/search?name=${term}`);
 }
 
 export const fetchProductById = (id) => {
-    return axios.get(`http://localhost:7060/product/${id}`);
+    return axios.get(`http://localhost:9000/api/product/product/${id}`);
 }
 
 export const postProductToCart = (product) => {

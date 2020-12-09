@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 
 import ProductList from './ProductList';
+import ProductSearchBar from './ProductSearchBar';
 import './Product.css';
 
 const Products = props =>{
 
+    const [term, setTerm] = useState("");
     return (
         <Container>
-            <h1>Products</h1>
-            <ProductList/>
+            <ProductSearchBar setTerm={setTerm}/>
+            <ProductList term={term}/>
         </Container>
     )
 }
