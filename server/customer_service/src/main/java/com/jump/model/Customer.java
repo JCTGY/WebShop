@@ -7,9 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.URL;
+import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,34 +20,34 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "product")
-public class Product {
+@Table(name="customer")
+public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long productId;
+	@Column(name="id")
+	private Long customerId;
 	
-	@Column(name = "name")
+	@Column(name="user_name")
 	@NotNull
 	@NotEmpty
-	private String name;
+	private String userName;
 	
-	@Column(name = "description")
+	@Column(name="password")
 	@NotNull
 	@NotEmpty
-	private String description;
+	private String password;
 	
-	@Column(name = "img_url")
-	@URL
-	private String imgUrl;
-	
-	@Column(name = "category")
+	@Column(name="first_name")
 	@NotNull
 	@NotEmpty
-	private String category;
+	private String firstName;
 	
-	@Column(name = "price")
+	@Column(name="last_name")
 	@NotNull
-	private double price;
+	@NotEmpty
+	private String lastName;
+	
+	@Column(name="cart_id")
+	private Long cartId;
 }
