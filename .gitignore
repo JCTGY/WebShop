@@ -205,12 +205,3 @@ $RECYCLE.BIN/
 *.msix
 *.msm
 *.msp
-
-# Windows shortcuts
-<<<<<<< HEAD
-*.lnk
-
->>>>>>> main
-=======
-*.lnk
-client/.eslintcache
