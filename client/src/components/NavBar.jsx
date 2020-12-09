@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Products from './products/Products';
 import ProductItemPage from './products/ProductItemPage';
@@ -6,7 +5,6 @@ import Order from './orders/Order';
 import Cart from './cart/Cart';
 import Shipping from './shipping/Shipping';
 import Admin from './admin/Admin';
-import bg from '../images/home-page-img.jpg';
 
 const NavBar = props => {
 
