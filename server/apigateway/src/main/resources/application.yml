@@ -20,3 +20,6 @@ zuul:
     product-service:
       path: /product/**
       service-id: product-service
+    order-service:
+      path: /order/**
+      service-id: order-service
