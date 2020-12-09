@@ -44,8 +44,8 @@ public class OrderController {
 		
 		return ResponseEntity
 				.created(location)
-				.build();
-	}
+				.body(result);
+	} 
 	
 	
 	

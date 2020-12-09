@@ -9,21 +9,21 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ShippingService {
-    
-    @Autowired
-    ShippingRepository shippingRepo;
+        
+        @Autowired
+        ShippingRepository shippingRepo;
 
-	public ShippingInfo findShippingInfo(long shippingId) {
-        return shippingRepo.findById(shippingId).orElseThrow(ShippingInfoNotFoundException::new);
-	}
+        public ShippingInfo findShippingInfo(long shippingId) {
+                return shippingRepo.findById(shippingId).orElseThrow(ShippingInfoNotFoundException::new);
+        }
 
-	public ShippingInfo updateShippingInfo(ShippingInfo shippingInfo) {
-        findShippingInfo(shippingInfo.getShippingId());
-        return shippingRepo.save(shippingInfo);
-	}
+        public ShippingInfo updateShippingInfo(ShippingInfo shippingInfo) {
+                findShippingInfo(shippingInfo.getShippingId());
+                return shippingRepo.save(shippingInfo);
+        }
 
-	public ShippingInfo addShippingInfo(ShippingInfo shippingInfo) {
-        return shippingRepo.save(shippingInfo);
+        public ShippingInfo addShippingInfo(ShippingInfo shippingInfo) {
+                return shippingRepo.save(shippingInfo);
 
-    }
+        }
 }
