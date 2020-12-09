@@ -18,7 +18,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.jump.model.Product;
 import com.jump.services.ProductService;
 
-@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/products")
 public class ProductController {

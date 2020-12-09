@@ -20,7 +20,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping("shipping")
-@CrossOrigin(origins = "http://localhost:3000")
 public class ShippingController {
     
     @Autowired

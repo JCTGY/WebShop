@@ -1,0 +1,31 @@
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          netflix:
+            zuul: trace
+            
+server:
+  port: 9000
+
+spring:
+  application:
+    name: zuul-service
+
+zuul:
+  ignored-services: '*'
+  prefix: /api
+  routes:
+    product-service:
+      path: /product/**
+      service-id: product-service
+    order-service:
+      path: /order/**
+      service-id: order-service
+    cart-service:
+      path: /cart/**
+      service-id: cart-service
+    shipping-service:
+      path: /shipping/**
+      service-id: shipping-service

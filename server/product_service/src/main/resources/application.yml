@@ -9,6 +9,16 @@ spring:
     hibernate:
       ddl-auto: create
   application:
-    name: user-server
+    name: product-service
   datasource:
     url: jdbc:h2:mem:userdb
+  boot:
+    admin:
+      client:
+        url:
+        - http://localhost:7000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

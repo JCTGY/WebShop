@@ -23,9 +23,7 @@ import com.jump.exceptions.OrderIdMismatchException;
 import com.jump.model.Orders;
 import com.jump.services.OrderService;
 
-@CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/orders")
 public class OrderController {
 
 	@Autowired
