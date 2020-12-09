@@ -16,7 +16,8 @@ const Shipping = props =>{
         postalCode: "",
         specialInstructions: "",
         shippingType: "",
-        shippingCost: 0
+        shippingCost: 0,
+        orderId: -1
     });
 
     const handleChange = ({ target: { name, value } }) => {
@@ -29,7 +30,7 @@ const Shipping = props =>{
     const handleSubmit = event =>{
         event.preventDefault();
         console.log(formData);
-        axios.post(`http://localhost:9000/api/shipping/shipping`, formData)
+        axios.post(`http://localhost:9000/api/shipping`, formData)
             .then(res =>{
                 console.log(res);
                 console.log(res.data)
@@ -42,6 +43,66 @@ const Shipping = props =>{
             ...formData,
             state: event
         })    
+    }
+
+    const handleShippingType = ({ target: { name, value } }) => {
+        // if(value === "Ground"){
+        //     setFormData({
+        //         ...formData,
+        //         [name]: value,
+        //         shippingCost: 2.99
+        //     })
+        //     console.log(formData);   
+        // }
+
+        // if(value === "Priority"){
+        //     setFormData({
+        //         ...formData,
+        //         [name]: value,
+        //         shippingCost: 2.99
+        //     })
+        //     console.log(formData);   
+        // }
+
+        // if(value === "Ground"){
+        //     setFormData({
+        //         ...formData,
+        //         [name]: value,
+        //         shippingCost: 2.99
+        //     })
+        //     console.log(formData);   
+        // }
+        switch(value){
+            case "Ground":
+                setFormData({
+                            ...formData,
+                            [name]: value,
+                            shippingCost: 2.99
+                        })
+                        console.log(formData);
+                break;
+            case "Priority":
+                setFormData({
+                            ...formData,
+                            [name]: value,
+                            shippingCost: 10.99
+                        })
+                        console.log(formData);
+                break;
+            case "Overnight":
+                setFormData({
+                            ...formData,
+                            [name]: value,
+                            shippingCost: 24.99
+                        })
+                        console.log(formData);
+                break;
+            
+            default:
+                break;
+
+        }
+
     }
 
     return (
@@ -144,29 +205,29 @@ const Shipping = props =>{
                             </textarea>                        
                         </div>
                     </div>
-                    {/* <div className="col-10"> 
+                    <div className="col-10"> 
                             <legend class="col-form-label col-sm-2 pt-0">Shipping</legend>
-                            <div class="col-sm-10">
+                            <div class="col-sm-10" onChange={handleShippingType}>
                                 <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked/>
+                                <input class="form-check-input" type="radio" name="shippingType" id="gridRadios1" value="Ground" />
                                 <label class="form-check-label" htmlFor="gridRadios1">
                                     Ground
                                 </label>
                                 </div>
                                 <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2"/>
+                                <input class="form-check-input" type="radio" name="shippingType" id="gridRadios2" value="Priority" />
                                 <label class="form-check-label" htmlFor="gridRadios2">
                                     Priority
                                 </label>
                                 </div>
                                 <div class="form-check disabled">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" />
+                                <input class="form-check-input" type="radio" name="shippingType" id="gridRadios3" value="Overnight" />
                                 <label class="form-check-label" htmlFor="gridRadios3">
                                     Overnight
                                 </label>
                                 </div>
                             </div>
-                        </div> */}
+                        </div>
                 </div>
                 <button type="submit">Complete Order</button>
             </form>
