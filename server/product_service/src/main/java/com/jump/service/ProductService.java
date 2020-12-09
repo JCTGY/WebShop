@@ -47,7 +47,7 @@ public class ProductService {
 	}
 	
 	public Product updateProduct(Product product) {
-		getProductById(product.getId());
+		getProductById(product.getProductId());
 		return productRepository.save(product);
 	}
 	

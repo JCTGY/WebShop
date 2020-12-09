@@ -40,7 +40,7 @@ public class ProductController {
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
 				.path("/{id}")
-				.buildAndExpand(result.getId())
+				.buildAndExpand(result.getProductId())
 				.toUri();
 		return ResponseEntity.created(location).body(result);
 	}
@@ -69,7 +69,7 @@ public class ProductController {
 	@PutMapping("/{productId}")
 	public ResponseEntity<?> updateProduct(@PathVariable Long productId,
 			@Valid @RequestBody Product product) {
-		if (productId == product.getId()) {
+		if (productId == product.getProductId()) {
 			productService.updateProduct(product);
 			return ResponseEntity.ok("Updated!");
 		} else throw new ProductIdNotMatchException();
