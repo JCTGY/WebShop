@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 
-import { fetchProductList } from './ProductApi';
+import { fetchProductList, fetchProductsByName } from './ProductApi';
 import ProductItem from './ProductItem';
 
-const ProductList = () => {
+const ProductList = ( {term} ) => {
 
     const [products, setProducts] = useState();
     const { url } = useRouteMatch();
@@ -18,6 +18,13 @@ const ProductList = () => {
         return () => {
         };
     }, []);
+
+    useEffect(() => {
+        fetchProductsByName(term)
+        .then(res => {
+            setProducts(res.data);
+        })
+    }, [term])
 
     const productList = products && products.map(p => {
         return (

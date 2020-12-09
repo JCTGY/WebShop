@@ -5,6 +5,8 @@ import ProductItemPage from './products/ProductItemPage';
 import Order from './orders/Order';
 import Cart from './cart/Cart';
 import Shipping from './shipping/Shipping';
+import Admin from './admin/Admin';
+import bg from '../images/home-page-img.jpg';
 
 const NavBar = props => {
 
@@ -26,18 +28,26 @@ const NavBar = props => {
                 <Route path="/products/:productId">
                     <ProductItemPage />
                 </Route>
+                <Route path="/shipping">
+                    <Shipping />
+                </Route>
                 <Route path="/orders">
                     <Order />
                 </Route>
                 <Route path="/cart">
                     <Cart />
                 </Route>
+                <Route path="/admin">
+                    <Admin />
+                </Route>
                 <Route exact path="/">
-                    <div>
-                        <h1>Home</h1>
+
+                    <div className="img-wrapper">
+                        <Link id="shop-now" to="/products">Shop Now</Link>
                     </div>
                 </Route>
             </Switch>
+
         </Router>
     )
 }

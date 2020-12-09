@@ -25,7 +25,6 @@ import com.jump.service.ProductService;
 
 @RestController
 @RequestMapping("/product")
-@CrossOrigin("http://localhost:3000")
 public class ProductController {
 
 	@Autowired
@@ -45,6 +44,11 @@ public class ProductController {
 				.buildAndExpand(result.getId())
 				.toUri();
 		return ResponseEntity.created(location).body(result);
+	}
+	
+	@GetMapping("/search")
+	public ResponseEntity<List<Product>>  findProductsByContainingName(@RequestParam String name) {
+		return ResponseEntity.ok(productService.getProductsByContaingName(name));
 	}
 	
 	@GetMapping("/category")
