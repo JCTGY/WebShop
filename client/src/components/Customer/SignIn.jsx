@@ -33,30 +33,36 @@ const SignIn = () => {
     }
 
     return (
-        <Form>
-            <Form.Group controlId="formBasicUsername">
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                    type="text"
-                    placeholder="Enter Username"
-                    onChange={onChangeUser}
-                    name="userName"
-                />
-            </Form.Group>
-            <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    onChange={onChangeUser}
-                    name="password"
-                />
-            </Form.Group>
-            <label>Don't have a account? <Link to="/signUp">SignUp</Link></label>
-            <Button onClick={onClickSignIn} variant="primary" type="submit">
-                Submit
-            </Button>
-        </Form>
+        <div className="container">
+                <Form>
+                    <Form.Group controlId="formBasicUsername">
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Enter Username"
+                            onChange={onChangeUser}
+                            name="userName"
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                            type="password"
+                            placeholder="Password"
+                            onChange={onChangeUser}
+                            name="password"
+                        />
+                    </Form.Group>
+                    <label>Don't have a account? <Link to="/signUp">SignUp</Link></label>
+                    <Button onClick={onClickSignIn} variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Form>
+
+
+        </div>
+
+ 
     );
 }
 
