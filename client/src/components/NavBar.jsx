@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Products from './products/Products';
 import ProductItemPage from './products/ProductItemPage';
 import Order from './orders/Order';
+import OrderConfirmation from './orders/OrderConfirmation';
+
 import Cart from './cart/Cart';
 import Shipping from './shipping/Shipping';
 import Admin from './admin/Admin';
@@ -54,6 +56,11 @@ const NavBar = props => {
                 <Route path="/signIn">
                     <SignIn/>
                 </Route>
+                <Route path="/order/:orderId">
+                    <OrderConfirmation />
+                </Route>
+                <Route path="/cart">
+                    <Cart />
                 <Route path="/signUp">
                     <SignUp/>
                 </Route>

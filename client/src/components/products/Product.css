@@ -3,3 +3,45 @@
     width: 200px;
     object-fit:scale-down;
 }
+
+.product-list-item{
+    position: relative;
+    margin: 1em;
+    text-align: center;
+    border: solid black;
+    height: 20em;
+}
+.product-list-item p{
+    text-align: left;
+    padding: 1em;
+}
+
+.product-list-item h6{
+    bottom: 5%;
+    left: 5%;
+}
+
+.product-link-shadow{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    z-index: 0;
+}
+
+
+.product-link-shadow:hover{
+    background-color: var(--clr-accent);
+    z-index: 1;
+    opacity: 1;
+}
+
+a.product-link{
+    background-color: white;
+    padding: 1em;
+    top: 40%;
+}
+
+a.product-link:hover{
+    text-decoration: none;
+}
