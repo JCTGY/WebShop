@@ -39,22 +39,20 @@ public class CartService {
 	
 	
 	//update
-//	Double sumTotal(Integer cart_id){
-//		
-//		double total =  0;
-//		Cart currentCart = cartRepository.findById(cart_id);
-//		List<Product> currentProducts = currentCart.getProducts();
-//				
-//				
-////		List<Product> products = productsRepository.findAll();
-//		
-//		for(Product product: currentProducts) {
-//			total += product.getSubtotal();
-//		}
-//		currentCart.setTotal(total);
-//		
-//		return total;
-//	}
+	public double sumTotal(Integer cart_id){
+		
+		double total =  0;
+		Cart currentCart = retrieveCart(cart_id);
+		List<Product> currentProducts = currentCart.getProducts();
+ 
+		
+		for(Product product: currentProducts) {
+			total += product.getSubtotal();
+		}
+		currentCart.setTotal(total);
+		
+		return total;
+	}
 	
 	
 	public Cart addProductToCart(Integer cart_id, Product product) {
