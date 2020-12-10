@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {Col,Row} from 'react-bootstrap';
+import './Order.css';
+import {Col,Container,Row} from 'react-bootstrap';
 
 
 const Order = props =>{
@@ -34,12 +35,14 @@ const Order = props =>{
             setShippingDetails(response.data);
         })
 
+        //document.getElementById("ordersRow1").style.display = "block";
         document.getElementById("ordersRow").style.display = "block";
         // document.getElementById("orderDetails").style.display = "block";
         // document.getElementById("shippingDetails").style.display = "block";
     }
 
     const handleClose = () =>{
+        //document.getElementById("ordersRow1").style.display = "none";
         document.getElementById("ordersRow").style.display = "none";
         // document.getElementById("orderDetails").style.display= "none";
         // document.getElementById("shippingDetails").style.display = "none";
@@ -49,23 +52,22 @@ const Order = props =>{
 
 
     return (
-        <div>
+        <Container>
             <h1>Orders</h1>
             <Row>
                 <Col>
                     {orders.map( order => {
-                        return <div key={order.id} onClick = {()=>handleClick(order)}>
-                            <h2>ORDER #: {order.id}</h2>
-                            <p>Date: {order.date}</p>
-                            <p>Order Total: ${order.total}</p>
-                            <p>Shipping Id: {order.shippingId}</p>
+                        return <div key={order.id}>
+                            <h2 className="orderTitle" onClick = {()=>handleClick(order)}>ORDER #: {order.id}</h2>
+                            <p>Date: {order.date}<br/>
+                            Order Total: ${order.total}</p>
                         </div>
                     })}
                 </Col>
                 <div id="ordersRow">
                     <Row>
                         <Col>
-                            <div >
+                            <div>
                                     <div>
                                         <button onClick = {()=>handleClose()}>close</button>
                                         <h2>ORDER #: {order && order.id} </h2>
@@ -84,7 +86,7 @@ const Order = props =>{
                                 </div>
                         </Col>
                         <Col>
-                            <div >
+                            <div>
                                 <h2>Shipping Details</h2>
                                 <p>Customer Name: {shippingDetails && (shippingDetails.firstName
                                 +" "+ shippingDetails.lastName)}</p>
@@ -98,22 +100,12 @@ const Order = props =>{
                                 <p>Shipping Type: {shippingDetails && shippingDetails.shippingType}</p>
                                 <p>Shipping Cost: {shippingDetails && shippingDetails.shippingCost}</p>
 
-                                {/*  private String firstName;
-                                    private String lastName;
-                                    private String address1;
-                                    private String address2;
-                                    private String city;
-                                    private String state;
-                                    private String postalCode;
-                                    private String specialInstructions;
-                                    private String shippingType;
-                                    private double shippingCost; */}
                             </div>
                         </Col>
                 </Row>
                 </div>
             </Row>
-        </div>
+        </Container>
     )
 }
 

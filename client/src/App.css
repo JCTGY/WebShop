@@ -62,6 +62,9 @@
     display: none;
 }
 
+#ordersRow1{
+    display: none;
+}
 #ordersRow{
     display: none;
 }
