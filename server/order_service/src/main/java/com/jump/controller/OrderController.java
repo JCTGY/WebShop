@@ -43,14 +43,21 @@ public class OrderController {
 	
 	
 	@PostMapping							//set order customerId		 //Using Cart Id to call cart service, to get products in cart
-	public ResponseEntity<Orders> createOrder(@RequestParam long custId, @RequestParam long cartId) throws URISyntaxException{
+	public ResponseEntity<Orders> createOrder(@RequestParam long custId, @RequestParam Integer cartId) throws URISyntaxException{
 		Orders order = new Orders();
 		
 		order.setDate(LocalDate.now());
 		order.setCustomerId(custId);
-		order.setTotal(cartService.getTotal());	
+//		order.setTotal(cartService.getTotal());	
 		
-		List<Product> products = cartService.getProduct();
+		List<Product> products = cartService.getCartById(cartId);
+		double total = 0.0;
+		
+		for(Product product : products) {
+			
+			total += (product.getPrice() * product.getCount());
+		}
+		order.setTotal(cartService.getTotal());
 		
 		Orders result = orderService.createOrder(order);
 		
