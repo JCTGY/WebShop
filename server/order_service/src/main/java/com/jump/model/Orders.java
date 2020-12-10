@@ -29,7 +29,7 @@ public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
-	private Long Id;
+	private long Id;
 	
 	@Column(name = "date")
 	private LocalDate date;
@@ -37,8 +37,11 @@ public class Orders {
 	@Column(name = "total")
 	double total;
 	
-	@Column(name = "shipping_id")
-	private Long shippingId;
+	@Column(name = "customer_id")
+	private long customerId;
+	
+//	@Column(name = "shipping_id")
+//	private Long shippingId;
 	
 	@OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Product> products;
