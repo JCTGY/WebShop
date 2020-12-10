@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
-
 import ProductList from './ProductList';
 import ProductSearchBar from './ProductSearchBar';
 import './Product.css';
