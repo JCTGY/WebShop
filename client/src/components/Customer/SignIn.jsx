@@ -8,7 +8,7 @@ const SignIn = () => {
     const history = useHistory();
     const [user, setUser] = useState({
         userName: "",
-        password: "",
+        password: ""
     })
 
     const onClickSignIn = (e) => {

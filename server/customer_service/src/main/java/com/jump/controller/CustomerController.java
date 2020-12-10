@@ -48,7 +48,6 @@ public class CustomerController {
 	
 	@PostMapping("/signUp")
 	public ResponseEntity<Customer> addCustomer(@Valid @RequestBody Customer customer) {
-		System.out.println(customer);
 		Customer result = customerService.addCustomer(customer);
 		result.setPassword(null);
 		URI location = ServletUriComponentsBuilder

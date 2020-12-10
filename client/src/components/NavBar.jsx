@@ -1,16 +1,18 @@
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Products from './products/Products';
 import ProductItemPage from './products/ProductItemPage';
 import Order from './orders/Order';
 import Cart from './cart/Cart';
 import Shipping from './shipping/Shipping';
 import Admin from './admin/Admin';
-import SignIn from './Customer/SignIn';
-import SignUp from './Customer/SignUp';
+import SignIn from './customer/SignIn';
+import SignUp from './customer/SignUp';
 
 const NavBar = props => {
 
-
+    const user = useSelector(state => state.userState.user);
+    if (user) console.log(user);
     return (
         <Router>
             <div className="NavBar">

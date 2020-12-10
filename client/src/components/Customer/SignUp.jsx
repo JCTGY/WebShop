@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
@@ -6,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 const SignUp = () => {
 
     const history = useHistory();
+    const dispatch = useDispatch();
     const [user, setUser] = useState({
         userName: "",
         password: "",
@@ -17,8 +19,12 @@ const SignUp = () => {
         axios.post("http://localhost:9000/api/customer/signUp", user)
             .then(res => {
                 console.log(res);
+                dispatch({type: 'SIGNIN', payload: res.data})
                 history.push("/");
             }).catch(err => {
+                if (err.response.status === 409) {
+                    console.log("user exist");
+                }
                 console.log(err);
             })
     }

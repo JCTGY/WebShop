@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.jump.exception.CustomerIdNotMatchException;
 import com.jump.exception.CustomerNotFoundException;
 import com.jump.exception.CustomerPasswordNotMatchException;
+import com.jump.exception.UserNameAlreadyExistException;
 
 @RestControllerAdvice
 public class CustomerControllerAdvice {
@@ -30,5 +31,11 @@ public class CustomerControllerAdvice {
 	public ResponseEntity<?> handelCustomerPasswordNotMatch(CustomerPasswordNotMatchException e) {
 		ExceptionResponse response = new ExceptionResponse("Customer password not match", "CUSTOM-400", new Date());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+	}
+	
+	@ExceptionHandler(UserNameAlreadyExistException.class)
+	public ResponseEntity<?> handelCustomerPasswordNotMatch(UserNameAlreadyExistException e) {
+		ExceptionResponse response = new ExceptionResponse("Customer username exists", "CUSTOM-409", new Date());
+		return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
 	}
 }
