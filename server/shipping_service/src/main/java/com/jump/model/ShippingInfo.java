@@ -20,7 +20,6 @@ public class ShippingInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long shippingId;
-
     private String firstName;
     private String lastName;
     private String address1;
@@ -31,5 +30,5 @@ public class ShippingInfo {
     private String specialInstructions;
     private String shippingType;
     private double shippingCost;
-    private long orderId;
+    private long customerId;
 }

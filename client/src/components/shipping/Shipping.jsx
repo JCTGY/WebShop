@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import SelectUSState from 'react-select-us-states';
 import { Redirect } from 'react-router';
+import { Container } from 'react-bootstrap';
 
 const Shipping = props =>{
 
@@ -17,10 +18,7 @@ const Shipping = props =>{
         specialInstructions: "",
         shippingType: "",
         shippingCost: 0,
-        orderId: 0
     });
-
-    const [order, setOrder] = useState();
 
     const [formSaved, setFormSaved] = useState(false);
  
@@ -38,7 +36,6 @@ const Shipping = props =>{
             .then(res =>{
                 console.log(res);
                 console.log(res.data)
-                setOrder(res.data.orderId);
         
             }).then(
                 setFormSaved(true));
@@ -89,18 +86,15 @@ const Shipping = props =>{
     
     if (formSaved === true) {
         return(
-            <Redirect to={`order/${1}`}/>      
-      
+            <Redirect to={`order/${1}`}/>           
         )
 
 
 
     }else{
         return (
-
       
-            <div className="container col-8">
-                <div><h1>Saved: {formSaved}</h1></div>
+            <Container>
                 <h1>Shipping</h1>
                 <form id="shipping-form" onSubmit={handleSubmit}>
                     <div className="form-group">
@@ -200,23 +194,23 @@ const Shipping = props =>{
                             </div>
                         </div>
                         <div className="col-10"> 
-                                <legend class="col-form-label col-sm-2 pt-0">Shipping</legend>
-                                <div class="col-sm-10" onChange={handleShippingType}>
-                                    <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="shippingType" id="gridRadios1" value="Ground" />
-                                    <label class="form-check-label" htmlFor="gridRadios1">
+                                <legend className="col-form-label col-sm-2 pt-0">Shipping</legend>
+                                <div className="col-sm-10" onChange={handleShippingType}>
+                                    <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="shippingType" id="gridRadios1" value="Ground" />
+                                    <label className="form-check-label" htmlFor="gridRadios1">
                                         Ground
                                     </label>
                                     </div>
-                                    <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="shippingType" id="gridRadios2" value="Priority" />
-                                    <label class="form-check-label" htmlFor="gridRadios2">
+                                    <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="shippingType" id="gridRadios2" value="Priority" />
+                                    <label className="form-check-label" htmlFor="gridRadios2">
                                         Priority
                                     </label>
                                     </div>
-                                    <div class="form-check disabled">
-                                    <input class="form-check-input" type="radio" name="shippingType" id="gridRadios3" value="Overnight" />
-                                    <label class="form-check-label" htmlFor="gridRadios3">
+                                    <div className="form-check disabled">
+                                    <input className="form-check-input" type="radio" name="shippingType" id="gridRadios3" value="Overnight" />
+                                    <label className="form-check-label" htmlFor="gridRadios3">
                                         Overnight
                                     </label>
                                     </div>
@@ -225,8 +219,8 @@ const Shipping = props =>{
                     </div>
                     <button type="submit">Complete Order</button>
                 </form>
-            </div>
-        )
+         </Container>        
+         )
     }
 
    

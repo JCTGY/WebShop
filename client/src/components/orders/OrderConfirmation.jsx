@@ -19,7 +19,28 @@ const OrderConfirmation = props =>{
 
 
     return (
-        <h2>{props.orderId}</h2>
+       <div className="container">
+           <h2>Order Confirmation</h2>
+           <p>Order Numer:</p>
+           <ul>Items
+           <li>item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
+           </ul>
+            <div>
+                Shipping Info
+                <p>First Name: </p>
+                <p>Last Name: </p>
+                <p>Address</p>
+                <p>Address</p>
+                <p>City</p>
+                <p>State</p>
+                <p>Postal Code</p>
+
+            </div>
+
+       </div>
+
         
     )
 }
