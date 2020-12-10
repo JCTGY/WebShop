@@ -59,8 +59,6 @@ const NavBar = props => {
                 <Route path="/order/:orderId">
                     <OrderConfirmation />
                 </Route>
-                <Route path="/cart">
-                    <Cart />
                 <Route path="/signUp">
                     <SignUp/>
                 </Route>
@@ -68,7 +66,6 @@ const NavBar = props => {
                     <Admin />
                 </Route>
                 <Route exact path="/">
-
                     <div className="img-wrapper">
                         <Link id="shop-now" to="/products">Shop Now</Link>
                     </div>

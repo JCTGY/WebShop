@@ -9,7 +9,9 @@
     margin: 1em;
     text-align: center;
     border: solid black;
+    border-width: .1em;
     height: 20em;
+    border-radius: 15px;
 }
 .product-list-item p{
     text-align: left;
@@ -27,6 +29,7 @@
     position: absolute;
     opacity: 0;
     z-index: 0;
+    border-radius: 15px;
 }
 
 
@@ -36,12 +39,32 @@
     opacity: 1;
 }
 
+.product-link-wrapper{
+    margin-top: 0%;
+    transition: all ease-in .20s;
+}
 a.product-link{
-    background-color: white;
-    padding: 1em;
-    top: 40%;
+    background: none;
+    padding:0.5em 3em;
+    border:0.2em solid white;
+    margin:0 0.3em 0.3em 0;
+    box-sizing: border-box;
+    text-decoration:none;
+    text-transform:uppercase;
+    font-family:var(--ff-secondary);
+    font-weight:bold;
+    color:white;
+    text-align:center;
+    transition: all 0.15s;
+
+}
+
+.product-link-shadow:hover .product-link-wrapper{
+    margin-top: 40%;
 }
 
 a.product-link:hover{
     text-decoration: none;
+    background-color: white;
+    color: var(--clr-accent);
 }

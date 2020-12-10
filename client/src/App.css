@@ -10,11 +10,16 @@
     --ff-secondary: 'Playfair Display', serif;
     --clr-light: #fff;
     --clr-dark: #1b1b1b;
-    --clr-accent: #09fab2;
+    --clr-accent: #09cafa;
 
 }
 body{
     font-family: var(--ff-primary);
+    
+}
+
+p{
+    color: var(--clr-dark);
 }
 
 .NavBar{
