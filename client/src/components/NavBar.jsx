@@ -43,7 +43,7 @@ const NavBar = props => {
                 />
                 <PrivateRoute 
                     component={Order}
-                    authed={user.auth} 
+                    authed={true} 
                     path="/orders" 
                     exact
                 /> 

@@ -1,6 +1,7 @@
 .orderTitle {
     cursor: pointer;
     text-decoration: underline;
+    color: var(--clr-accent);
     position: relative;
     overflow: hidden;
     width: 200px;
