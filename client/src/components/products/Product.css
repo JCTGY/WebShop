@@ -82,6 +82,7 @@ a.product-link:hover{
     opacity: .8;
 }
 
+
 #search-bar-hidden{
     display: none;
 }
@@ -94,11 +95,11 @@ a.product-link:hover{
     font-size: 2em;
 }
 
-
 .search-button{
     color: white;
     background: transparent;
-    left: 0;
+    position: absolute;
+    right: 0;
 }
 
 .search-window,

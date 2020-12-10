@@ -35,6 +35,7 @@ const ProductSearchBar = ( {setTerm }) => {
     }
 
     const handleClick = (event) =>{
+        event.preventDefault();
         if(searchToggle.active === false){
             setSearchToggle({
                 active: true,
@@ -60,15 +61,13 @@ const ProductSearchBar = ( {setTerm }) => {
             <div className={searchToggle.background}></div>        
             <div className={searchToggle.search} >
        
-                <InputGroup className="mb-3">
-                    <FormControl
+                    <form>
+                        <input type="text"
                         id={searchToggle.searchBar}
                         placeholder="Search Product Name"
                         onChange={onChangeInput}
                         onKeyPress={onKeyPressInput}
-                        value={input}
-                    />
-                    <InputGroup.Append>
+                        value={input} />
                         <Button 
                             className="search-button"
                             onClick={handleClick}
@@ -76,8 +75,7 @@ const ProductSearchBar = ( {setTerm }) => {
                             variant="outline-secondary">
                             <IconContext.Provider value={{ color: 'white', size: '3em' }}><BsSearch/></IconContext.Provider>
                         </Button>
-                    </InputGroup.Append>
-                </InputGroup>
+                    </form>
 
             </div>
         </div>
