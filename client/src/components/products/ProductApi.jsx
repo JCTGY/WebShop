@@ -34,5 +34,5 @@ export const postProductToCart = (product, cartId) => {
             cartId: cartId
         }
     }
-    return axios.post(`http://localhost:9000/api/cart/v1/cart/create`, product);
+    return axios.post(`http://localhost:9000/api/cart/v1/cart/create/product`, product);
 }
