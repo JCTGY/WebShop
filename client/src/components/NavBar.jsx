@@ -1,5 +1,6 @@
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import React from 'react';
 import { useSelector } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Products from './products/Products';
 import ProductItemPage from './products/ProductItemPage';
 import Order from './orders/Order';
@@ -8,11 +9,12 @@ import Shipping from './shipping/Shipping';
 import Admin from './admin/Admin';
 import SignIn from './customer/SignIn';
 import SignUp from './customer/SignUp';
+import PrivateRoute from './PrivateRoute';
 
 const NavBar = props => {
-
     const user = useSelector(state => state.userState.user);
-    if (user) console.log(user);
+    
+    console.log("user" + user.auth);
     return (
         <Router>
             <div className="NavBar">
@@ -31,15 +33,24 @@ const NavBar = props => {
                 <Route path="/products/:productId">
                     <ProductItemPage />
                 </Route>
-                <Route path="/shipping">
-                    <Shipping />
-                </Route>
-                <Route path="/orders">
-                    <Order />
-                </Route>
-                <Route path="/cart">
-                    <Cart />
-                </Route>
+                <PrivateRoute 
+                    component={Shipping}
+                    authed={user.auth} 
+                    path="/shipping" 
+                    exact
+                />
+                <PrivateRoute 
+                    component={Order}
+                    authed={user.auth} 
+                    path="/orders" 
+                    exact
+                /> 
+                <PrivateRoute 
+                    component={Cart}
+                    authed={user.auth} 
+                    path="/cart" 
+                    exact
+                />
                 <Route path="/signIn">
                     <SignIn/>
                 </Route>

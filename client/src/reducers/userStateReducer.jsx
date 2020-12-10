@@ -1,11 +1,16 @@
-const initState = { user: null };
+const initState = { user: {
+    auth: false
+} };
 
 const userStateReducer = (state = initState, action) => {
     switch (action.type) {
         case 'SIGNIN':
             console.log("add Item");
             return {
-                user: action.payload
+                user: {
+                    ...action.payload,
+                    auth: true
+                }
             }
         case 'UPDATE_USER':
             return {
@@ -14,7 +19,9 @@ const userStateReducer = (state = initState, action) => {
             }
         case 'SIGNOUT':
             return {
-                user: null
+                user: {
+                    auth: false
+                }
             }
         default:
             return state
