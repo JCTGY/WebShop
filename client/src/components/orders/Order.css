@@ -1,0 +1,28 @@
+.orderTitle {
+    cursor: pointer;
+    text-decoration: underline;
+    position: relative;
+    overflow: hidden;
+    width: 200px;
+  }
+  
+  .orderTitle:hover:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(84, 104, 170, 0.5);
+  }
+  
+  .orderTitle p {
+    display: none;
+  }
+  
+  .orderTitle:hover p {
+   display: block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
