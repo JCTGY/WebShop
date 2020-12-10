@@ -3,10 +3,12 @@ import axios from 'axios';
 import SelectUSState from 'react-select-us-states';
 import { Redirect } from 'react-router';
 import { Container } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Shipping = props =>{
 
-
+    const user = useSelector(state => state.userState.user);
+    const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -18,6 +20,7 @@ const Shipping = props =>{
         specialInstructions: "",
         shippingType: "",
         shippingCost: 0,
+        customerId: user.customerId,
     });
 
     const [formSaved, setFormSaved] = useState(false);
@@ -36,7 +39,11 @@ const Shipping = props =>{
             .then(res =>{
                 console.log(res);
                 console.log(res.data)
-        
+                dispatch({type: 'UPDATE_USER', payload: {
+                    user: {
+                    shippingInfo: res.data
+                    }
+                }})            
             }).then(
                 setFormSaved(true));
     }

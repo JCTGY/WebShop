@@ -11,8 +11,7 @@ import com.jump.model.Product;
 //import com.jump.model.Product;
 
 @Repository
-public interface CartRepository extends JpaRepository<Cart, Integer> {
+public interface ProductsRepository extends JpaRepository<Product, Integer> {
 	
-//	@Query("select PRODUCT from CART")
-//	List<Product> queryAllProducts();
+
 }

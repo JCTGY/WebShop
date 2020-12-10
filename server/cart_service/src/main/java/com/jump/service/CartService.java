@@ -1,11 +1,16 @@
 package com.jump.service;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jump.exceptions.CartNotFoundException;
+import com.jump.model.Cart;
 import com.jump.model.Product;
 import com.jump.repository.CartRepository;
 
@@ -15,37 +20,102 @@ public class CartService {
 	@Autowired
 	CartRepository cartRepository;
 	
-	public List<Product> retrieveProducts(){
+	
+//------------------------cart methods-------------------------------------------
+	public List<Cart> retrieveCarts(){
 		return cartRepository.findAll();
 	}
 	
-	public Product retrieveProductById(int id) {
-		return cartRepository.findById(id).orElseThrow(CartNotFoundException::new);
+	//create
+	public Cart createCart(Cart cart){
+		return cartRepository.save(cart);
 	}
 	
-	public Product createProduct(Product product) {
+	//read
+	public Cart retrieveCart(Integer cart_id) {
+		return cartRepository.findById(cart_id).orElseThrow(CartNotFoundException::new);
+	}
+
+	
+	
+	//update
+	public double sumTotal(Integer cart_id){
 		
-		return cartRepository.save(product);
-	}
-	
-	public boolean updateProduct(Product product) {
-		retrieveProductById(product.getId());
-		return cartRepository.save(product) != null;
-	}
-	
-	public boolean deleteProduct(int id) {
-		retrieveProductById(id);
-		cartRepository.deleteById(id);
-		return true;
-	}
-	
-	public double sumTotal() {
-		double total =0;
-		List<Product> products = cartRepository.findAll();
+		double total =  0;
+		Cart currentCart = retrieveCart(cart_id);
+		List<Product> currentProducts = currentCart.getProducts();
+ 
 		
-		for(Product product: products) {
-			total += product.getTotal();
+		for(Product product: currentProducts) {
+			total += product.getSubtotal();
 		}
+		currentCart.setTotal(total);
+		
 		return total;
 	}
+	
+	
+	public Cart addProductToCart(Integer cart_id, Product product) {
+		Cart currentCart = cartRepository.findById(cart_id).orElseThrow(CartNotFoundException::new);
+		List<Product> currentProducts = currentCart.getProducts();
+		
+		currentProducts.add(product);
+		
+//----------------------Hashmap update----------------------------------
+//		HashMap<Integer, Product> tempProducts = new HashMap<Integer, Product>();
+//		for(Product p:currentProducts) {
+//			tempProducts.put(p.getId(), p);
+//		}
+//		
+//		if(!tempProducts.containsKey(product.getId())) {
+//			currentProducts.add(product);
+//		}else {
+//			tempProducts.put(product.getId(), product);
+//		}
+//		
+//		List<Product> newProdcuts = Collections.list(Collections.enumeration(tempProducts.values()));
+//----------------------end Hashmap update----------------------------------		
+			
+//		currentCart.setProducts(newProdcuts);
+		System.out.println(currentCart);
+		return cartRepository.save(currentCart);
+	}
+	
+	//delete
+	
+//-------------------------product methods---------------------------------------
+//	public List<Product> retrieveProducts(){
+//		return Repository.findAll();
+//	}
+//	
+//	public Product retrieveProductById(int id) {
+//		return cartRepository.findById(id).orElseThrow(CartNotFoundException::new);
+//	}
+//	
+//	
+//	public Product createProduct(Product product) {
+//		
+//		return cartRepository.save(product);
+//	}
+//	
+//	public boolean updateProduct(Product product) {
+//		retrieveProductById(product.getId());
+//		return cartRepository.save(product) != null;
+//	}
+//	
+//	public boolean deleteProduct(int id) {
+//		retrieveProductById(id);
+//		cartRepository.deleteById(id);
+//		return true;
+//	}
+//	
+//	public double sumTotal() {
+//		double total =0;
+//		List<Product> products = cartRepository.findAll();
+//		
+//		for(Product product: products) {
+//			total += product.getTotal();
+//		}
+//		return total;
+//	}
 }

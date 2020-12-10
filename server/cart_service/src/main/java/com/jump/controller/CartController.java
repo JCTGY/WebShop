@@ -20,73 +20,145 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.jump.exceptions.CartIDMismatchException;
+import com.jump.model.Cart;
 import com.jump.model.Product;
 import com.jump.service.CartService;
+import com.jump.service.ProductsService;
 
-@CrossOrigin("http://localhost:3000")
+//@CrossOrigin("http://localhost:3000"
 @RestController
 @RequestMapping("v1/cart")
 public class CartController {
+	
+	
 	@Autowired
 	CartService cartservice;
 	
-	@GetMapping
-	public ResponseEntity<List<Product>> getProduct()
-	{
-		return ResponseEntity.ok(cartservice.retrieveProducts());
-	}
+	@Autowired
+	ProductsService productsservice;
 	
-	@PostMapping("/create")
-	public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) throws URISyntaxException
+
+	//create
+	@PostMapping("/create/cart")
+	public ResponseEntity<Cart> createCart(@Valid @RequestBody Cart cart) throws URISyntaxException
 	{	
-		product.setTotal(product.getPrice()*product.getCount());
-		Product result= cartservice.createProduct(product);
+		Cart result= cartservice.createCart(cart);
 		
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
-				.path("/{id}")
-				.buildAndExpand(result.getId())
+				.path("/{cart_id}")
+				.buildAndExpand(result.getCartId())
 				.toUri();
 		
 		return ResponseEntity
 				.created(location)
-				.build();
-				//.body(result);
-	}
-	
-	@PutMapping("/add/{id}")
-	public ResponseEntity<?> addProduct(@PathVariable int id)
-	{	
-		Product product = cartservice.retrieveProductById(id);
-		if(id == product.getId())
-		{	
-			product.setCount(product.getCount()+1);
-			product.setTotal(product.getPrice()*product.getCount());
-			cartservice.updateProduct(product);
-			return ResponseEntity.ok("Add Success!");
-		}
-		else
-		{
+				.body(result);
 		
-				throw new CartIDMismatchException();
-		}
+	}
+
+	//read
+	@GetMapping("/get/cartById/{cart_id}")
+	public ResponseEntity<List<Product>> getCartById(@PathVariable Integer cart_id){
+		return ResponseEntity.ok(cartservice.retrieveCart(cart_id).getProducts());
 	}
 	
-	@PutMapping("/subtract/{id}")
+	//update
+	@PutMapping("/update/addProductToCart/{cart_id}")
+	public ResponseEntity<?> addToCart(@PathVariable Integer cart_id, @Valid @RequestBody Product product){
+		return ResponseEntity.ok(cartservice.addProductToCart(cart_id, product));
+	}
+	
+	//update
+	@PutMapping("/update/sumTotalToCart/{cart_id}")
+	public ResponseEntity<?> sumToCart(@PathVariable Integer cart_id){
+		return ResponseEntity.ok(cartservice.sumTotal(cart_id));
+	}
+
+
+//------------------------products controller-----------------------------------------------
+	
+	
+	
+//	
+//		Product product = productsservice.retrieveProductById(id);
+//		if(id == product.getId())
+//		{	
+//			product.setCount(product.getCount()+1);
+//			product.setTotal(product.getPrice()*product.getCount());
+//			cartservice.updateProduct(product);
+//			return ResponseEntity.ok("Add Success!");
+//		}
+//		else
+//		{
+//		
+//				throw new CartIDMismatchException();
+//		}
+//	}
+	
+//	
+//	@PutMapping("/add/cart/{cart_id}")
+//	public ResponseEntity<?> addProductToCart(@PathVariable  cart_id){
+//		
+//	}
+//	
+//	
+	//create
+	@PostMapping("/create/product")
+	public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product)
+	{	
+		product.setSubtotal((product.getPrice()*product.getQty()));
+		Product result= productsservice.createProduct(product);
+		
+		return ResponseEntity
+				.ok(result);
+	}
+	
+	
+	
+	//read
+	@GetMapping("/update/get/allProducts")
+	public ResponseEntity<List<Product>> getProduct()
+	{
+		return ResponseEntity.ok(productsservice.retrieveProducts());
+	}
+
+	
+	//update
+//	@PutMapping("/update/add/productBuId/{id}")
+//	public ResponseEntity<?> addProduct(@PathVariable int id)
+//	{	
+//		Product product = productsservice.retrieveProductById(id);
+//		Cart cart = cartservice.
+//		
+//		if(id == product.getId())
+//		{	
+//			product.setQty(product.getQty()+1);
+//			product.setSubtotal(product.getPrice()*product.getQty());
+//			productsservice.updateProduct(product);
+//			return ResponseEntity.ok("Add Success!");
+//		}
+//		else
+//		{
+//		
+//				throw new CartIDMismatchException();
+//		}
+//	}
+	
+	@PutMapping("/update/subtract/ProductById/{id}")
 	public ResponseEntity<?> subtractProduct(@PathVariable int id)
 	{	
-		Product product = cartservice.retrieveProductById(id);
+		Product product = productsservice.retrieveProductById(id);
 		if(id == product.getId())
 		{	
-			if(product.getCount() > 1)
+			if(product.getQty() > 1)
 			{
-				product.setCount(product.getCount()-1);
-				product.setTotal(product.getPrice()*product.getCount());
-				cartservice.updateProduct(product);
+				product.setQty(product.getQty()-1);
+				product.setSubtotal(product.getPrice()*product.getQty());
+				productsservice.updateProduct(product);
 				return ResponseEntity.ok("Subtract Success!");
 			}
 			else {
-				cartservice.deleteProduct(id);
+				productsservice.deleteProduct(id);
 				return ResponseEntity.noContent().build();
 			}
 		}
@@ -96,28 +168,31 @@ public class CartController {
 		}
 	}
 	
-	@DeleteMapping("/{id}")
+	//delete
+	@DeleteMapping("/delete/productById/{id}")
 	public ResponseEntity<?> deleteProduct(@PathVariable int id)
 	{	
-		cartservice.deleteProduct(id);
+		productsservice.deleteProduct(id);
 		return ResponseEntity.noContent().build();
 	}
 	
-	@DeleteMapping("/clear")
+	@DeleteMapping("/delete/allProduct")
 	public ResponseEntity<?> clearProducts()
 	{	
-		List<Product> products= cartservice.retrieveProducts();
+		List<Product> products= productsservice.retrieveProducts();
 		
 		for(Product product:products) {
-			cartservice.deleteProduct(product.getId());
+			productsservice.deleteProduct(product.getId());
 			ResponseEntity.noContent().build();
 		}
 		return ResponseEntity.noContent().build();
 	}
 	
-	@GetMapping("/total")
-	public ResponseEntity<?> getTotal()
-	{
-		return ResponseEntity.ok(cartservice.sumTotal());
-	}
+	
+	//mist
+//	@GetMapping("/total")
+//	public ResponseEntity<?> getTotal()
+//	{
+//		return ResponseEntity.ok(productsservice.sumTotal());
+//	}
 }

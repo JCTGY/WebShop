@@ -19,7 +19,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.jump.exception.CustomerIdNotMatchException;
 import com.jump.model.Customer;
+import com.jump.model.ShippingInfo;
 import com.jump.service.CustomerService;
+import com.jump.service.ShippingService;
 
 @RestController
 @RequestMapping("/")
@@ -28,6 +30,8 @@ public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 	
+	@Autowired
+	ShippingService shippingService;
 	
 	@GetMapping
 	public ResponseEntity<List<Customer>> findAllCutomers() {
@@ -41,7 +45,10 @@ public class CustomerController {
 	
 	@PostMapping("/signIn")
 	public ResponseEntity<Customer> signIn(@Valid @RequestBody Customer customer) {
-		return ResponseEntity.ok(customerService.authCustomer(customer));
+		Customer currentCustomer = customerService.authCustomer(customer);
+		ShippingInfo shipping = shippingService.findByCustomerId(currentCustomer.getCustomerId());
+		currentCustomer.setShippingInfo(shipping);
+		return ResponseEntity.ok(currentCustomer);
 	}
 	
 	@PostMapping("/signUp")

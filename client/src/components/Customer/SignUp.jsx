@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 const SignUp = () => {
 
+    const baseUrl = "http://localhost:9000/api/";
     const history = useHistory();
     const dispatch = useDispatch();
     const [user, setUser] = useState({
@@ -16,17 +17,23 @@ const SignUp = () => {
 
     const onClickSignUp = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:9000/api/customer/signUp", user)
-            .then(res => {
-                console.log(res);
-                dispatch({type: 'SIGNIN', payload: res.data})
-                history.push("/");
-            }).catch(err => {
-                if (err.response.status === 409) {
-                    console.log("user exist");
-                }
-                console.log(err);
+        axios.post(`${baseUrl}cart/v1/cart/create/cart`, {}).then(result => {
+            setUser({
+                ...user,
+                cartId: result.data.cartId
             })
+            axios.post(`${baseUrl}customer/signUp`, user)
+                .then(res => {
+                    console.log(res);
+                    dispatch({type: 'SIGNIN', payload: res.data})
+                    history.push("/");
+                }).catch(err => {
+                    if (err.response.status === 409) {
+                        console.log("user exist");
+                    }
+                    console.log(err);
+                })
+        })
     }
 
     const onChangeUser = ({ target: { name, value } }) => {

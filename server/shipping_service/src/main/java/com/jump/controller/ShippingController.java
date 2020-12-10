@@ -52,4 +52,9 @@ public class ShippingController {
         return ResponseEntity.created(location).body(result);
         
     }
+    
+    @GetMapping("/customerId/{customerId}")
+    public ShippingInfo findByCustomerId(@PathVariable Long customerId) {
+    	return shippingService.findShippingInfoByCustomerId(customerId);
+    }
 }
