@@ -7,7 +7,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +22,6 @@ import com.jump.exception.ProductIdNotMatchException;
 import com.jump.model.Product;
 import com.jump.service.ProductService;
 
-// Prodcut controller for product service
 @RestController
 @RequestMapping("/")
 public class ProductController {
@@ -42,7 +40,7 @@ public class ProductController {
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
 				.path("/{id}")
-				.buildAndExpand(result.getId())
+				.buildAndExpand(result.getProductId())
 				.toUri();
 		return ResponseEntity.created(location).body(result);
 	}
@@ -71,7 +69,7 @@ public class ProductController {
 	@PutMapping("/{productId}")
 	public ResponseEntity<?> updateProduct(@PathVariable Long productId,
 			@Valid @RequestBody Product product) {
-		if (productId == product.getId()) {
+		if (productId == product.getProductId()) {
 			productService.updateProduct(product);
 			return ResponseEntity.ok("Updated!");
 		} else throw new ProductIdNotMatchException();
