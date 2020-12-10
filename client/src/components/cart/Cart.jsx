@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { table} from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 
 const Cart = props =>{
 
-   
-        const cartUrl = "http://localhost:7063/v1/cart";
+        const user = useSelector(state => state.userState.user);
+        const cartUrl = `http://localhost:9000/cart/v1/cart/get/cartById/${user.customerId}`;
         const totalUrl = "http://localhost:7063/v1/cart/total"
         const[cart, setCart] = useState([]); 
         const[total, setTotal] = useState();  
