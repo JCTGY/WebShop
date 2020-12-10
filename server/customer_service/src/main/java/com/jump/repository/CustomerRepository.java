@@ -11,4 +11,5 @@ import com.jump.model.Customer;
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 	
 	Optional<Customer> findByUserName(String userName);
+	boolean existsCustomerByUserName(String userName);
 }

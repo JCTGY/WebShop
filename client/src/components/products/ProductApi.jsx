@@ -1,29 +1,29 @@
 import axios from 'axios';
 
-const baseUrl = "http://localhost:9000/api/product/";
+const productBaseUrl = "http://localhost:9000/api/product/";
 
 export const fetchProductList = () => {
-    return axios.get(baseUrl);
+    return axios.get(productBaseUrl);
 }
 
 export const fetchProductsByName = (term) => {
-    return axios.get(`${baseUrl}/search?name=${term}`);
+    return axios.get(`${productBaseUrl}/search?name=${term}`);
 }
 
 export const fetchProductById = (id) => {
-    return axios.get(`${baseUrl}/${id}`);
+    return axios.get(`${productBaseUrl}/${id}`);
 }
 
 export const postProduct = (product) => {
-    return axios.post(`${baseUrl}`, product);
+    return axios.post(`${productBaseUrl}`, product);
 }
 
 export const putProduct = (product, productId) => {
-    return axios.put(`${baseUrl}/${productId}`, product);
+    return axios.put(`${productBaseUrl}/${productId}`, product);
 }
 
 export const deleteProductApi = (productId) => {
-    return axios.delete(`${baseUrl}/${productId}`);
+    return axios.delete(`${productBaseUrl}/${productId}`);
 }
 
 
