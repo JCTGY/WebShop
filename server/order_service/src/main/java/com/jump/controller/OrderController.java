@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -41,11 +42,13 @@ public class OrderController {
 	
 	
 	
-	@PostMapping
-	public ResponseEntity<Orders> createOrder(@Valid @RequestBody Orders order) throws URISyntaxException{
-
-		order.setTotal(cartService.getTotal());
+	@PostMapping							//set order customerId		 //Using Cart Id to call cart service, to get products in cart
+	public ResponseEntity<Orders> createOrder(@RequestParam long custId, @RequestParam long cartId) throws URISyntaxException{
+		Orders order = new Orders();
+		
 		order.setDate(LocalDate.now());
+		order.setCustomerId(custId);
+		order.setTotal(cartService.getTotal());	
 		
 		List<Product> products = cartService.getProduct();
 		
