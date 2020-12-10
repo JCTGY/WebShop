@@ -15,7 +15,10 @@ const userStateReducer = (state = initState, action) => {
         case 'UPDATE_USER':
             return {
                 ...state,
-                user: action.payload
+                user:  {
+                    ...action.payload,
+                    auth: true
+                }
             }
         case 'SIGNOUT':
             return {

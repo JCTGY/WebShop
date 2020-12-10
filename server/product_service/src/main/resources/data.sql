@@ -3,7 +3,7 @@ INSERT INTO PRODUCT
     )
 values
     (
-        NULL, 'Acer Aspire 5 Slim Laptop, 15.6 inches Full HD IPS Display',
+        NULL, 'Acer Aspire 5 Slim Laptop',
         'About this item AMD Ryzen 3 3200U Dual Core Processor (Up to 3.5GHz); 4GB DDR4 Memory; 
         128GB PCIe NVMe SSD 15.6 inches full HD (1920 x 1080) widescreen LED backlit IPS display;',
         'https://images-na.ssl-images-amazon.com/images/I/71vvXGmdKWL._AC_SL1500_.jpg',
@@ -28,7 +28,7 @@ INSERT INTO PRODUCT
     )
 values
     (
-        NULL, 'Sony WH-1000XM4 Wireless Industry Leading Noise Canceling Overhead Headphones',
+        NULL, 'Sony WH-1000XM4 Wireless Headphones',
         'Industry-leading noise canceling with Dual Noise Sensor technology
 Next-level music with Edge-AI, co-developed with Sony Music Studios Tokyo',
         'https://images-na.ssl-images-amazon.com/images/I/71o8Q5XJS5L._AC_SL1500_.jpg',
@@ -62,7 +62,7 @@ INSERT INTO PRODUCT
     )
 values
     (
-        NULL, 'Sony X900H 65 Inch TV: 4K Ultra HD Smart LED TV with HDR, Game Mode for Gaming, and Alexa Compatibility - 2020 Model',
+        NULL, 'Sony X900H 65 Inch TV: 2020 Model',
         '4K HDR PROCESSOR X1: See premium 4K pictures, rich with real-world detail and texture. Upscale everything you watch to near-4K with 4K X-Reality PRO.',
         'https://images-na.ssl-images-amazon.com/images/I/612U-Yeox0L._AC_SL1080_.jpg',
         'electronic', '398.00'
@@ -91,7 +91,7 @@ INSERT INTO PRODUCT
     )
 values
     (
-        NULL, 'BOWERY HILL Steel Gray Linen Reversible/Sectional Sleeper Sofa with Storage',
+        NULL, 'BOWERY HILL Steel Gray Sofa with Storage',
         'Plump Stitching Design
 Tufted Seat and Back Cushion
 Reversible Storage Chaise',
@@ -104,7 +104,7 @@ INSERT INTO PRODUCT
     )
 values
     (
-        NULL, 'GVDV Fitness Cryosphere Cold Massage Roller- 6 Hours Cold Relief',
+        NULL, 'GVDV Fitness Cryosphere Cold Massage Roller',
         'BIGGER BALL & UP TO 6 HOURS COLD RELIEF – GVDV cold massage roller ball comes with 3.6 inches bigger ball that can holds more cold gel',
         'https://images-na.ssl-images-amazon.com/images/I/71o7j4g81nL._AC_SL1500_.jpg',
         'home', '24.99'
@@ -115,7 +115,7 @@ INSERT INTO PRODUCT
     )
 values
     (
-        NULL, 'SoundAsleep Products SoundAsleep CloudNine Series Queen Air Mattress',
+        NULL, 'SoundAsleep CloudNine Air Mattress',
         'Integrated Dual Smart Pump Technology. The CloudNine Series has a proprietary dual pump system which continuously',
         'https://images-na.ssl-images-amazon.com/images/I/71gOvOvtehL._AC_SL1500_.jpg',
         'home', '199.95'
@@ -126,7 +126,7 @@ INSERT INTO PRODUCT
     )
 values
     (
-        NULL, 'Safavieh Lighting Collection Amy Gourd Glass Table Lamp',
+        NULL, 'Amy Gourd Glass Table Lamp',
         'Perfect for a living room, bedroom, den, library, study or office',
         'https://images-na.ssl-images-amazon.com/images/I/91m1sIsnxTL._AC_SL1500_.jpg',
         'home', '123.67'
