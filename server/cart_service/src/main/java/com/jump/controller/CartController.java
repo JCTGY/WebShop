@@ -24,6 +24,7 @@ import com.jump.model.Product;
 import com.jump.service.CartService;
 import com.jump.service.ProductsService;
 
+//@CrossOrigin("http://localhost:3000"
 @RestController
 @RequestMapping("v1/cart")
 public class CartController {
@@ -67,10 +68,10 @@ public class CartController {
 	}
 	
 	//update
-//	@PutMapping("/update/sumTotalToCart/{cart_id}")
-//	public ResponseEntity<?> sumToCart(@PathVariable Integer cart_id){
-//		return 
-//	}
+	@PutMapping("/update/sumTotalToCart/{cart_id}")
+	public ResponseEntity<?> sumToCart(@PathVariable Integer cart_id){
+		return ResponseEntity.ok(cartservice.sumTotal(cart_id));
+	}
 
 
 //------------------------products controller-----------------------------------------------
@@ -188,9 +189,9 @@ public class CartController {
 	
 	
 	//mist
-	@GetMapping("/total")
-	public ResponseEntity<?> getTotal()
-	{
-		return ResponseEntity.ok(productsservice.sumTotal());
-	}
+//	@GetMapping("/total")
+//	public ResponseEntity<?> getTotal()
+//	{
+//		return ResponseEntity.ok(productsservice.sumTotal());
+//	}
 }

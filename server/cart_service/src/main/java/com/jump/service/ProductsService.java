@@ -53,14 +53,14 @@ public class ProductsService {
 	
 	
 	//mist
-	public double sumTotal() {
-		double total =0;
-		List<Product> products = productsRepository.findAll();
-		
-		for(Product product: products) {
-			total += product.getSubtotal();
-		}
-		return total;
-	}
+//	public double sumTotal() {
+//		double total =0;
+//		List<Product> products = productsRepository;
+//		
+//		for(Product product: products) {
+//			total += product.getSubtotal();
+//		}
+//		return total;
+//	}
 
 }
