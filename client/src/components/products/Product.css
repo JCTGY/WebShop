@@ -1,20 +1,20 @@
 .product-img {
-    height: 200px;
-    width: 200px;
+    margin-top: 3em;
+    margin-bottom: 1.5em;
+    height: 6em;
     object-fit:scale-down;
 }
 
 .product-list-item{
     position: relative;
-    margin: 1em;
     text-align: center;
-    border: solid black;
     height: 20em;
+    border: solid .05em black;
+    border-radius: 50%;
+    box-shadow: 0px 6px;
+    margin: 2em 0;
 }
-.product-list-item p{
-    text-align: left;
-    padding: 1em;
-}
+
 
 .product-list-item h6{
     bottom: 5%;
@@ -27,21 +27,113 @@
     position: absolute;
     opacity: 0;
     z-index: 0;
+    border-radius: 50%;
 }
 
 
 .product-link-shadow:hover{
-    background-color: var(--clr-accent);
     z-index: 1;
     opacity: 1;
 }
 
+.product-link-wrapper{
+    margin-top: 10%;
+    transition: margin-top .65s, display .5s;
+}
 a.product-link{
-    background-color: white;
-    padding: 1em;
-    top: 40%;
+    background: var(--clr-dark);
+    padding:0.5em 3em;
+    border:0.2em solid var(--clr-accent);
+    margin:0 0.3em 0.3em 0;
+    box-sizing: border-box;
+    text-decoration:none;
+    text-transform:uppercase;
+    font-family:var(--ff-secondary);
+    font-weight:bold;
+    color: var(--clr-accent);
+    text-align:center;
+    transition: all 0.5s;
+
+}
+
+.product-link-shadow:hover .product-link-wrapper{
+    margin-top: 40%;
 }
 
 a.product-link:hover{
     text-decoration: none;
+    background-color: white;
+    color: var(--clr-accent);
 }
+
+.product-price{
+    margin-top: 4em;
+}
+
+
+.background-hidden{
+    background-color: black;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 5;
+    position: fixed;
+    opacity: .8;
+}
+
+
+#search-bar-hidden{
+    display: none;
+}
+#search-bar-active{
+    z-index: 6;
+    width: 85%;
+    background: none;
+    color: white;
+    border: none;
+    font-size: 2em;
+}
+
+.search-button{
+    color: white;
+    background: transparent;
+    position: absolute;
+    right: 0;
+}
+
+.search-window,
+.search-window-active,
+.search-window-hidden{
+    background: var(--clr-accent);
+    height: 5em;
+    width: 5em;
+    position: fixed;
+    bottom: 5vh;
+    right: 5vh;
+    color: white;
+    padding: 1em;
+    border-radius: 50%;
+    z-index: 5;
+    transition: bottom 1s, width 1s 1s, right 1s 1s, border-radius .5s 1s;
+}
+
+.search-window-active{
+    bottom: 45vh;
+    right:25vw;
+    width:50vw;
+    border-radius: 25px;
+    /* animation: moveVertical .5s ease-in forwards, 
+    moveHorizontal .75s .5s forwards,
+    borderTrans .5s  forwards,
+    expand 1s .75s forwards; */
+
+}
+
+@keyframes displaySearchBar{
+    99%{display: none;}
+    100%{display:block;}
+}
+
+
+

@@ -44,6 +44,7 @@ const SignUp = () => {
     }
 
     return (
+        <div className="container">
         <Form>
             <Form.Group controlId="formBasicUsername">
                 <Form.Label>Username</Form.Label>
@@ -76,6 +77,7 @@ const SignUp = () => {
                 Submit
             </Button>
         </Form>
+        </div>
     );
 }
 

@@ -66,7 +66,6 @@ const NavBar = props => {
                     <Admin />
                 </Route>
                 <Route exact path="/">
-
                     <div className="img-wrapper">
                         <Link id="shop-now" to="/products">Shop Now</Link>
                     </div>
