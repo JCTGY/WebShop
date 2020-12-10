@@ -35,6 +35,8 @@ const Order = props =>{
             setShippingDetails(response.data);
         })
 
+       // var span = document.getElementById("closeOrder")[0];
+
         //document.getElementById("ordersRow1").style.display = "block";
         document.getElementById("ordersRow").style.display = "block";
         // document.getElementById("orderDetails").style.display = "block";
@@ -64,12 +66,12 @@ const Order = props =>{
                         </div>
                     })}
                 </Col>
-                <div id="ordersRow">
-                    <Row>
+                <div id="ordersRow" className="orderModal">
+                    <Row className="orderModal-content">
+                        <span className="closeOrder" onClick = {()=>handleClose()}>&times;</span>
                         <Col>
                             <div>
                                     <div>
-                                        <button onClick = {()=>handleClose()}>close</button>
                                         <h2>ORDER #: {order && order.id} </h2>
                                     </div>
                                     <p>Date: {order && order.date}</p>
