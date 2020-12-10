@@ -58,8 +58,8 @@ public class CartController {
 
 	//read
 	@GetMapping("/get/cartById/{cart_id}")
-	public ResponseEntity<Cart> getCartById(@PathVariable Integer cart_id){
-		return ResponseEntity.ok(cartservice.retrieveCart(cart_id));
+	public ResponseEntity<List<Product>> getCartById(@PathVariable Integer cart_id){
+		return ResponseEntity.ok(cartservice.retrieveCart(cart_id).getProducts());
 	}
 	
 	//update
@@ -67,6 +67,12 @@ public class CartController {
 	public ResponseEntity<?> addToCart(@PathVariable Integer cart_id, @Valid @RequestBody Product product){
 		return ResponseEntity.ok(cartservice.addProductToCart(cart_id, product));
 	}
+	
+	//update
+//	@PutMapping("/update/sumTotalToCart/{cart_id}")
+//	public ResponseEntity<?> sumToCart(@PathVariable Integer cart_id){
+//		return 
+//	}
 
 
 //------------------------products controller-----------------------------------------------
@@ -118,23 +124,25 @@ public class CartController {
 
 	
 	//update
-	@PutMapping("/update/add/productBuId/{id}")
-	public ResponseEntity<?> addProduct(@PathVariable int id)
-	{	
-		Product product = productsservice.retrieveProductById(id);
-		if(id == product.getId())
-		{	
-			product.setQty(product.getQty()+1);
-			product.setSubtotal(product.getPrice()*product.getQty());
-			productsservice.updateProduct(product);
-			return ResponseEntity.ok("Add Success!");
-		}
-		else
-		{
-		
-				throw new CartIDMismatchException();
-		}
-	}
+//	@PutMapping("/update/add/productBuId/{id}")
+//	public ResponseEntity<?> addProduct(@PathVariable int id)
+//	{	
+//		Product product = productsservice.retrieveProductById(id);
+//		Cart cart = cartservice.
+//		
+//		if(id == product.getId())
+//		{	
+//			product.setQty(product.getQty()+1);
+//			product.setSubtotal(product.getPrice()*product.getQty());
+//			productsservice.updateProduct(product);
+//			return ResponseEntity.ok("Add Success!");
+//		}
+//		else
+//		{
+//		
+//				throw new CartIDMismatchException();
+//		}
+//	}
 	
 	@PutMapping("/update/subtract/ProductById/{id}")
 	public ResponseEntity<?> subtractProduct(@PathVariable int id)
