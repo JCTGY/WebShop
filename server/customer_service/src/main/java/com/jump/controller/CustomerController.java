@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +28,7 @@ public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 	
+	
 	@GetMapping
 	public ResponseEntity<List<Customer>> findAllCutomers() {
 		return ResponseEntity.ok(customerService.getAllCustomer());
@@ -36,9 +39,16 @@ public class CustomerController {
 		return ResponseEntity.ok(customerService.getCustomerById(customerId));
 	}
 	
-	@PostMapping
+	@PostMapping("/signIn")
+	public ResponseEntity<Customer> signIn(@RequestBody Customer customer) {
+		return ResponseEntity.ok(customerService.authCustomer(customer));
+	}
+	
+	@PostMapping("/signUp")
 	public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
+		System.out.println(customer);
 		Customer result = customerService.addCustomer(customer);
+		result.setPassword(null);
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
 				.path("/{id}")

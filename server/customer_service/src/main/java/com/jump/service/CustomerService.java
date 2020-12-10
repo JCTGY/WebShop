@@ -3,9 +3,11 @@ package com.jump.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.jump.exception.CustomerNotFoundException;
+import com.jump.exception.CustomerPasswordNotMatchException;
 import com.jump.model.Customer;
 import com.jump.repository.CustomerRepository;
 
@@ -14,6 +16,9 @@ public class CustomerService {
 
 	@Autowired
 	CustomerRepository customerRepository;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
 	
 	public List<Customer> getAllCustomer() {
 		return customerRepository.findAll();
@@ -24,7 +29,23 @@ public class CustomerService {
 				.orElseThrow(CustomerNotFoundException::new);
 	}
 	
+	public Customer getCustomerByUserName(String userName) {
+		return customerRepository.findByUserName(userName)
+				.orElseThrow(CustomerNotFoundException::new);
+	}
+	
+	public Customer authCustomer(Customer customer) {
+		Customer customerFromDb = getCustomerByUserName(customer.getUserName());
+		if (passwordEncoder
+				.matches(customer.getPassword(), customerFromDb.getPassword())) {
+			customerFromDb.setPassword(null);
+			return customerFromDb;
+		} else throw new CustomerPasswordNotMatchException();
+	}
+	
 	public Customer addCustomer(Customer customer) {
+		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+		System.out.println("add customer: " + customer);
 		return customerRepository.save(customer);
 	}
 	

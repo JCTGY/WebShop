@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -33,6 +34,7 @@ public class Customer {
 	@NotEmpty
 	private String userName;
 	
+//	@JsonIgnore
 	@Column(name="password")
 	@NotNull
 	@NotEmpty
