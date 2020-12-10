@@ -32,6 +32,10 @@ public class OrderService {
 				.orElseThrow(OrderNotFoundException::new);
 	}
 	
+	public List<Orders> getOrdersByCustId(long customer_id) {
+		return orderRepository.findByCustomerId(customer_id);
+	}
+	
 	//UPDATE
 	
 	public boolean upateOrder(Orders order) {

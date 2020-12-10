@@ -83,6 +83,14 @@ p{
 #orderDetails{
     display: none;
 }
+<<<<<<< HEAD
+#shippingDetails{
+    display: none;
+}
+
+#ordersRow{
+    display: none;
+=======
 
 .main-btn{
 
@@ -90,4 +98,5 @@ p{
 
 .container{
     padding-top: 5em;
+>>>>>>> 81981558fc6ddbe7780db936a50b2654505de72e
 }
