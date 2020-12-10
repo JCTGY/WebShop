@@ -29,3 +29,6 @@ zuul:
     shipping-service:
       path: /shipping/**
       service-id: shipping-service
+    customer-service:
+      path: /customer/**
+      service-id: customer-service
