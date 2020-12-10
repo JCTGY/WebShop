@@ -5,8 +5,8 @@ const initState = { user: {
 const userStateReducer = (state = initState, action) => {
     switch (action.type) {
         case 'SIGNIN':
-            console.log("add Item");
             return {
+                ...state,
                 user: {
                     ...action.payload,
                     auth: true

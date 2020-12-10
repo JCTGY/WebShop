@@ -7,7 +7,7 @@ const ProductItem = ({ product, url }) => {
         <div className="product-list-item">
             <div className="product-link-shadow">
                 <div className="product-link-wrapper">
-                        <Link to={`${url}/${product.id}` } className="product-link">See More
+                        <Link to={`${url}/${product.productId}` } className="product-link">See More
                         </Link>
                 </div>
             </div>

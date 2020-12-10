@@ -59,8 +59,6 @@ const NavBar = props => {
                 <Route path="/order/:orderId">
                     <OrderConfirmation />
                 </Route>
-                <Route path="/cart">
-                    <Cart />
                 <Route path="/signUp">
                     <SignUp/>
                 </Route>
