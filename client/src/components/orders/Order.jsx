@@ -63,43 +63,54 @@ const Order = props =>{
                     })}
                 </Col>
                 <div id="ordersRow">
-                <Col>
-                     <div >
-                            <h2>ORDER #: {order && order.id} 
-                            <button onClick = {()=>handleClose()}>close</button> </h2>
-                            <p>Date: {order && order.date}</p>
-                            <p>Order Total: ${order && order.total}</p>
-                            <p>Shipping Id: {order && order.shippingId}</p>
-                            {order && order.products.map( product => {
-                                return <div key={product.productID}>
-                                    <img src={product.imgUrl} className="product-img"></img>
-                                    <h4>{product.name}</h4>
-                                    <p>${product.price}</p>
-                                    <p>Quantity: {product.count}</p>
+                    <Row>
+                        <Col>
+                            <div >
+                                    <div>
+                                        <button onClick = {()=>handleClose()}>close</button>
+                                        <h2>ORDER #: {order && order.id} </h2>
+                                    </div>
+                                    <p>Date: {order && order.date}</p>
+                                    <p>Order Total: ${order && order.total}</p>
+                                    <p>Shipping Id: {order && order.shippingId}</p>
+                                    {order && order.products.map( product => {
+                                        return <div key={product.productID}>
+                                            <img src={product.imgUrl} className="product-img"></img>
+                                            <h4>{product.name}</h4>
+                                            <p>${product.price}</p>
+                                            <p>Quantity: {product.count}</p>
+                                        </div>
+                                    })}
                                 </div>
-                            })}
-                        </div>
-                </Col>
-                <Col>
-                    <div >
-                        <h2>Shipping Details</h2>
-                        <p>Customer Name: {shippingDetails && (shippingDetails.firstName
-                         +" "+ shippingDetails.lastName)}</p>
-                         <p>Shipping Address: {shippingDetails && 
-                         (shippingDetails.address1 +" "+ shippingDetails.address2)}</p>
+                        </Col>
+                        <Col>
+                            <div >
+                                <h2>Shipping Details</h2>
+                                <p>Customer Name: {shippingDetails && (shippingDetails.firstName
+                                +" "+ shippingDetails.lastName)}</p>
+                                <p>Shipping Address: {shippingDetails && 
+                                shippingDetails.address1}<br/>
+                                                   {shippingDetails && shippingDetails.address2}<br/>
+                                                   {shippingDetails && shippingDetails.city} {shippingDetails && shippingDetails.state}<br/>
+                                                   {shippingDetails && shippingDetails.postalCode}
+                                </p>
+                                <p>Special Instructions: {shippingDetails && shippingDetails.specialInstructions}</p>
+                                <p>Shipping Type: {shippingDetails && shippingDetails.shippingType}</p>
+                                <p>Shipping Cost: {shippingDetails && shippingDetails.shippingCost}</p>
 
-                        {/*  private String firstName;
-                            private String lastName;
-                            private String address1;
-                            private String address2;
-                            private String city;
-                            private String state;
-                            private String postalCode;
-                            private String specialInstructions;
-                            private String shippingType;
-                            private double shippingCost; */}
-                    </div>
-                </Col>
+                                {/*  private String firstName;
+                                    private String lastName;
+                                    private String address1;
+                                    private String address2;
+                                    private String city;
+                                    private String state;
+                                    private String postalCode;
+                                    private String specialInstructions;
+                                    private String shippingType;
+                                    private double shippingCost; */}
+                            </div>
+                        </Col>
+                </Row>
                 </div>
             </Row>
         </div>

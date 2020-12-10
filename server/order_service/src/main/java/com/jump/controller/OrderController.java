@@ -43,8 +43,7 @@ public class OrderController {
 	
 	@PostMapping
 	public ResponseEntity<Orders> createOrder(@Valid @RequestBody Orders order) throws URISyntaxException{
-		
-//		System.out.println(cartService.getTotal());
+
 		order.setTotal(cartService.getTotal());
 		order.setDate(LocalDate.now());
 		
@@ -56,7 +55,10 @@ public class OrderController {
 			product.setOrders(result);
 		}
 		
-		productService.createProducts(products);
+		if(products.size() > 0) {
+			productService.createProducts(products);
+		}
+		
 		result.setProducts(products);
 		
 		URI location = ServletUriComponentsBuilder
@@ -82,6 +84,11 @@ public class OrderController {
 			
 		return ResponseEntity.ok(result);
 		
+	}
+	
+	@GetMapping("/cust/{customer_id}")
+	public ResponseEntity<List<Orders>> getOrdersByCustId(@PathVariable long customer_id){
+		return ResponseEntity.ok(orderService.getOrdersByCustId(customer_id));
 	}
 	
 	
