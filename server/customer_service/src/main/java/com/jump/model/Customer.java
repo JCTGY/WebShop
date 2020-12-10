@@ -6,15 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
 
 @Data
 @AllArgsConstructor
@@ -29,27 +29,25 @@ public class Customer {
 	@Column(name="id")
 	private Long customerId;
 	
-	@Column(name="user_name")
+	@Column(name="user_name", unique = true)
 	@NotNull
 	@NotEmpty
 	private String userName;
 	
-//	@JsonIgnore
 	@Column(name="password")
 	@NotNull
 	@NotEmpty
 	private String password;
 	
 	@Column(name="first_name")
-	@NotNull
-	@NotEmpty
 	private String firstName;
 	
 	@Column(name="last_name")
-	@NotNull
-	@NotEmpty
 	private String lastName;
 	
 	@Column(name="cart_id")
 	private Long cartId;
+	
+	@Transient
+	private ShippingInfo shippingInfo;
 }
