@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.jump.exception.CustomerNotFoundException;
 import com.jump.exception.CustomerPasswordNotMatchException;
+import com.jump.exception.UserNameAlreadyExistException;
 import com.jump.model.Customer;
 import com.jump.repository.CustomerRepository;
 
@@ -44,6 +45,8 @@ public class CustomerService {
 	}
 	
 	public Customer addCustomer(Customer customer) {
+		if (customerRepository.existsCustomerByUserName(customer.getUserName())) 
+			throw new UserNameAlreadyExistException();
 		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
 		System.out.println("add customer: " + customer);
 		return customerRepository.save(customer);

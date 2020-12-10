@@ -3,6 +3,8 @@ package com.jump.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -40,13 +42,12 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/signIn")
-	public ResponseEntity<Customer> signIn(@RequestBody Customer customer) {
+	public ResponseEntity<Customer> signIn(@Valid @RequestBody Customer customer) {
 		return ResponseEntity.ok(customerService.authCustomer(customer));
 	}
 	
 	@PostMapping("/signUp")
-	public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
-		System.out.println(customer);
+	public ResponseEntity<Customer> addCustomer(@Valid @RequestBody Customer customer) {
 		Customer result = customerService.addCustomer(customer);
 		result.setPassword(null);
 		URI location = ServletUriComponentsBuilder
@@ -58,7 +59,7 @@ public class CustomerController {
 	}
 	
 	@PutMapping("/{customerId}")
-	public ResponseEntity<?> updateCustomer(@PathVariable Long customerId, @RequestBody Customer customer) {
+	public ResponseEntity<?> updateCustomer(@PathVariable Long customerId, @Valid @RequestBody Customer customer) {
 		if (customerId == customer.getCustomerId()) {
 			customerService.addCustomer(customer);
 			return ResponseEntity.ok("Customer update");
