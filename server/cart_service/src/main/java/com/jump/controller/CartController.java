@@ -69,10 +69,10 @@ public class CartController {
 	}
 	
 	//update
-//	@PutMapping("/update/sumTotalToCart/{cart_id}")
-//	public ResponseEntity<?> sumToCart(@PathVariable Integer cart_id){
-//		return 
-//	}
+	@PutMapping("/update/sumTotalToCart/{cart_id}")
+	public ResponseEntity<?> sumToCart(@PathVariable Integer cart_id){
+		return ResponseEntity.ok(cartservice.sumTotal(cart_id));
+	}
 
 
 //------------------------products controller-----------------------------------------------
@@ -190,9 +190,9 @@ public class CartController {
 	
 	
 	//mist
-	@GetMapping("/total")
-	public ResponseEntity<?> getTotal()
-	{
-		return ResponseEntity.ok(productsservice.sumTotal());
-	}
+//	@GetMapping("/total")
+//	public ResponseEntity<?> getTotal()
+//	{
+//		return ResponseEntity.ok(productsservice.sumTotal());
+//	}
 }

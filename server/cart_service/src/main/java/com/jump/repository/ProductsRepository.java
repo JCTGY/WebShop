@@ -12,5 +12,6 @@ import com.jump.model.Product;
 
 @Repository
 public interface ProductsRepository extends JpaRepository<Product, Integer> {
+	
 
 }
