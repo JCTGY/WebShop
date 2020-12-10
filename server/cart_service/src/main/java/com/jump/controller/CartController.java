@@ -25,10 +25,7 @@ import com.jump.model.Product;
 import com.jump.service.CartService;
 import com.jump.service.ProductsService;
 
-<<<<<<< HEAD
-=======
-//@CrossOrigin("http://localhost:3000")
->>>>>>> f2cc2dff4d4a9482d8c08a2ab2a24b75a3f85a49
+//@CrossOrigin("http://localhost:3000"
 @RestController
 @RequestMapping("v1/cart")
 public class CartController {
