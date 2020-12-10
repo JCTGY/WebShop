@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,24 @@ public class CartService {
 	
 	
 	//update
+//	Double sumTotal(Integer cart_id){
+//		
+//		double total =  0;
+//		Cart currentCart = cartRepository.findById(cart_id);
+//		List<Product> currentProducts = currentCart.getProducts();
+//				
+//				
+////		List<Product> products = productsRepository.findAll();
+//		
+//		for(Product product: currentProducts) {
+//			total += product.getSubtotal();
+//		}
+//		currentCart.setTotal(total);
+//		
+//		return total;
+//	}
+	
+	
 	public Cart addProductToCart(Integer cart_id, Product product) {
 		Cart currentCart = cartRepository.findById(cart_id).orElseThrow(CartNotFoundException::new);
 		List<Product> currentProducts = currentCart.getProducts();
