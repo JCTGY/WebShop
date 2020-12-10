@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Col,Row} from 'react-bootstrap';
+import {useSelector} from 'react-redux';
 
 const OrderConfirmation = props =>{
 
     const orderUrl = `http://localhost:9000/api/order/${props.orderId}`;
 
+    const user = useSelector();
+    
     const[order, setOrder] = useState();
 
 
