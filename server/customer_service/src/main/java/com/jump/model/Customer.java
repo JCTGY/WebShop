@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -29,7 +30,7 @@ public class Customer {
 	@Column(name="id")
 	private Long customerId;
 	
-	@Column(name="user_name")
+	@Column(name="user_name", unique = true)
 	@NotNull
 	@NotEmpty
 	private String userName;
@@ -41,13 +42,9 @@ public class Customer {
 	private String password;
 	
 	@Column(name="first_name")
-	@NotNull
-	@NotEmpty
 	private String firstName;
 	
 	@Column(name="last_name")
-	@NotNull
-	@NotEmpty
 	private String lastName;
 	
 	@Column(name="cart_id")

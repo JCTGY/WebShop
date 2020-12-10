@@ -18,7 +18,7 @@ const ProductItemPage = () => {
                 console.log(result);
                 setProduct(result)
             })
-    }, []);
+    }, [ productId ]);
 
     return (
         <Container>

@@ -5,6 +5,8 @@ import Order from './orders/Order';
 import Cart from './cart/Cart';
 import Shipping from './shipping/Shipping';
 import Admin from './admin/Admin';
+import SignIn from './Customer/SignIn';
+import SignUp from './Customer/SignUp';
 
 const NavBar = props => {
 
@@ -17,6 +19,7 @@ const NavBar = props => {
                 <Link to="/orders">Orders</Link>
                 <Link to="/shipping">Shipping</Link>
                 <Link to="/cart">Cart</Link>
+                <Link to="/signIn">SignIn</Link>
             </div>
 
             <Switch>
@@ -34,6 +37,12 @@ const NavBar = props => {
                 </Route>
                 <Route path="/cart">
                     <Cart />
+                </Route>
+                <Route path="/signIn">
+                    <SignIn/>
+                </Route>
+                <Route path="/signUp">
+                    <SignUp/>
                 </Route>
                 <Route path="/admin">
                     <Admin />
