@@ -27,6 +27,12 @@ export const deleteProductApi = (productId) => {
 }
 
 
-export const postProductToCart = (product) => {
-    return axios.post(`http://localhost:7063/v1/cart/create`, product);
+export const postProductToCart = (product, cartId) => {
+    product = {
+        ...product,
+        cart: {
+            cartId: cartId
+        }
+    }
+    return axios.post(`http://localhost:9000/api/cart/v1/cart/create/product`, product);
 }

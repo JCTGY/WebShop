@@ -1,20 +1,21 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { table} from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 
 const Cart = props =>{
 
-   
-        const cartUrl = "http://localhost:7063/v1/cart";
-        const totalUrl = "http://localhost:7063/v1/cart/total"
+        const user = useSelector(state => state.userState.user);
+        const cartUrl = `http://localhost:9000/api/cart/v1/cart/get/cartById/${user.cartId}`;
+        const totalUrl = "http://localhost:9000/api/cart/v1/cart/total"
         const[cart, setCart] = useState([]); 
         const[total, setTotal] = useState();  
         const fetchCart = ()=>{
             axios.get(cartUrl)
             .then((response) => {
                 console.log(response.data);
-                setCart(response.data);
+                setCart(response.data.products);
             })
         }
         const fetchTotal = ()=>{
@@ -45,6 +46,7 @@ const Cart = props =>{
                 </thead>
                 <tbody>
                     {
+                        (cart && cart.length > 0) ?
                         cart.map((item)=>(
                             <tr key={item.id}>
                                 <td>{item.name}</td>
@@ -53,7 +55,7 @@ const Cart = props =>{
                                 <td>{item.count}</td>
                             </tr>
 
-                        ))
+                        )) : null
                     }
                     <tr>
                         <td>Total</td>
