@@ -45,8 +45,8 @@ public class Product {
 	@Column(name = "price")
 	private double price;
 	
-	@Column(name="count")
-	private int count;
+	@Column(name="qty")
+	private int qty;
 	
 	@ManyToOne(targetEntity = Orders.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id")

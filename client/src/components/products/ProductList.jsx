@@ -28,7 +28,7 @@ const ProductList = ( {term} ) => {
 
     const productList = products && products.map(p => {
         return (
-            <Col key={p.id}>
+            <Col key={p.productId}>
                 <ProductItem url={url} product={p}/>
             </Col>
         );

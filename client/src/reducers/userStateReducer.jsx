@@ -1,9 +1,19 @@
 const initState = { user: {
-    auth: false
+    auth: false,
+    shippingInfo: {}
 } };
 
 const userStateReducer = (state = initState, action) => {
     switch (action.type) {
+        case 'SIGNUP':
+        return {
+            ...state,
+            user: {
+                ...action.payload,
+                shippingInfo: {},
+                auth: true
+            }
+        }
         case 'SIGNIN':
             return {
                 ...state,
@@ -24,6 +34,15 @@ const userStateReducer = (state = initState, action) => {
             return {
                 user: {
                     auth: false
+                }
+            }
+        case 'UPDATE_SHIPPINGINFO':
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    shippingInfo: action.payload,
+                    auth: true
                 }
             }
         default:

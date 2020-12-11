@@ -1,17 +1,32 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { postProductToCart } from './ProductApi';
 
-const AddToCartButton = ( {product, qty, setQty}) => {
-    
+const AddToCartButton = ({ product, qty, triggerQtyWarning }) => {
+
     const user = useSelector(state => state.userState.user);
     const history = useHistory();
+    const dispatch = useDispatch();
+    const checkOutList = useSelector(state => state.checkOut.checkOutList);
     const onClickAddToCart = () => {
-        product["count"] = qty;
+
+        if (qty === 0) {
+            triggerQtyWarning();
+            return;
+        }
+        const index = checkOutList && checkOutList.findIndex(c => c.produntId === product.produntId);
+        product["qty"] = qty;
         postProductToCart(product, user.cartId).then(res => {
             console.log(res);
+            console.log("cart: " + checkOutList);
+            if (index >= 0) {
+                checkOutList[index].qty = qty;
+                dispatch({ type: 'UPDATE_ITEM', payload: checkOutList });
+            } else {
+                dispatch({ type: 'ADD_ITEM', payload: product });
+            }
             history.push("/products");
         }).catch(err => {
             console.log(err);
