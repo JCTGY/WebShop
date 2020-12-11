@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import './Login.css';
 
 const SignUp = () => {
 
@@ -51,7 +52,7 @@ const SignUp = () => {
     }
 
     return (
-        <div className="container">
+        <div className="login-box">
             <Alert show={visibleAlert} variant='danger'>
                 Username already exist
             </Alert>
@@ -83,9 +84,11 @@ const SignUp = () => {
                         name="confirmPassword"
                     />
                 </Form.Group>
-                <Button onClick={onClickSignUp} variant="primary" type="submit">
-                    Submit
-            </Button>
+                <Row>
+                    <a onClick={onClickSignUp} className="main-btn" id="signup-btn">
+                        Submit
+                    </a>
+                </Row>
             </Form>
         </div>
     );
