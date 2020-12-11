@@ -40,6 +40,9 @@ public class Orders {
 	@Column(name = "customer_id")
 	private long customerId;
 	
+	@Column(name = "shipping_id")
+	private long shippingId;
+	
 //	@Column(name = "shipping_id")
 //	private Long shippingId;
 	
