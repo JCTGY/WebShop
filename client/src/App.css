@@ -90,6 +90,7 @@ a.main-btn:hover{
     background: var(--clr-dark);
     color: var(--clr-accent);
     border-color: var(--clr-accent);
+    text-decoration: none;
 }
 
 #shop-now{
