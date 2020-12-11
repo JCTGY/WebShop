@@ -58,7 +58,7 @@ const Order = props =>{
     return (
         <div className="shadowed-box">
 
-            {(orders !== undefined || orders.length === 0) &&
+            {(orders !== undefined && orders.length === 0) &&
             <div>
                 <h1>You're Order History is Empty</h1>
                 <img src="https://cdn.dribbble.com/users/776386/screenshots/2677382/empty-order-history---dribbble.jpg" alt=""/>
