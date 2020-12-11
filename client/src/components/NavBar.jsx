@@ -27,7 +27,7 @@ const NavBar = props => {
                 <Login/>
                 { user.userName === 'admin' && 
                     <Link to="/admin">Admin</Link>
-                } */}
+                } 
             </div>
 
             <Switch>
@@ -69,7 +69,7 @@ const NavBar = props => {
                     authed={user.userName} 
                     path="/admin" 
                     exact
-                />>
+                />
                 <Route exact path="/">
                     <div className="img-wrapper">
                         <Link id="shop-now" to="/products">Shop Now</Link>
