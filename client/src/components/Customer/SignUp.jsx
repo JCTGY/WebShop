@@ -52,7 +52,7 @@ const SignUp = () => {
     }
 
     return (
-        <div className="login-box">
+        <div className="shadowed-box">
             <Alert show={visibleAlert} variant='danger'>
                 Username already exist
             </Alert>

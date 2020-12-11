@@ -43,7 +43,7 @@ const SignIn = () => {
     }
 
     return (
-        <div className="login-box">
+        <div className="shadowed-box">
             <Alert show={visibleAlert} variant='danger'>
                 Invalid Password or Username
             </Alert>

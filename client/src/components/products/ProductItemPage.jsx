@@ -29,20 +29,26 @@ const ProductItemPage = () => {
     }, [productId]);
 
     return (
-        <Container>
+        <div className="shadowed-box">
             {product ?
                 <div>
                     <Alert show={visibleAlert} variant='danger'>
                         The Quantity cannot be Zero
                     </Alert>
-                    <Row>
-                        <Col>
-                            <img className="product-img" src={product.imgUrl} alt="" />
-                        </Col>
-                        <Col>
+                    <div > 
+                        <img className="product-img" src={product.imgUrl} alt="" />
+                    </div>
+                    <div >
+                        <div>
                             <h5>{product.name}</h5>
                             <hr></hr>
+                        </div>
+                        <div>
                             <p>{product.description}</p>
+                        </div>
+
+                        <div>
+                            <h6>{`$${product.price.toFixed(2)}`}</h6>
                             <label htmlFor="product_qty">Quantity</label>
                             <input
                                 onChange={e => setQty(e.target.value)}
@@ -52,18 +58,20 @@ const ProductItemPage = () => {
                                 max="15"
                                 value={qty}
                             />
-                            <h6>{`$${product.price.toFixed(2)}`}</h6>
+                        </div>
+                        <hr/>
                             <AddToCartButton
-                                triggerQtyWarning={triggerQtyWarning}
-                                product={product}
-                                qty={qty}
-                                setQty={setQty}
+                                    triggerQtyWarning={triggerQtyWarning}
+                                    product={product}
+                                    qty={qty}
+                                    setQty={setQty}
                             />
-                        </Col>
-                    </Row>
+                 
+                
+                    </div>
                 </div>
                 : null}
-        </Container>
+        </div>
     );
 }
 

@@ -34,7 +34,7 @@ const Cart = props =>{
 
 
     return (
-        <div>
+        <div className="shadowed-box">
             <h1 className="text-center">Cart</h1>
             <table className="table">
                 <thead>
