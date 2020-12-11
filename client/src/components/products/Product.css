@@ -102,6 +102,10 @@ a.product-link:hover{
     right: 0;
 }
 
+.search-button:hover{
+    background: transparent;
+}
+
 .search-window,
 .search-window-active,
 .search-window-hidden{

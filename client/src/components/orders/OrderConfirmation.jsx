@@ -9,12 +9,13 @@ const OrderConfirmation = props => {
 
     const user = useSelector(state => state.userState.user);
     const shippingInfo = user.shippingInfo;
-    const orderUrl = `http://localhost:9000/api/order/?custId=${user.customerId}&cartId=${user.cartId}`;
+    const orderUrl = `http://localhost:9000/api/order/?custId=${user.customerId}&cartId=${user.cartId}&shippingId=${user.shippingInfo.shippingId}`;
 
     const [order, setOrder] = useState();
 
 
     useEffect(() => {
+        if (user.shippingInfo !== undefined && user.shippingInfo.shippingId > 0) {
         axios.post(orderUrl)
             .then((response) => {
                 console.log(response.data);
@@ -23,7 +24,8 @@ const OrderConfirmation = props => {
             }).catch(err => {
                 console.log(err);
             })
-    }, [])
+        }
+    }, [shippingInfo])
 
 
     return (

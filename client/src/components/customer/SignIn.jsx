@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Row } from 'react-bootstrap';
+import './Login.css';
 
 const SignIn = () => {
 
@@ -42,7 +43,7 @@ const SignIn = () => {
     }
 
     return (
-        <div className="container">
+        <div className="login-box">
             <Alert show={visibleAlert} variant='danger'>
                 Invalid Password or Username
             </Alert>
@@ -66,9 +67,12 @@ const SignIn = () => {
                     />
                 </Form.Group>
                 <label>Don't have a account? <Link to="/signUp">SignUp</Link></label>
-                <Button onClick={onClickSignIn} variant="primary" type="submit">
-                    Submit
-                    </Button>
+                <Row>
+                    <a onClick={onClickSignIn} className="main-btn" id="login-btn">
+                        Submit
+                        </a>
+                </Row>
+           
             </Form>
 
 

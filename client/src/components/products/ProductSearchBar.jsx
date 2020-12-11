@@ -68,13 +68,13 @@ const ProductSearchBar = ( {setTerm }) => {
                         onChange={onChangeInput}
                         onKeyPress={onKeyPressInput}
                         value={input} />
-                        <Button 
+                        <a 
                             className="search-button"
                             onClick={handleClick}
                             type="submit"
                             variant="outline-secondary">
                             <IconContext.Provider value={{ color: 'white', size: '3em' }}><BsSearch/></IconContext.Provider>
-                        </Button>
+                        </a>
                     </form>
 
             </div>
