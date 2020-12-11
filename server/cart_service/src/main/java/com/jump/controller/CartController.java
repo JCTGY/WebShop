@@ -83,7 +83,7 @@ public class CartController {
 	
 	//delete
 	@DeleteMapping("/delete/clearCart/{cart_id}")
-	public ResponseEntity<?> addToCart(@PathVariable Integer cart_id){
+	public ResponseEntity<?> clearCart(@PathVariable Integer cart_id){
 			
 			return ResponseEntity.ok(cartservice.clearCart(cart_id));
 	}

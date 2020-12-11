@@ -3,6 +3,7 @@ package com.jump.services;
 import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -16,5 +17,8 @@ public interface CartService {
 	
 	@GetMapping(value="v1/cart/total")
 	double getTotal();
+	
+	@DeleteMapping(value="v1/cart/delete/clearCart/{cart_id}")
+	boolean clearCart(@PathVariable Integer cart_id);
 	
 }
