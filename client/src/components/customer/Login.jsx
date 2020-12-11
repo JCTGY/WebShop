@@ -9,7 +9,7 @@ const Login = () => {
    
 
     const handleClick = () =>{
-        dispatch({ type: 'SIGNOUT', payload: ({})})
+        dispatch({ type: 'SIGNOUT', payload: {}})
 
         console.log(user);
 

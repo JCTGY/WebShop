@@ -11,9 +11,7 @@ const OrderConfirmation = props => {
     const user = useSelector(state => state.userState.user);
     const dispatch = useDispatch();
     const shippingInfo = user.shippingInfo;
-    const orderUrl = `http://localhost:9000/api/order/
-    ?custId=${user.customerId}
-    &cartId=${user.cartId}`;
+    const orderUrl = `http://localhost:9000/api/order/?custId=${user.customerId}&cartId=${user.cartId}`;
 
     const [order, setOrder] = useState();
 
