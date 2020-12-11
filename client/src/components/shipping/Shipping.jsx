@@ -3,8 +3,8 @@ import { Alert } from 'react-bootstrap';
 import axios from 'axios';
 import SelectUSState from 'react-select-us-states';
 import { Redirect } from 'react-router';
-import { Container } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
+import './Shipping.css';
 
 const Shipping = props => {
 
@@ -134,16 +134,16 @@ const Shipping = props => {
     } else {
         return (
 
-            <Container>
+            <div className="shadowed-box">
                 <h1>Shipping</h1>
                 <Alert show={visibleAlert} variant='danger'>
                         Your Cart is empty
                     </Alert>
-                <form id="shipping-form" onSubmit={handleSubmit}>
+                <form id="shipping-form"  onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <div className="row">
-                            <div className="col-5">
-                                <label htmlFor="first-name">first name</label>
+                        <div className="row col-12">
+                            <div className="col-6">
+                                <label htmlFor="first-name">First Name</label>
                                 <input type="text"
                                     className="form-control"
                                     id="first-name"
@@ -152,8 +152,8 @@ const Shipping = props => {
                                     onChange={handleChange}
                                     required />
                             </div>
-                            <div className="col-5">
-                                <label htmlFor="lastName">last name</label>
+                            <div className="col-6">
+                                <label htmlFor="lastName">Last Name</label>
                                 <input type="text"
                                     className="form-control"
                                     id="lastName"
@@ -166,7 +166,7 @@ const Shipping = props => {
                         </div>
                     </div>
                     <div className="form-group">
-                        <div className="row col-10">
+                        <div className="row col-12">
                             <label htmlFor="address1">Address Line 1</label>
                             <input type="text"
                                 className="form-control"
@@ -177,7 +177,7 @@ const Shipping = props => {
                                 required />
 
                         </div>
-                        <div className="row col-10">
+                        <div className="row col-12">
                             <label htmlFor="address2">Address Line 2</label>
                             <input type="text"
                                 className="form-control"
@@ -187,8 +187,8 @@ const Shipping = props => {
                                 onChange={handleChange} />
 
                         </div>
-                        <div className="row col-10">
-                            <div className="col-3">
+                        <div className="row col-12">
+                            <div className="col-4">
                                 <label htmlFor="city">City</label>
                                 <input type="text"
                                     className="form-control"
@@ -199,7 +199,7 @@ const Shipping = props => {
                                     required />
 
                             </div>
-                            <div className="col-3">
+                            <div className="col-4">
                                 <label htmlFor="state">State</label>
 
                                 <SelectUSState id="myId"
@@ -211,7 +211,7 @@ const Shipping = props => {
                                     required />
 
                             </div>
-                            <div className="col-3">
+                            <div className="col-4">
                                 <label htmlFor="postalCode">Postal Code</label>
                                 <input type="text"
                                     className="form-control"
@@ -223,8 +223,9 @@ const Shipping = props => {
 
                             </div>
                         </div>
+                        <hr/>
                         <div className="form-group">
-                            <div className="col-10">
+                            <div className="col-12">
                                 <label htmlFor="specialInstructions">Special Instructions</label>
                                 <textarea
                                     className="form-control"
@@ -236,33 +237,36 @@ const Shipping = props => {
                                 </textarea>
                             </div>
                         </div>
-                        <div className="col-10">
-                            <legend className="col-form-label col-sm-2 pt-0">Shipping</legend>
-                            <div className="col-sm-10" onChange={handleShippingType}>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="shippingType" id="gridRadios1" value="Ground" />
-                                    <label className="form-check-label" htmlFor="gridRadios1">
-                                        Ground
-                                    </label>
+                        <div className="col-12">
+                            <label>Shipping</label>
+                            <div className="col-sm-12" onChange={handleShippingType}>
+                                <div className="row col-12">
+                                    <div className="form-check col-4">
+                                        <input className="form-check-input" type="radio" name="shippingType" id="gridRadios1" value="Ground" />
+                                        <label className="form-check-label" htmlFor="gridRadios1">
+                                            Ground
+                                        </label>
+                                    </div>
+                                    <div className="form-check col-4">
+                                        <input className="form-check-input" type="radio" name="shippingType" id="gridRadios2" value="Priority" />
+                                        <label className="form-check-label" htmlFor="gridRadios2">
+                                            Priority
+                                        </label>
+                                    </div>
+                                    <div className="form-check col-4">
+                                        <input className="form-check-input" type="radio" name="shippingType" id="gridRadios3" value="Overnight" />
+                                        <label className="form-check-label" htmlFor="gridRadios3">
+                                            Overnight
+                                        </label>
+                                    </div>
                                 </div>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="shippingType" id="gridRadios2" value="Priority" />
-                                    <label className="form-check-label" htmlFor="gridRadios2">
-                                        Priority
-                                    </label>
-                                </div>
-                                <div className="form-check disabled">
-                                    <input className="form-check-input" type="radio" name="shippingType" id="gridRadios3" value="Overnight" />
-                                    <label className="form-check-label" htmlFor="gridRadios3">
-                                        Overnight
-                                    </label>
-                                </div>
+              
                             </div>
                         </div>
                     </div>
-                    <button type="submit">Complete Order</button>
+                    <button className="main-btn">Complete Order</button>
                 </form>
-            </Container>
+            </div>
         )
     }
 
