@@ -55,6 +55,7 @@ public class ShippingController {
     
     @GetMapping("/customerId/{customerId}")
     public ShippingInfo findByCustomerId(@PathVariable Long customerId) {
+    	System.out.println("shipping controller: " + customerId);
     	return shippingService.findShippingInfoByCustomerId(customerId);
     }
 }
