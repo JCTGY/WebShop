@@ -17,7 +17,7 @@ const SignIn = () => {
         e.preventDefault();
         axios.post("http://localhost:9000/api/customer/signIn", user)
             .then(res => {
-                console.log(res);
+                console.log("user: " + res.data);
                 dispatch({type: 'SIGNIN', payload: res.data})
                 history.push("/");
             }).catch(err => {

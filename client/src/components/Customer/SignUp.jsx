@@ -25,7 +25,7 @@ const SignUp = () => {
             axios.post(`${baseUrl}customer/signUp`, user)
                 .then(res => {
                     console.log(res);
-                    dispatch({type: 'SIGNIN', payload: res.data})
+                    dispatch({type: 'SIGNUP', payload: res.data})
                     history.push("/");
                 }).catch(err => {
                     if (err.response.status === 409) {
