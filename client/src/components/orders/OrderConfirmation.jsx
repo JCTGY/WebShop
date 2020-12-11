@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Col, Row } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { Container, Col, Row } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import './OrderConfirmation.css';
 
 const OrderConfirmation = props => {
 
 
 
     const user = useSelector(state => state.userState.user);
+    const dispatch = useDispatch();
     const shippingInfo = user.shippingInfo;
     const orderUrl = `http://localhost:9000/api/order/?custId=${user.customerId}&cartId=${user.cartId}&shippingId=${user.shippingInfo.shippingId}`;
 
@@ -15,27 +17,29 @@ const OrderConfirmation = props => {
 
 
     useEffect(() => {
+        if (user.shippingInfo !== undefined && user.shippingInfo.shippingId > 0) {
         axios.post(orderUrl)
             .then((response) => {
                 console.log(response.data);
-
+                dispatch({ type: 'CLEAN_ITEM', payload: [] });
                 setOrder(response.data);
             }).catch(err => {
                 console.log(err);
             })
-    }, [])
+        }
+    }, [shippingInfo])
 
 
     return (
-        <div className="container">
+        <div className="container" id="orderConfirm">
             <h2>Order Confirmation</h2>
             <p>Order Numer:{order && order.id}</p>
             <ul>Items
-           {order && order.products.map(product => {
-                return <li key={product.productId}>
-                    {product.name}, Quantity: {product.qty}
-                </li>
-            })}
+                {order && order.products.map(product => {
+                return <li id="noBullets" key={product.productId}>
+                    {product.name}, Quantity: {product.qty}<br/><br/>
+                    </li>
+                })}
             </ul>
             <div>
                 Shipping Info

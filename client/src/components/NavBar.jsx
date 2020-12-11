@@ -9,7 +9,7 @@ import Login from './customer/Login';
 import Cart from './cart/Cart';
 import Shipping from './shipping/Shipping';
 import Admin from './admin/Admin';
-import SignIn from './customer/SignIn';
+import SignIn from "./customer/SignIn";
 import SignUp from './customer/SignUp';
 import PrivateRoute from './PrivateRoute';
 import ProtectedRout from './ProtectedRout';
@@ -45,7 +45,7 @@ const NavBar = props => {
                 />
                 <PrivateRoute 
                     component={Order}
-                    authed={true} 
+                    authed={user.auth} 
                     path="/orders" 
                     exact
                 /> 

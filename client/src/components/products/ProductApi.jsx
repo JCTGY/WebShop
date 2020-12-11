@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const productBaseUrl = "http://localhost:9000/api/product/";
+const productBaseUrl = "http://localhost:9000/api/product";
 
 export const fetchProductList = () => {
     return axios.get(productBaseUrl);
@@ -34,5 +34,5 @@ export const postProductToCart = (product, cartId) => {
             cartId: cartId
         }
     }
-    return axios.post(`http://localhost:9000/api/cart/v1/cart/create/product`, product);
+    return axios.put(`http://localhost:9000/api/cart/v1/cart/update/addProductToCart/${cartId}`, product);
 }

@@ -76,6 +76,8 @@ public class OrderController {
 		
 		result.setProducts(products);
 		
+		cartService.clearCart(cartId);
+		
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
 				.path("/{order_id}")

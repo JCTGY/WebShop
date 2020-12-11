@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jump.exceptions.ProductIDMismatchException;
 import com.jump.exceptions.ProductNotFoundException;
 import com.jump.model.Cart;
 import com.jump.model.Product;
@@ -23,8 +25,11 @@ public class ProductsService {
 	
 	//create
 	public Product createProduct(Product product) {
-		
-		return productsRepository.save(product);
+		if(product.getId() == null) {
+			return productsRepository.save(product);
+		}else {
+			return null;
+		}
 	}
 	
 	//read
@@ -32,10 +37,9 @@ public class ProductsService {
 		return productsRepository.findAll();
 	}
 	
-	public Product retrieveProductById(int id) {
-		return productsRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+	public Product retrieveProductById(Integer Id) {
+		return productsRepository.findById(Id).orElseThrow(ProductNotFoundException::new);
 	}
-	
 	
 	//update
 	public boolean updateProduct(Product product) {
@@ -43,24 +47,29 @@ public class ProductsService {
 		return productsRepository.save(product) != null;
 	}
 	
+	public boolean addProduct(Integer Id, int qty) {
+		Product product = productsRepository.findById(Id).orElseThrow(ProductIDMismatchException::new);
+		product.setQty(product.getQty()+qty);
+		return true;
+	}
+	
+	public boolean subtractProduct(Integer Id, int qty) {
+		Product product = productsRepository.findById(Id).orElseThrow(ProductIDMismatchException::new);
+		if(product.getQty()>1) {
+			product.setQty(product.getQty()+qty);
+		}else {
+			deleteProduct(Id);
+		}
+		return true;
+	}
+	
 	
 	//delete
-	public boolean deleteProduct(int id) {
+	public boolean deleteProduct(Integer id) {
 		retrieveProductById(id);
 		productsRepository.deleteById(id);
 		return true;
 	}
 	
-	
-	//mist
-//	public double sumTotal() {
-//		double total =0;
-//		List<Product> products = productsRepository;
-//		
-//		for(Product product: products) {
-//			total += product.getSubtotal();
-//		}
-//		return total;
-//	}
 
 }

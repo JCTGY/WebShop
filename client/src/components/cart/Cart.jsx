@@ -2,16 +2,17 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { table} from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-
+import './Cart.css';
 
 const Cart = props =>{
 
         const user = useSelector(state => state.userState.user);
         console.log(user);
         const cartUrl = `http://localhost:9000/api/cart/v1/cart/get/cartById/${user.cartId}`;
-        const totalUrl = "http://localhost:9000/api/cart/v1/cart/total"
+        const totalUrl = `http://localhost:9000/api/cart/v1/cart/get/totalByCartId/${user.cartId}`;
         const[cart, setCart] = useState([]); 
-        const[total, setTotal] = useState(0.0);  
+        const[total, setTotal] = useState(0.00);  
+
         const fetchCart = ()=>{
             axios.get(cartUrl)
             .then((response) => {
@@ -41,8 +42,9 @@ const Cart = props =>{
                     <tr>
                         <th>Product Name</th>
                         <th>Product Category</th>
-                        <th>unit Price</th>
                         <th>Qty</th>
+                        <th>Unit Price</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -50,10 +52,11 @@ const Cart = props =>{
                         cart &&
                         cart.map((item)=>(
                             <tr key={item.id}>
+
                                 <td>{item.name}</td>
                                 <td>{item.category}</td>
-                                <td>{`$${item.price.toFixed(2)}`}</td>
                                 <td>{item.qty}</td>
+                                <td>{`$${item.price.toFixed(2)}`}</td>
                             </tr>
 
                         ))
