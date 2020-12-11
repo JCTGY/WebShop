@@ -11,7 +11,7 @@ const ProductSearchBar = ( {setTerm }) => {
         search: "search-window",
         background: "",
         searchBar: "search-bar-hidden",
-
+        searchButton: "search-button"
 
     });
 
@@ -27,7 +27,8 @@ const ProductSearchBar = ( {setTerm }) => {
                 active: false,
                 search: "search-window-hidden",
                 background: "",
-                searchBar: "search-bar-hidden"
+                searchBar: "search-bar-hidden",
+                searchButton: "search-button",
             })
             setTerm(input);
         } 
@@ -41,14 +42,19 @@ const ProductSearchBar = ( {setTerm }) => {
                 active: true,
                 search: "search-window-active",
                 background: "background-hidden",
-                searchBar: "search-bar-active"
+                searchBar: "search-bar-active",
+                searchButton: "search-button-active"
+
             })
+
         }else{
             setSearchToggle({
                 active: false,
                 search: "search-window-hidden",
                 background: "",
-                searchBar: "search-bar-hidden"
+                searchBar: "search-bar-hidden",
+                searchButton: "search-button"
+
             })
             setTerm(input)
         }
@@ -69,10 +75,9 @@ const ProductSearchBar = ( {setTerm }) => {
                         onKeyPress={onKeyPressInput}
                         value={input} />
                         <a 
-                            className="search-button"
+                            className={searchToggle.searchButton}
                             onClick={handleClick}
-                            type="submit"
-                            variant="outline-secondary">
+                            >
                             <IconContext.Provider value={{ color: 'white', size: '3em' }}><BsSearch/></IconContext.Provider>
                         </a>
                     </form>
