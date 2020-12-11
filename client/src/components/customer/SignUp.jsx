@@ -46,7 +46,7 @@ const SignUp = () => {
             .then(res => {
                 console.log(res);
                 dispatch({ type: 'SIGNUP', payload: res.data })
-                history.push("/");
+                history.push("/products");
             }).catch(err => {
                 if (err.response.status === 409) {
                     console.log("user exist");
