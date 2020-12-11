@@ -35,7 +35,7 @@ const ProductList = ( {term} ) => {
     })
 
     return (
-        <div>
+        <div className="product-box">
         <Row xs={1} md={2} lg={3}>
             {productList}
         </Row>

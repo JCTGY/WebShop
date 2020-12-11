@@ -23,6 +23,7 @@
     border-radius: 50%;
     box-shadow: 0px 6px;
     margin: 2em 0;
+    transition: all;
 }
 
 
@@ -47,8 +48,11 @@
 }
 
 .product-link-wrapper{
-    margin-top: 10%;
-    transition: margin-top .65s, display .5s;
+    position: absolute;
+    bottom: 25%;
+    opacity: 0;
+    left: 25%;
+    transition: opacity .65s;
 }
 a.product-link{
     background: var(--clr-dark);
@@ -67,8 +71,9 @@ a.product-link{
 }
 
 .product-link-shadow:hover .product-link-wrapper{
-    margin-top: 40%;
+    opacity: 1;
 }
+
 
 a.product-link:hover{
     text-decoration: none;
@@ -156,4 +161,8 @@ a.product-link:hover{
     margin-top: 1em;
     margin-left: auto;
     margin-right: auto;
+}
+
+.product-box{
+    padding-top: 10vh;
 }
