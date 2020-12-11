@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.jump.exception.CustomerNotFoundException;
 import com.jump.exception.CustomerPasswordNotMatchException;
 import com.jump.exception.UserNameAlreadyExistException;
+import com.jump.model.Cart;
 import com.jump.model.Customer;
 import com.jump.repository.CustomerRepository;
 
@@ -18,8 +19,12 @@ public class CustomerService {
 	@Autowired
 	CustomerRepository customerRepository;
 	
+	@Autowired 
+	CartService cartService;
+	
 	@Autowired
 	PasswordEncoder passwordEncoder;
+	
 	
 	public List<Customer> getAllCustomer() {
 		return customerRepository.findAll();
@@ -48,6 +53,8 @@ public class CustomerService {
 		if (customerRepository.existsCustomerByUserName(customer.getUserName())) 
 			throw new UserNameAlreadyExistException();
 		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+		Cart cart = cartService.createCart(new Cart());
+		customer.setCartId(cart.getCartId());
 		System.out.println("add customer: " + customer);
 		return customerRepository.save(customer);
 	}

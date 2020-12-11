@@ -11,6 +11,7 @@ const Shipping = props => {
     const user = useSelector(state => state.userState.user);
     const checkOutList = useSelector(state => state.checkOut.checkOutList);
     const dispatch = useDispatch();
+    const shippingInfo = user.shippingInfo;
     const [visibleAlert, setVisibleAlert] = useState(false);
     const [isUpdate, setIsUpdate] = useState(false);
     const [formData, setFormData] = useState({
@@ -62,7 +63,7 @@ const Shipping = props => {
                 customerId: user.customerId,
             })
         }
-    }, []);
+    }, [shippingInfo]);
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -80,7 +81,6 @@ const Shipping = props => {
                     setFormSaved(true));
         }
     }
-
 
     const changeShipState = event => {
         setFormData({

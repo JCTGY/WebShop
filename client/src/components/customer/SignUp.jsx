@@ -26,11 +26,24 @@ const SignUp = () => {
 
     const onClickSignUp = (e) => {
         e.preventDefault();
-        axios.post(`${baseUrl}cart/v1/cart/create/cart`, {}).then(result => {
-            axios.post(`${baseUrl}customer/signUp`, {
-                ...user,
-                cartId: result.data.cartId
-            }).then(res => {
+        // axios.post(`${baseUrl}cart/v1/cart/create/cart`, {}).then(result => {
+        //     axios.post(`${baseUrl}customer/signUp`, {
+        //         ...user,
+        //         cartId: result.data.cartId
+        //     }).then(res => {
+        //         console.log(res);
+        //         dispatch({ type: 'SIGNUP', payload: res.data })
+        //         history.push("/");
+        //     }).catch(err => {
+        //         if (err.response.status === 409) {
+        //             console.log("user exist");
+        //             triggerQtyWarning();
+        //         }
+        //         console.log(err);
+        //     })
+        // })
+        axios.post(`${baseUrl}customer/signUp`, user)
+            .then(res => {
                 console.log(res);
                 dispatch({ type: 'SIGNUP', payload: res.data })
                 history.push("/");
@@ -41,7 +54,6 @@ const SignUp = () => {
                 }
                 console.log(err);
             })
-        })
     }
 
     const onChangeUser = ({ target: { name, value } }) => {

@@ -46,7 +46,7 @@ public class Customer {
 	private String lastName;
 	
 	@Column(name="cart_id")
-	private Long cartId;
+	private Integer cartId;
 	
 	@Transient
 	private ShippingInfo shippingInfo;

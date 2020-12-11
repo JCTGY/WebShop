@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Container, Col, Row } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './OrderConfirmation.css';
 
 const OrderConfirmation = props => {
@@ -9,6 +9,7 @@ const OrderConfirmation = props => {
 
 
     const user = useSelector(state => state.userState.user);
+    const dispatch = useDispatch();
     const shippingInfo = user.shippingInfo;
     const orderUrl = `http://localhost:9000/api/order/?custId=${user.customerId}&cartId=${user.cartId}&shippingId=${user.shippingInfo.shippingId}`;
 
@@ -20,7 +21,7 @@ const OrderConfirmation = props => {
         axios.post(orderUrl)
             .then((response) => {
                 console.log(response.data);
-
+                dispatch({ type: 'CLEAN_ITEM', payload: [] });
                 setOrder(response.data);
             }).catch(err => {
                 console.log(err);
