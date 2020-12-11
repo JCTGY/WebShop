@@ -35,7 +35,7 @@ const AddToCartButton = ({ product, qty, triggerQtyWarning }) => {
     }
 
     return (
-        <button onClick={onClickAddToCart}>AddToCart</button>
+        <a className="main-btn" id="cart-btn" onClick={onClickAddToCart}>AddToCart</a>
     )
 }
 

@@ -35,9 +35,9 @@ const Cart = props =>{
 
 
     return (
-        <div>
-            <h1 className="text-center " >Cart</h1>
-            <table  className="table table-margin">
+        <div className="shadowed-box">
+            <h1 className="text-center">Cart</h1>
+            <table className="table">
                 <thead>
                     <tr>
                         <th>Product Name</th>
