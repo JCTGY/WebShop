@@ -5,13 +5,20 @@
     padding: 0;
 }
 
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
 :root{
     --ff-primary: 'Prata', serif;
     --ff-secondary: 'Playfair Display', serif;
     --clr-light: #fff;
     --clr-dark: #1b1b1b;
     --clr-accent: #09cafa;
-
+    --bs: 0.25em  0.25em 0.75em rgba(0,0,0,.25),
+          0.125em 0.125em 0.25em rgba(0,0,0,.15);
 }
 body{
     font-family: var(--ff-primary);
@@ -25,12 +32,11 @@ p{
 .NavBar{
     position: fixed;
     width: 100%;
-    background-color: rgb(61, 59, 59);
+    background-color: var(--clr-dark);
     display: flex;
     justify-content: space-between;
     height: 10vh;
     z-index: 100;
-    opacity: .8;
 }
 
 
@@ -55,6 +61,36 @@ p{
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+.main-btn{
+    background: none;
+    padding:0.5em 2em;
+    border:0.2em solid var(--clr-dark);
+    margin:0 0.3em 0.3em 0;
+    box-sizing: border-box;
+    text-decoration:none;
+    text-transform:uppercase;
+    font-family:var(--ff-secondary);
+    font-weight:bold;
+    text-align:center;
+    transition: all 0.15s;
+    color:red;
+}
+
+a.main-btn{
+    color: var(--clr-dark);
+    text-decoration: none;
+}
+a.main-btn:hover{
+    color: var(--clr-accent);
+
+}
+
+.main-btn:hover{
+    background: var(--clr-dark);
+    color: var(--clr-accent);
+    border-color: var(--clr-accent);
 }
 
 #shop-now{
