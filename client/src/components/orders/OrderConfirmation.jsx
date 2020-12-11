@@ -15,6 +15,7 @@ const OrderConfirmation = props => {
 
 
     useEffect(() => {
+        if (user.shippingInfo !== undefined && user.shippingInfo.shippingId > 0) {
         axios.post(orderUrl)
             .then((response) => {
                 console.log(response.data);
@@ -23,7 +24,8 @@ const OrderConfirmation = props => {
             }).catch(err => {
                 console.log(err);
             })
-    }, [])
+        }
+    }, [shippingInfo])
 
 
     return (

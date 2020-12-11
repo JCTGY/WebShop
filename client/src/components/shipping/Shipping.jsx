@@ -12,6 +12,7 @@ const Shipping = props => {
     const checkOutList = useSelector(state => state.checkOut.checkOutList);
     const dispatch = useDispatch();
     const [visibleAlert, setVisibleAlert] = useState(false);
+    const [isUpdate, setIsUpdate] = useState(false);
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -29,6 +30,7 @@ const Shipping = props => {
     const [formSaved, setFormSaved] = useState(false);
 
     const handleChange = ({ target: { name, value } }) => {
+        setIsUpdate(true);
         setFormData({
             ...formData,
             [name]: value
@@ -68,20 +70,7 @@ const Shipping = props => {
             triggerCartEmptyWarning();
             return ;
         }
-        const shippingInfo = user.shippingInfo;
-        if (shippingInfo !== undefined 
-            && shippingInfo !== null && shippingInfo.shippingId !== undefined) {
-            axios.put(`http://localhost:9000/api/shipping/${shippingInfo.shippingId}`, {
-                ...formData,
-                shippingId: shippingInfo.shippingId
-            })
-                .then(res => {
-                    console.log(res);
-                    console.log(res.data)
-                    dispatch({ type: 'UPDATE_SHIPPINGINFO', payload: res.data })
-                }).then(
-                    setFormSaved(true));
-        } else {
+        if (isUpdate) {
             axios.post(`http://localhost:9000/api/shipping`, formData)
                 .then(res => {
                     console.log(res);

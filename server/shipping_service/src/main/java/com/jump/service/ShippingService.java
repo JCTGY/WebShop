@@ -31,7 +31,7 @@ public class ShippingService {
         
         public ShippingInfo findShippingInfoByCustomerId(long customerId) {
         	List<ShippingInfo> shippingList = shippingRepo.findAllByCustomerId(customerId);
-        	if (shippingList.size() > 0) return shippingList.get(0);
+        	if (shippingList.size() > 0) return shippingList.get(shippingList.size());
         	else return null;
         }
 }
