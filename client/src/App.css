@@ -64,10 +64,10 @@ p{
 }
 
 .main-btn{
+    margin: .5em;
     background: none;
     padding:0.5em 2em;
     border:0.2em solid var(--clr-dark);
-    margin:0 0.3em 0.3em 0;
     box-sizing: border-box;
     text-decoration:none;
     text-transform:uppercase;
@@ -75,7 +75,6 @@ p{
     font-weight:bold;
     text-align:center;
     transition: all 0.15s;
-    color:red;
 }
 
 a.main-btn{
@@ -130,6 +129,18 @@ a.main-btn:hover{
     display: none;
 }
 
-.container{
-    padding-top: 5em;
+.shadowed-box{
+    top: 15vh;
+    box-shadow: var(--bs);
+    padding: 2em;
+    position: fixed;
+    left: 20vw;
+    right: 20vw;
+    text-align: center;
 }
+@media only screen and (max-width: 600px) {
+    .shadowed-box {
+        left: 5vw;
+        right: 5vw;
+    }
+  }

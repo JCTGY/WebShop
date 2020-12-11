@@ -5,7 +5,7 @@ import Products from './products/Products';
 import ProductItemPage from './products/ProductItemPage';
 import Order from './orders/Order';
 import OrderConfirmation from './orders/OrderConfirmation';
-
+import Login from './customer/Login';
 import Cart from './cart/Cart';
 import Shipping from './shipping/Shipping';
 import Admin from './admin/Admin';
@@ -23,12 +23,11 @@ const NavBar = props => {
                 <Link to="/"><h2>WebShop</h2></Link>
                 <Link to="/products">Products</Link>
                 <Link to="/orders">Orders</Link>
-                <Link to="/shipping">Shipping</Link>
                 <Link to="/cart">Cart</Link>
-                <Link to="/signIn">SignIn</Link>
+                <Login/>
                 { user.userName === 'admin' && 
                     <Link to="/admin">Admin</Link>
-                }
+                } */}
             </div>
 
             <Switch>
