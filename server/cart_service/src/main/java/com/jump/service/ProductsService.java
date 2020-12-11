@@ -71,16 +71,5 @@ public class ProductsService {
 		return true;
 	}
 	
-	
-	//mist
-//	public double sumTotal() {
-//		double total =0;
-//		List<Product> products = productsRepository;
-//		
-//		for(Product product: products) {
-//			total += product.getSubtotal();
-//		}
-//		return total;
-//	}
 
 }

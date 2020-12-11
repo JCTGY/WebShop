@@ -47,7 +47,7 @@ public class Product {
 	private String category;
 	
 	@Column(name="PRICE")
-	private double price;
+	private double price = 0;
 	
 	@Column(name="QTY")
 	private int qty = 0;
