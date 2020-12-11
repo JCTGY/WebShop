@@ -79,6 +79,8 @@ const Shipping = props => {
                     dispatch({ type: 'UPDATE_SHIPPINGINFO', payload: res.data })
                 }).then(
                     setFormSaved(true));
+        } else {
+            setFormSaved(true)
         }
     }
 

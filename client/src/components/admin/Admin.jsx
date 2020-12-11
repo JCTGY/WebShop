@@ -5,7 +5,7 @@ import ProductAdmin from './adminProduct/ProductAdmin';
 
 const Admin = () => {
     return (
-        <Container>
+        <div className="shadowed-box">
             <Tab.Container id="admin-tabs" defaultActiveKey="first">
                 <Row>
                     <Col sm={3}>
@@ -30,7 +30,7 @@ const Admin = () => {
                     </Col>
                 </Row>
             </Tab.Container>
-        </Container>
+        </div>
     );
 }
 

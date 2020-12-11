@@ -56,8 +56,17 @@ const Order = props =>{
 
 
     return (
-        <Container>
+        <div className="shadowed-box">
+
+            {(orders !== undefined && orders !== null && orders.length === 0) &&
+            <div>
+                <h1>You're Order History is Empty</h1>
+                <img src="https://cdn.dribbble.com/users/776386/screenshots/2677382/empty-order-history---dribbble.jpg" alt=""/>
+            </div>
+            }
+            {(orders !== undefined && orders.length > 0) &&
             <h1>Orders</h1>
+            }
             <Row>
                 <Col>
                     {orders.map( order => {
@@ -74,14 +83,14 @@ const Order = props =>{
                         <Col>
                             <div>
                                     <div>
-                                        <h2>ORDER #: {order && order.id} </h2>
+                                        <h2>ORDER #: {order && order.Id} </h2>
                                     </div>
                                     <p>Date: {order && order.date}</p>
                                     <p>Order Total: ${order && order.total}</p>
                                     <p>Shipping Id: {order && order.shippingId}</p>
                                     {order && order.products.map( product => {
                                         return <div key={product.productId}>
-                                            <img src={product.imgUrl} className="product-img"></img>
+                                            {/* <img src={product.imgUrl} className="product-img"></img> */}
                                             <h4>{product.name}</h4>
                                             <p>${product.price}</p>
                                             <p>Quantity: {product.qty}</p>
@@ -110,7 +119,7 @@ const Order = props =>{
                 </Row>
                 </div>
             </Row>
-        </Container>
+        </div>
     )
 }
 
