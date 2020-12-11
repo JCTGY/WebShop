@@ -32,7 +32,7 @@ const Order = props =>{
         
         setTheOrder(order);
         console.log(order);
-        axios.get(shippingDeetsUrl + user.shippingInfo.shippingId)
+        axios.get(shippingDeetsUrl + order.shippingId)// user.shippingInfo.shippingId)
         .then((response) => {
             setShippingDetails(response.data);
         })
@@ -97,7 +97,8 @@ const Order = props =>{
                                 <p>Shipping Address: {shippingDetails && 
                                 shippingDetails.address1}<br/>
                                                    {shippingDetails && shippingDetails.address2}<br/>
-                                                   {shippingDetails && shippingDetails.city} {shippingDetails && shippingDetails.state}<br/>
+                                                   {shippingDetails && shippingDetails.city}<br/>
+                                                   {shippingDetails && shippingDetails.state}<br/>
                                                    {shippingDetails && shippingDetails.postalCode}
                                 </p>
                                 <p>Special Instructions: {shippingDetails && shippingDetails.specialInstructions}</p>
