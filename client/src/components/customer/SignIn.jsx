@@ -31,6 +31,7 @@ const SignIn = () => {
                 history.push("/products");
             }).catch(err => {
                 triggerQtyWarning();
+                console.log(user);
                 console.log(err);
             })
     }
