@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 import './Order.css';
 import {Col,Container,Row} from 'react-bootstrap';
@@ -6,10 +7,11 @@ import {Col,Container,Row} from 'react-bootstrap';
 
 const Order = props =>{
 
-    const ordersUrl = "http://localhost:9000/api/order/";
+    const user = useSelector(state => state.userState.user);
+    const ordersUrl = `http://localhost:9000/api/order/cust/${user.customerId}`;
 
     const[order, setTheOrder] = useState();
-    const shippingDeetsUrl = "http://localhost:9000/api/shipping/";// + order.shippingId;
+    const shippingDeetsUrl = `http://localhost:9000/api/shipping/`;// + order.shippingId;
 
     const[orders, setOrders] = useState([]);
 
@@ -29,8 +31,8 @@ const Order = props =>{
        // console.log(event);
         
         setTheOrder(order);
-
-        axios.get(shippingDeetsUrl+order.shippingId)
+        console.log(order);
+        axios.get(shippingDeetsUrl + user.shippingInfo.shippingId)
         .then((response) => {
             setShippingDetails(response.data);
         })
@@ -59,7 +61,7 @@ const Order = props =>{
             <Row>
                 <Col>
                     {orders.map( order => {
-                        return <div key={order.id}>
+                        return <div key={order.dbId}>
                             <h2 className="orderTitle" onClick = {()=>handleClick(order)}>ORDER #: {order.id}</h2>
                             <p>Date: {order.date}<br/>
                             Order Total: ${order.total}</p>
@@ -78,7 +80,7 @@ const Order = props =>{
                                     <p>Order Total: ${order && order.total}</p>
                                     <p>Shipping Id: {order && order.shippingId}</p>
                                     {order && order.products.map( product => {
-                                        return <div key={product.productID}>
+                                        return <div key={product.productId}>
                                             <img src={product.imgUrl} className="product-img"></img>
                                             <h4>{product.name}</h4>
                                             <p>${product.price}</p>

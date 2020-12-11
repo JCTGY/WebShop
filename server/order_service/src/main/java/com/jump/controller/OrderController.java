@@ -57,7 +57,9 @@ public class OrderController {
 			
 			total += (product.getPrice() * product.getCount());
 		}
-		order.setTotal(cartService.getTotal());
+//		order.setTotal(cartService.getTotal());
+		
+		order.setTotal(total);
 		
 		Orders result = orderService.createOrder(order);
 		

@@ -35,7 +35,7 @@ const SignIn = () => {
     return (
         <div className="container">
                 <Form>
-                    <Form.Group controlId="formBasicUsername">
+                    <Form.Group controlId="signInUsername">
                         <Form.Label>Username</Form.Label>
                         <Form.Control
                             type="text"
@@ -44,7 +44,7 @@ const SignIn = () => {
                             name="userName"
                         />
                     </Form.Group>
-                    <Form.Group controlId="formBasicPassword">
+                    <Form.Group controlId="signInPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control
                             type="password"

@@ -10,15 +10,15 @@ const Shipping = props => {
     const user = useSelector(state => state.userState.user);
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({
-        firstName: user.shippingInfo['firstName'] || "",
-        lastName: user.shippingInfo['lastName'] || "",
-        address1: user.shippingInfo['address1'] || "",
-        address2: user.shippingInfo['address2'] || "",
-        city: user.shippingInfo['city'] || "",
-        state: user.shippingInfo['state'] || "",
-        postalCode: user.shippingInfo['postalCode'] || "",
-        specialInstructions: user.shippingInfo['specialInstructions'] || "",
-        shippingType: user.shippingInfo['shippingType'] || "",
+        firstName: "",
+        lastName: "",
+        address1: "",
+        address2: "",
+        city: "",
+        state: "",
+        postalCode: "",
+        specialInstructions: "",
+        shippingType: "",
         shippingCost: 0,
         customerId: user.customerId,
     });
@@ -32,20 +32,41 @@ const Shipping = props => {
         })
     }
 
+    useEffect(() => {
+        if (user && user.shippingInfo !== undefined 
+            && user.shippingInfo !== null && user.shippingInfo.firstName !== undefined) {
+            setFormData({
+                ...formData,
+                firstName: user.shippingInfo['firstName'],
+                lastName: user.shippingInfo['lastName'],
+                address1: user.shippingInfo['address1'],
+                address2: user.shippingInfo['address2'],
+                city: user.shippingInfo['city'],
+                state: user.shippingInfo['state'],
+                postalCode: user.shippingInfo['postalCode'],
+                specialInstructions: user.shippingInfo['specialInstructions'],
+                shippingType: user.shippingInfo['shippingType'],
+                shippingCost: 0,
+                customerId: user.customerId,
+            })
+        }
+    }, []);
+
     const handleSubmit = event => {
         event.preventDefault();
-        const shippingId = user.shippingInfo.shippingId;
-         if ( shippingId !== undefined) {
-            axios.put(`http://localhost:9000/api/shipping/${shippingId}`, {
+        const shippingInfo = user.shippingInfo;
+        if (shippingInfo !== undefined 
+            && shippingInfo !== null && shippingInfo.shippingId !== undefined) {
+            axios.put(`http://localhost:9000/api/shipping/${shippingInfo.shippingId}`, {
                 ...formData,
-                shippingId: shippingId
+                shippingId: shippingInfo.shippingId
             })
-            .then(res => {
-                console.log(res);
-                console.log(res.data)
-                dispatch({ type: 'UPDATE_SHIPPINGINFO', payload: res.data })
-            }).then(
-                setFormSaved(true)); 
+                .then(res => {
+                    console.log(res);
+                    console.log(res.data)
+                    dispatch({ type: 'UPDATE_SHIPPINGINFO', payload: res.data })
+                }).then(
+                    setFormSaved(true));
         } else {
             axios.post(`http://localhost:9000/api/shipping`, formData)
                 .then(res => {

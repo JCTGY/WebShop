@@ -7,15 +7,16 @@ import { useSelector } from 'react-redux';
 const Cart = props =>{
 
         const user = useSelector(state => state.userState.user);
+        console.log(user);
         const cartUrl = `http://localhost:9000/api/cart/v1/cart/get/cartById/${user.cartId}`;
         const totalUrl = "http://localhost:9000/api/cart/v1/cart/total"
         const[cart, setCart] = useState([]); 
-        const[total, setTotal] = useState();  
+        const[total, setTotal] = useState(0.0);  
         const fetchCart = ()=>{
             axios.get(cartUrl)
             .then((response) => {
                 console.log(response.data);
-                setCart(response.data.products);
+                setCart(response.data);
             })
         }
         const fetchTotal = ()=>{
@@ -30,12 +31,12 @@ const Cart = props =>{
             fetchCart();
             fetchTotal();
         }, []);
-    
+
 
     return (
         <div>
-            <h1 class="text-center">Cart</h1>
-            <table class="table">
+            <h1 className="text-center">Cart</h1>
+            <table className="table">
                 <thead>
                     <tr>
                         <th>Product Name</th>
@@ -46,16 +47,16 @@ const Cart = props =>{
                 </thead>
                 <tbody>
                     {
-                        (cart && cart.length > 0) ?
+                        cart &&
                         cart.map((item)=>(
                             <tr key={item.id}>
                                 <td>{item.name}</td>
                                 <td>{item.category}</td>
                                 <td>{`$${item.price.toFixed(2)}`}</td>
-                                <td>{item.count}</td>
+                                <td>{item.qty}</td>
                             </tr>
 
-                        )) : null
+                        ))
                     }
                     <tr>
                         <td>Total</td>

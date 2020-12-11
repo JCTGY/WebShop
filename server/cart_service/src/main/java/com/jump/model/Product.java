@@ -35,7 +35,7 @@ public class Product {
 	private Integer Id;
 	
 	@Column(name="PRODUCTID")
-	private long productID;
+	private long productId;
 	
 	@Column(name="NAME")
 	private String name;
