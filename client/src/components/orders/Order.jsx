@@ -58,7 +58,7 @@ const Order = props =>{
     return (
         <div className="shadowed-box">
 
-            {(orders !== undefined && orders.length === 0) &&
+            {(orders !== undefined && orders !== null && orders.length === 0) &&
             <div>
                 <h1>You're Order History is Empty</h1>
                 <img src="https://cdn.dribbble.com/users/776386/screenshots/2677382/empty-order-history---dribbble.jpg" alt=""/>
@@ -83,7 +83,7 @@ const Order = props =>{
                         <Col>
                             <div>
                                     <div>
-                                        <h2>ORDER #: {order && order.id} </h2>
+                                        <h2>ORDER #: {order && order.Id} </h2>
                                     </div>
                                     <p>Date: {order && order.date}</p>
                                     <p>Order Total: ${order && order.total}</p>
