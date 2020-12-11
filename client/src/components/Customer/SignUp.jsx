@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
 const SignUp = () => {
@@ -9,11 +9,19 @@ const SignUp = () => {
     const baseUrl = "http://localhost:9000/api/";
     const history = useHistory();
     const dispatch = useDispatch();
+    const [visibleAlert, setVisibleAlert] = useState(false);
     const [user, setUser] = useState({
         userName: "",
         password: "",
         confirmPassword: ""
     })
+
+    const triggerQtyWarning = () => {
+        setVisibleAlert(true)
+        setTimeout(() => {
+            setVisibleAlert(false)
+        }, 2000);
+    }
 
     const onClickSignUp = (e) => {
         e.preventDefault();
@@ -28,6 +36,7 @@ const SignUp = () => {
             }).catch(err => {
                 if (err.response.status === 409) {
                     console.log("user exist");
+                    triggerQtyWarning();
                 }
                 console.log(err);
             })
@@ -43,6 +52,9 @@ const SignUp = () => {
 
     return (
         <div className="container">
+            <Alert show={visibleAlert} variant='danger'>
+                Username already exist
+            </Alert>
             <Form>
                 <Form.Group controlId="signUpUsername">
                     <Form.Label>Username</Form.Label>

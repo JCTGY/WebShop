@@ -12,11 +12,11 @@ import Admin from './admin/Admin';
 import SignIn from './customer/SignIn';
 import SignUp from './customer/SignUp';
 import PrivateRoute from './PrivateRoute';
+import ProtectedRout from './ProtectedRout';
 
 const NavBar = props => {
     const user = useSelector(state => state.userState.user);
     
-    console.log("user" + user.auth);
     return (
         <Router>
             <div className="NavBar">
@@ -26,6 +26,9 @@ const NavBar = props => {
                 <Link to="/shipping">Shipping</Link>
                 <Link to="/cart">Cart</Link>
                 <Link to="/signIn">SignIn</Link>
+                { user.userName === 'admin' && 
+                    <Link to="/admin">Admin</Link>
+                }
             </div>
 
             <Switch>
@@ -62,9 +65,12 @@ const NavBar = props => {
                 <Route path="/signUp">
                     <SignUp/>
                 </Route>
-                <Route path="/admin">
-                    <Admin />
-                </Route>
+                <ProtectedRout 
+                    component={Admin}
+                    authed={user.userName} 
+                    path="/admin" 
+                    exact
+                />>
                 <Route exact path="/">
                     <div className="img-wrapper">
                         <Link id="shop-now" to="/products">Shop Now</Link>
