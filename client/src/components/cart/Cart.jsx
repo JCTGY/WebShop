@@ -67,7 +67,7 @@ const Cart = props =>{
                         <td>Total</td>
                         <td></td>
                         <td></td>
-                        <td>{`$${total}`}</td>
+                        <td>{`$${total.toFixed(2)}`}</td>
                     </tr>
                     
                 </tbody>

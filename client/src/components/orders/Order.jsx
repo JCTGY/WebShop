@@ -73,7 +73,7 @@ const Order = props =>{
                         return <div key={order.dbId}>
                             <h2 className="orderTitle" onClick = {()=>handleClick(order)}>ORDER #: {order.id}</h2>
                             <p>Date: {order.date}<br/>
-                            Order Total: ${order.total}</p>
+                            Order Total: ${order.total.toFixed(2)}</p>
                         </div>
                     })}
                 </Col>
@@ -86,7 +86,7 @@ const Order = props =>{
                                         <h2>ORDER #: {order && order.Id} </h2>
                                     </div>
                                     <p>Date: {order && order.date}</p>
-                                    <p>Order Total: ${order && order.total}</p>
+                                    <p>Order Total: ${order && order.total.toFixed(2)}</p>
                                     <p>Shipping Id: {order && order.shippingId}</p>
                                     {order && order.products.map( product => {
                                         return <div key={product.productId}>
