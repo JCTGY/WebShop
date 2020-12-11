@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Col, Row } from 'react-bootstrap';
+import { Container, Col, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import './OrderConfirmation.css';
 
 const OrderConfirmation = props => {
 
@@ -27,15 +28,15 @@ const OrderConfirmation = props => {
 
 
     return (
-        <div className="container">
+        <div className="container" id="orderConfirm">
             <h2>Order Confirmation</h2>
             <p>Order Numer:{order && order.id}</p>
             <ul>Items
-           {order && order.products.map(product => {
-                return <li key={product.productId}>
-                    {product.name}, Quantity: {product.qty}
-                </li>
-            })}
+                {order && order.products.map(product => {
+                return <li id="noBullets" key={product.productId}>
+                    {product.name}, Quantity: {product.qty}<br/><br/>
+                    </li>
+                })}
             </ul>
             <div>
                 Shipping Info
