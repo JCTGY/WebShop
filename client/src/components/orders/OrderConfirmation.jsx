@@ -11,9 +11,7 @@ const OrderConfirmation = props => {
     const user = useSelector(state => state.userState.user);
     const dispatch = useDispatch();
     const shippingInfo = user.shippingInfo;
-    const orderUrl = `http://localhost:9000/api/order/
-    ?custId=${user.customerId}
-    &cartId=${user.cartId}`;
+    const orderUrl = `http://localhost:9000/api/order/?custId=${user.customerId}&cartId=${user.cartId}`;
 
     const [order, setOrder] = useState();
 
@@ -46,13 +44,10 @@ const OrderConfirmation = props => {
             </ul>
             <div>
                 Shipping Info
-                <p>First Name: {shippingInfo['firstName']}</p>
-                <p>Last Name: {shippingInfo['lastName']}</p>
-                <p>Address {shippingInfo['address1']}</p>
-                <p>Address {shippingInfo['address2']}</p>
-                <p>City {shippingInfo['city']}</p>
-                <p>State {shippingInfo['state']}</p>
-                <p>Postal Code {shippingInfo['postalCode']}</p>
+                <p>{shippingInfo['firstName']} {shippingInfo['lastName']}<br/>
+                {shippingInfo['address1']}<br/>
+                {shippingInfo['address2']}<br/>
+                {shippingInfo['city']} {shippingInfo['state']} {shippingInfo['postalCode']}</p>
 
             </div>
         </div>}
