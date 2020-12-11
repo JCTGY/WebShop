@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Alert } from 'react-bootstrap';
-
+import { Link } from 'react-router-dom';
+import { BiArrowBack } from 'react-icons/bi';
 import { fetchProductById } from './ProductApi';
 import AddToCartButton from './AddToCartButton';
 
@@ -67,11 +68,13 @@ const ProductItemPage = () => {
                                     qty={qty}
                                     setQty={setQty}
                             />
-                 
-                
+                        <Link id="back-to-products" to="/products"><BiArrowBack/></Link>
+
                     </div>
                 </div>
                 : null}
+                    
+
         </div>
     );
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { FaCartPlus } from 'react-icons/fa';
+import {IconContext} from "react-icons";
 import { postProductToCart } from './ProductApi';
 
 const AddToCartButton = ({ product, qty, triggerQtyWarning }) => {
@@ -35,7 +36,7 @@ const AddToCartButton = ({ product, qty, triggerQtyWarning }) => {
     }
 
     return (
-        <a className="main-btn" id="cart-btn" onClick={onClickAddToCart}>AddToCart</a>
+        <a className="main-btn" id="cart-btn" onClick={onClickAddToCart}><FaCartPlus/></a>
     )
 }
 
