@@ -49,17 +49,12 @@ const NavBar = props => {
                     path="/orders" 
                     exact
                 /> 
-                {/* <PrivateRoute 
+                <PrivateRoute 
                     component={Cart}
                     authed={user.auth} 
                     path="/cart" 
                     exact
-                /> */}
-                <Route  path="/cart">
-                    <Cart/>
-                </Route>
-                   
-             
+                />         
                 <Route path="/signIn">
                     <SignIn/>
                 </Route>
