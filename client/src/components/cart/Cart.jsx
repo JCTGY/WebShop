@@ -3,6 +3,8 @@ import axios from 'axios';
 import { table} from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import './Cart.css';
+import { Link, useHistory } from 'react-router-dom';
+
 
 const Cart = props =>{
 
@@ -70,6 +72,9 @@ const Cart = props =>{
                     
                 </tbody>
             </table>
+            <div>
+                <Link to="/shipping" className="main-btn">Checkout</Link>    
+            </div>
         </div>
     )
 }

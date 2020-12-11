@@ -54,7 +54,7 @@ const NavBar = props => {
                     authed={user.auth} 
                     path="/cart" 
                     exact
-                />
+                />         
                 <Route path="/signIn">
                     <SignIn/>
                 </Route>
