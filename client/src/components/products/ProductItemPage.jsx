@@ -5,6 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { fetchProductById } from './ProductApi';
 import AddToCartButton from './AddToCartButton';
 
+
 const ProductItemPage = () => {
 
     const [product, setProduct] = useState();

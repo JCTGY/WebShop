@@ -9,7 +9,7 @@ import OrderConfirmation from './orders/OrderConfirmation';
 import Cart from './cart/Cart';
 import Shipping from './shipping/Shipping';
 import Admin from './admin/Admin';
-import SignIn from './customer/SignIn';
+import SignIn from "./customer/SignIn";
 import SignUp from './customer/SignUp';
 import PrivateRoute from './PrivateRoute';
 

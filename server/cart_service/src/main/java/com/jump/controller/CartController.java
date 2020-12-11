@@ -72,6 +72,10 @@ public class CartController {
 	public ResponseEntity<?> sumToCart(@PathVariable Integer cart_id){
 		return ResponseEntity.ok(cartservice.sumTotal(cart_id));
 	}
+	
+	
+	//delete
+	
 
 
 //------------------------products controller-----------------------------------------------

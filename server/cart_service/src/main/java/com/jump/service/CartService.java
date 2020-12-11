@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jump.exceptions.CartNotFoundException;
+import com.jump.exceptions.ProductIDMismatchException;
 import com.jump.model.Cart;
 import com.jump.model.Product;
 import com.jump.repository.CartRepository;
+import com.jump.repository.ProductsRepository;
 
 @Service
 public class CartService {
@@ -20,16 +22,20 @@ public class CartService {
 	@Autowired
 	CartRepository cartRepository;
 	
+	@Autowired
+	ProductsRepository productservice;
 	
 //------------------------cart methods-------------------------------------------
 	public List<Cart> retrieveCarts(){
 		return cartRepository.findAll();
 	}
 	
+	
 	//create
 	public Cart createCart(Cart cart){
 		return cartRepository.save(cart);
 	}
+	
 	
 	//read
 	public Cart retrieveCart(Integer cart_id) {
@@ -56,28 +62,20 @@ public class CartService {
 	
 	
 	public Cart addProductToCart(Integer cart_id, Product product) {
-		Cart currentCart = cartRepository.findById(cart_id).orElseThrow(CartNotFoundException::new);
+		Cart currentCart = retrieveCart(cart_id);
+	
 		List<Product> currentProducts = currentCart.getProducts();
 		
-		currentProducts.add(product);
-		
-//----------------------Hashmap update----------------------------------
-//		HashMap<Integer, Product> tempProducts = new HashMap<Integer, Product>();
-//		for(Product p:currentProducts) {
-//			tempProducts.put(p.getId(), p);
-//		}
-//		
-//		if(!tempProducts.containsKey(product.getId())) {
+//		if(productservice.findById(product.getId()) == null) {
+//			System.out.print("good");
 //			currentProducts.add(product);
 //		}else {
-//			tempProducts.put(product.getId(), product);
+//			Product exProduct = productservice.findById(product.getId()).orElseThrow(ProductIDMismatchException::new);
+//			exProduct.setQty(exProduct.getQty()+product.getQty());
+//			System.out.print("bad");
 //		}
-//		
-//		List<Product> newProdcuts = Collections.list(Collections.enumeration(tempProducts.values()));
-//----------------------end Hashmap update----------------------------------		
-			
-//		currentCart.setProducts(newProdcuts);
-		System.out.println(currentCart);
+		
+		currentProducts.add(product);
 		return cartRepository.save(currentCart);
 	}
 	
