@@ -10,7 +10,7 @@ const Cart = props =>{
 
         const user = useSelector(state => state.userState.user);
         console.log(user);
-        const cartUrl = `http://localhost:9000/api/cart/v1/cart/get/cartById/${user.cartId}`;
+        const cartUrl = `http://localhost:9000/api/cart/v1/cart/${user.cartId}`;
         const totalUrl = `http://localhost:9000/api/cart/v1/cart/get/totalByCartId/${user.cartId}`;
         const[cart, setCart] = useState([]); 
         const[total, setTotal] = useState(0.00);  
@@ -19,7 +19,7 @@ const Cart = props =>{
             axios.get(cartUrl)
             .then((response) => {
                 console.log(response.data);
-                setCart(response.data);
+                setCart(response.data.products);
             })
         }
         const fetchTotal = ()=>{
