@@ -86,7 +86,14 @@ public class CartService {
 	
 	//delete
 	public boolean clearCart(Integer cart_id) {
-		cartRepository.deleteById(cart_id);
+		Cart cart = retrieveCart(cart_id);
+		List<Product> products = cart.getProducts();
+		cart.setProducts(null);
+		products.stream().forEach(p -> {
+			productservice.delete(p);
+		});
+		System.out.println("delete Cart");
+		System.out.println("cart:" + cartRepository.save(cart));
 		return true;
 	}
 }

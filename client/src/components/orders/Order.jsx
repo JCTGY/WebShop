@@ -84,7 +84,7 @@ const Order = props =>{
                                             <img src={product.imgUrl} className="product-img"></img>
                                             <h4>{product.name}</h4>
                                             <p>${product.price}</p>
-                                            <p>Quantity: {product.count}</p>
+                                            <p>Quantity: {product.qty}</p>
                                         </div>
                                     })}
                                 </div>

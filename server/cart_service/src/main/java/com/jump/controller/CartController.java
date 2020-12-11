@@ -21,6 +21,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.jump.exceptions.CartIDMismatchException;
 import com.jump.model.Cart;
 import com.jump.model.Product;
+import com.jump.repository.CartRepository;
 import com.jump.service.CartService;
 import com.jump.service.ProductsService;
 
@@ -64,6 +65,11 @@ public class CartController {
 	@GetMapping("/get/cartById/{cart_id}")
 	public ResponseEntity<List<Product>> getCartById(@PathVariable Integer cart_id){
 		return ResponseEntity.ok(cartservice.retrieveCart(cart_id).getProducts());
+	}
+	//read
+	@GetMapping("/{cart_id}")
+	public ResponseEntity<Cart> findCartById(@PathVariable Integer cart_id) {
+		return ResponseEntity.ok(cartservice.retrieveCart(cart_id));
 	}
 	//read
 	@GetMapping("/get/totalByCartId/{cart_id}")

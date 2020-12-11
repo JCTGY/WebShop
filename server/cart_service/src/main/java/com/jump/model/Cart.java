@@ -37,7 +37,7 @@ public class Cart {
 			cascade = CascadeType.ALL,
 			fetch = FetchType.LAZY
 			)
-	private List<Product> products = new ArrayList<Product>();
+	private List<Product> products;
 	
 	@Column(name="SUBTOTAL")
 	private double total=0;
