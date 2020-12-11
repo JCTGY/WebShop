@@ -34,8 +34,9 @@ const OrderConfirmation = props => {
 
     return (
         <div className="container" id="orderConfirm">
+        {shippingInfo && <div>
             <h2>Order Confirmation</h2>
-            <p>Order Numer:{order && order.id}</p>
+            <p>Order Number:{order && order.Id}</p>
             <ul>Items
                 {order && order.products.map(product => {
                 return <li id="noBullets" key={product.productId}>
@@ -54,7 +55,7 @@ const OrderConfirmation = props => {
                 <p>Postal Code {shippingInfo['postalCode']}</p>
 
             </div>
-
+        </div>}
         </div>
 
 
