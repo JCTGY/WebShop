@@ -33,7 +33,7 @@ const OrderConfirmation = props => {
             <ul>Items
            {order && order.products.map(product => {
                 return <li key={product.productId}>
-                    {product.name}, Quantity: {product.count}
+                    {product.name}, Quantity: {product.qty}
                 </li>
             })}
             </ul>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Alert } from 'react-bootstrap';
 import axios from 'axios';
 import SelectUSState from 'react-select-us-states';
 import { Redirect } from 'react-router';
@@ -8,7 +9,9 @@ import { useSelector, useDispatch } from 'react-redux';
 const Shipping = props => {
 
     const user = useSelector(state => state.userState.user);
+    const checkOutList = useSelector(state => state.checkOut.checkOutList);
     const dispatch = useDispatch();
+    const [visibleAlert, setVisibleAlert] = useState(false);
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -30,6 +33,13 @@ const Shipping = props => {
             ...formData,
             [name]: value
         })
+    }
+
+    const triggerCartEmptyWarning = () => {
+        setVisibleAlert(true)
+        setTimeout(() => {
+            setVisibleAlert(false)
+        }, 2000);
     }
 
     useEffect(() => {
@@ -54,6 +64,10 @@ const Shipping = props => {
 
     const handleSubmit = event => {
         event.preventDefault();
+        if (checkOutList.length <= 0) {
+            triggerCartEmptyWarning();
+            return ;
+        }
         const shippingInfo = user.shippingInfo;
         if (shippingInfo !== undefined 
             && shippingInfo !== null && shippingInfo.shippingId !== undefined) {
@@ -133,6 +147,9 @@ const Shipping = props => {
 
             <Container>
                 <h1>Shipping</h1>
+                <Alert show={visibleAlert} variant='danger'>
+                        Your Cart is empty
+                    </Alert>
                 <form id="shipping-form" onSubmit={handleSubmit}>
                     <div className="form-group">
                         <div className="row">
