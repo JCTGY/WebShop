@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const productBaseUrl = "http://localhost:9000/api/product/";
+const productBaseUrl = "http://localhost:9000/api/product";
 
 export const fetchProductList = () => {
     return axios.get(productBaseUrl);
