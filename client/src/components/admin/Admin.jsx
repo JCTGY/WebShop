@@ -1,8 +1,9 @@
 import React from 'react';
-import { Tab, Row, Col, Nav, Container } from 'react-bootstrap';
+import { Tab, Row, Col, Nav } from 'react-bootstrap';
 
 import ProductAdmin from './adminProduct/ProductAdmin';
 import CustomerAdmin from './adminCustomer/CustomerAdmin';
+import OrderAdmin from './adminOrder/OrderAdmin';
 
 const Admin = () => {
     return (
@@ -17,6 +18,9 @@ const Admin = () => {
                             <Nav.Item>
                                 <Nav.Link eventKey="customer">Customer</Nav.Link>
                             </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link eventKey="order">Order</Nav.Link>
+                            </Nav.Item>
                         </Nav>
                     </Col>
                     <Col sm={9}>
@@ -26,7 +30,10 @@ const Admin = () => {
                             </Tab.Pane>
                             <Tab.Pane eventKey="customer">
                                 <CustomerAdmin/>
-                        </Tab.Pane>
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="order">
+                                <OrderAdmin/>
+                            </Tab.Pane>
                         </Tab.Content>
                     </Col>
                 </Row>

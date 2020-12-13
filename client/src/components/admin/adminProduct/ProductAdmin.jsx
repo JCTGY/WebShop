@@ -3,63 +3,73 @@ import { Tabs, Tab } from 'react-bootstrap';
 
 import ProductForm from './ProductForm';
 import ProductTableList from './ProductTableList';
-import { 
-            fetchProductList, 
-            postProduct, 
-            putProduct, 
-            deleteProductApi 
-        } from '../../products/ProductApi';
+import {
+    fetchProductList,
+    postProduct,
+    putProduct,
+    deleteProductApi
+} from '../../products/ProductApi';
 
 
 const ProductAdmin = () => {
     const [products, setProducts] = useState();
+    const [isUpdate, setIsUpdate] = useState(false);
     const addProduct = (formData, e) => {
         e.preventDefault();
         postProduct(formData).then(res => {
-            console.log(res)
+            console.log(res);
+            switchIsUpdate();
         }).catch(err => {
             console.log(err);
         })
     }
-    
+
     const updateProduct = (formData, e) => {
         e.preventDefault();
-        putProduct(formData, formData.id).then(res => {
+        console.log(formData);
+        putProduct(formData, formData.productId).then(res => {
             console.log(res);
+            switchIsUpdate();
         }).catch(err => {
             console.log(err);
         })
     }
-    
+
     const deleteProduct = (formData, e) => {
         e.preventDefault();
-        deleteProductApi(formData.id).then(res => {
+        deleteProductApi(formData.productId).then(res => {
             console.log(res);
+            switchIsUpdate();
         }).catch(err => {
             console.log(err);
         })
     }
-    
+
+    const switchIsUpdate = () => {
+        setIsUpdate(!isUpdate);
+    }
+
     useEffect(() => {
-        fetchProductList().then(res =>{
+        fetchProductList().then(res => {
             setProducts(res.data);
         }).catch(err => {
             console.log(err);
         })
-    }, []);
+    }, [isUpdate]);
     return (
-        <Tabs defaultActiveKey="AddProduct" id="product-admin-tabs">
-            <Tab eventKey="AddProduct" title="AddProduct">
-                <ProductForm action={addProduct} actionName="Add"/>                
+        <Tabs defaultActiveKey="ListProduct" id="product-admin-tabs">
+            <Tab eventKey="ListProduct" title="ListProduct">
+                <ProductTableList products={products} />
             </Tab>
+
             <Tab eventKey="UpdateProduct" title="UpdateProduct">
-                <ProductForm action={updateProduct} actionName="Update"/>                
+                <ProductForm action={updateProduct} actionName="Update" />
             </Tab>
             <Tab eventKey="DeleteProduct" title="DeleteProduct">
-                <ProductForm action={deleteProduct} actionName="Delete"/>
+                <ProductForm action={deleteProduct} actionName="Delete" />
             </Tab>
-            <Tab eventKey="ListProduct" title="ListProduct">
-                <ProductTableList products={products}/>
+            <Tab eventKey="AddProduct" title="AddProduct">
+                <ProductForm action={addProduct} actionName="Add" />
             </Tab>
         </Tabs>
     );

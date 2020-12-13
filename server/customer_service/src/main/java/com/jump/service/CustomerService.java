@@ -2,6 +2,8 @@ package com.jump.service;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,11 @@ public class CustomerService {
 	@Autowired
 	PasswordEncoder passwordEncoder;
 	
+	@PostConstruct
+	public void init() {
+		Customer customer = new Customer(null, "admin", "1234", null, null, null, null);
+		addCustomer(customer);
+	}
 	
 	public List<Customer> getAllCustomer() {
 		return customerRepository.findAll();

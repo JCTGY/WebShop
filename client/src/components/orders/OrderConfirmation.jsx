@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Container, Col, Row } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import './OrderConfirmation.css';
 
@@ -17,7 +16,8 @@ const OrderConfirmation = props => {
 
 
     useEffect(() => {
-        if (user.shippingInfo !== undefined && user.shippingInfo.shippingId > 0) {
+        if (user.shippingInfo !== undefined && user.shippingInfo !== null
+            && user.shippingInfo.shippingId > 0) {
         axios.post(`${orderUrl}&shippingId=${user.shippingInfo.shippingId}`)
             .then((response) => {
                 console.log(response.data);
@@ -34,7 +34,7 @@ const OrderConfirmation = props => {
         <div className="container" id="orderConfirm">
         {shippingInfo && <div>
             <h2>Order Confirmation</h2>
-            <p>Order Number:{order && order.Id}</p>
+            <p>Order Number:{order && order.id}</p>
             <ul>Items
                 {order && order.products.map(product => {
                 return <li id="noBullets" key={product.productId}>

@@ -1,11 +1,13 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
+
 const CustomerTableLsit = ( { customers }) => {
+
 
     const customerList = customers && customers.map((c, index) => {
         return (
-            <tr key={c.id}>
+            <tr key={c.customerId}>
                     <td>{index}</td>
                     <td>{c.customerId}</td>
                     <td>{c.userName}</td>

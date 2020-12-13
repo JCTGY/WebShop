@@ -4,7 +4,7 @@ import { Form, Button } from 'react-bootstrap';
 const ProductForm = ({ action, actionName }) => {
 
     const [formData, setFormData] = useState({
-        id: "",
+        productId: "",
         name: "",
         description: "",
         imgUrl: "",
@@ -18,17 +18,30 @@ const ProductForm = ({ action, actionName }) => {
             [name]: value
         })
     }
+
+    const onClickForm = (e) => {
+        action(formData, e);
+        setFormData({
+            productId: "",
+            name: "",
+            description: "",
+            imgUrl: "",
+            category: "",
+            price: ""
+        });
+    }
+
     return (
         <Form>
             {(actionName && (actionName === "Update" || actionName === "Delete")) &&
-                <Form.Group controlId="formId">
+                <Form.Group controlId="formProductId">
                     <Form.Label>Id</Form.Label>
                     <Form.Control 
                         type="text" 
                         placeholder="Enter Product Id" 
-                        name="id" 
+                        name="productId" 
                         onChange={onChangeForm} 
-                        value={formData.id} />
+                        value={formData.productId} />
                 </Form.Group>
             }
             {(actionName && actionName !== "Delete") &&
@@ -83,7 +96,7 @@ const ProductForm = ({ action, actionName }) => {
                 </div>
             }
             <Button 
-                onClick={(e) => action(formData, e)} 
+                onClick={onClickForm} 
                 variant="primary" 
                 type="submit">
                     {actionName}

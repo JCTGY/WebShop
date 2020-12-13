@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
-import { Form, Button, Alert, Row } from 'react-bootstrap';
+import { Form, Alert, Row } from 'react-bootstrap';
 import './Login.css';
 
 const SignIn = () => {

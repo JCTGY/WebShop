@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import './Order.css';
-import {Col,Container,Row} from 'react-bootstrap';
+import {Col,Row} from 'react-bootstrap';
 
 
 const Order = props =>{
@@ -70,7 +70,7 @@ const Order = props =>{
             <Row>
                 <Col>
                     {orders.map( order => {
-                        return <div key={order.dbId}>
+                        return <div key={order.id}>
                             <h2 className="orderTitle" onClick = {()=>handleClick(order)}>ORDER #: {order.id}</h2>
                             <p>Date: {order.date}<br/>
                             Order Total: ${order.total.toFixed(2)}</p>

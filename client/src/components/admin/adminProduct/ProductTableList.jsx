@@ -5,9 +5,9 @@ const ProductTableLsit = ( { products }) => {
 
     const productList = products && products.map((p, index) => {
         return (
-            <tr key={p.id}>
+            <tr key={p.productId}>
                     <td>{index}</td>
-                    <td>{p.id}</td>
+                    <td>{p.productId}</td>
                     <td>{p.name}</td>
                     <td>{p.price}</td>
             </tr>
