@@ -2,11 +2,12 @@ import React from 'react';
 import { Tab, Row, Col, Nav, Container } from 'react-bootstrap';
 
 import ProductAdmin from './adminProduct/ProductAdmin';
+import CustomerAdmin from './adminCustomer/CustomerAdmin';
 
 const Admin = () => {
     return (
         <div className="shadowed-box">
-            <Tab.Container id="admin-tabs" defaultActiveKey="first">
+            <Tab.Container id="admin-tabs" defaultActiveKey="product">
                 <Row>
                     <Col sm={3}>
                         <Nav variant="pills" className="flex-column">
@@ -24,7 +25,7 @@ const Admin = () => {
                                 <ProductAdmin />
                             </Tab.Pane>
                             <Tab.Pane eventKey="customer">
-                                customer
+                                <CustomerAdmin/>
                         </Tab.Pane>
                         </Tab.Content>
                     </Col>
