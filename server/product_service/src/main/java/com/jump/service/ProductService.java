@@ -32,8 +32,8 @@ public class ProductService {
 				.orElseThrow(ProductNotFoundException::new);
 	}
 	
-	public List<Product> getProductsByContaingName(String name) {
-		return productRepository.findByNameContainingIgnoreCase(name);
+	public List<Product> getProductsByContaingName(String name, int page, int size) {
+		return productRepository.findByNameContainingIgnoreCase(name, PageRequest.of(page, size));
 	}
 	
 	public Product getProductById(Long id) {

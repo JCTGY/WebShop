@@ -47,8 +47,9 @@ public class ProductController {
 	}
 	
 	@GetMapping("/search")
-	public ResponseEntity<List<Product>>  findProductsByContainingName(@RequestParam String name) {
-		return ResponseEntity.ok(productService.getProductsByContaingName(name));
+	public ResponseEntity<List<Product>>  findProductsByContainingName
+		(@RequestParam String name, @RequestParam int page, @RequestParam int size) {
+		return ResponseEntity.ok(productService.getProductsByContaingName(name, page, size));
 	}
 	
 	@GetMapping("/category")

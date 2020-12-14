@@ -6,8 +6,8 @@ export const fetchProductList = () => {
     return axios.get(productBaseUrl);
 }
 
-export const fetchProductsByName = (term) => {
-    return axios.get(`${productBaseUrl}/search?name=${term}`);
+export const fetchProductListByPageSize = (term, page, size) => {
+    return axios.get(`${productBaseUrl}/search?name=${term}&page=${page}&size=${size}`)
 }
 
 export const fetchProductById = (id) => {

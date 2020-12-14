@@ -4,6 +4,7 @@ import { Tab, Row, Col, Nav } from 'react-bootstrap';
 import ProductAdmin from './adminProduct/ProductAdmin';
 import CustomerAdmin from './adminCustomer/CustomerAdmin';
 import OrderAdmin from './adminOrder/OrderAdmin';
+import './Admin.css';
 
 const Admin = () => {
     return (
