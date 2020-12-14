@@ -13,23 +13,30 @@ import SignIn from "./customer/SignIn";
 import SignUp from './customer/SignUp';
 import PrivateRoute from './PrivateRoute';
 import ProtectedRout from './ProtectedRout';
+import { GiHamburgerMenu } from 'react-icons/gi';
+
 
 const NavBar = props => {
     const user = useSelector(state => state.userState.user);
     
     return (
-        <Router>
-            <div className="NavBar">
-                <Link to="/"><h2>WebShop</h2></Link>
-                <Link to="/products">Products</Link>
-                <Link to="/orders">Orders</Link>
-                <Link to="/cart">Cart</Link>
-                <Login/>
-                { user.userName === 'admin' && 
-                    <Link to="/admin">Admin</Link>
-                } 
+        <Router>       
+   
+            <div className="nav-bar">
+                <div className="nav-home">
+                    <Link to="/" ><h2>WebShop</h2></Link>
+                </div>
+               
+                <div className="nav-wrapper">
+                    <Link to="/orders">Orders</Link>
+                    <Link to="/cart">Cart</Link>
+                    <Link to="/products">Products</Link>
+                    <Login/>
+                    { user.userName === 'admin' && 
+                        <Link to="/admin">Admin</Link>
+                    } 
+                </div>
             </div>
-
             <Switch>
                 <Route exact path="/products">
                     <Products />

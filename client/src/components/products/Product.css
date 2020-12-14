@@ -77,7 +77,7 @@ a.product-link{
 
 .product-list-item:hover{
     border-color: var(--clr-accent);
-    box-shadow: 0px 6px var(--clr-accent);
+    box-shadow: 0px 10px var(--clr-accent);
 
 }
 

@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import {IconContext} from "react-icons";
-import { InputGroup, FormControl, Button } from 'react-bootstrap';
 
 const ProductSearchBar = ( {setTerm }) => {
 
@@ -14,6 +13,8 @@ const ProductSearchBar = ( {setTerm }) => {
         searchButton: "search-button"
 
     });
+
+    const inputRef = useRef(null);
 
     const onChangeInput = (e) => {
         const value = e.target.value;
@@ -58,8 +59,17 @@ const ProductSearchBar = ( {setTerm }) => {
             })
             setTerm(input)
         }
+
+        console.log(searchToggle.searchBar);
+
                 
     }
+
+    useEffect(() => {
+        if (searchToggle.active) {
+          inputRef.current.focus();
+        }
+      }, [searchToggle.active]);
 
 
     return (
@@ -68,12 +78,15 @@ const ProductSearchBar = ( {setTerm }) => {
             <div className={searchToggle.search} >
        
                     <form>
-                        <input type="text"
+                        {searchToggle.active && 
+                        <input ref={inputRef} 
+                        type="text"
                         id={searchToggle.searchBar}
                         placeholder="Search Product Name"
                         onChange={onChangeInput}
                         onKeyPress={onKeyPressInput}
-                        value={input} />
+                        ref={inputRef}
+                        value={input} />}
                         <a 
                             className={searchToggle.searchButton}
                             onClick={handleClick}

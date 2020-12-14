@@ -29,7 +29,9 @@ p{
     color: var(--clr-dark);
 }
 
-.NavBar{
+
+
+.nav-bar{
     position: fixed;
     width: 100%;
     background-color: var(--clr-dark);
@@ -37,19 +39,37 @@ p{
     justify-content: space-between;
     height: 10vh;
     z-index: 100;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.nav-home{
+    padding-left: 2em;
+}
+
+.nav-wrapper{
+    padding-right: 2em;
+    display: flex;
+    justify-content: space-between;
 }
 
 
-.NavBar a{
+.nav-bar a{
+    max-width: 10vw;
     padding: 1rem;
-    color: rgb(253, 244, 230);
+    color: var(--clr-light);
     text-decoration: none;
+
 }
 
-.NavBar a:hover{
+.nav-bar a:hover{
     text-decoration: none;
     color: var(--clr-accent);
+
 }
+
+
+
 
 .img-wrapper{
     position: relative;
@@ -143,5 +163,8 @@ a.main-btn:hover{
     .shadowed-box {
         left: 5vw;
         right: 5vw;
+    }
+    .nav-wrapper{
+        display: none;
     }
   }
