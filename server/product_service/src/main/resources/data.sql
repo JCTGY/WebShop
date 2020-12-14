@@ -1,3 +1,6 @@
+
+---- Category: electronic
+
 INSERT INTO PRODUCT
     (ID, NAME, DESCRIPTION, IMG_URL, CATEGORY, PRICE
     )
@@ -73,7 +76,7 @@ values
 
 
 
-
+---- Category: home
 
 INSERT INTO PRODUCT
     (ID, NAME, DESCRIPTION, IMG_URL, CATEGORY, PRICE
@@ -141,4 +144,76 @@ values
         'The NICETOWN drapery is constructed with rod pocket, fitting the curtain rod of your choice up to 2 inches in diameter, making the curtains easy to install and slide.',
         'https://images-na.ssl-images-amazon.com/images/I/514XkrmOtnL._AC_SL1000_.jpg',
         'home', '26.95'
+);
+
+
+
+
+
+---- Category: care
+
+INSERT INTO PRODUCT
+    (ID, NAME, DESCRIPTION, IMG_URL, CATEGORY, PRICE
+    )
+values
+    (
+        NULL, 'CeraVe Moisturizing Cream',
+        'A deficiency of ceramides in skin can often be associated with dry skin, which can feel itchy and look flaky.',
+        'https://images-na.ssl-images-amazon.com/images/I/61S7BrCBj7L._SL1000_.jpg',
+        'care', '16.08'
+);
+
+INSERT INTO PRODUCT
+    (ID, NAME, DESCRIPTION, IMG_URL, CATEGORY, PRICE
+    )
+values
+    (
+        NULL, 'Ear and Nose Hair Trimmer Clipper',
+        'Made of high quality stainless steel, this cordless Ear and Nose Hair Trimmer can effectively and comfortably remove unwanted hair from your nose, ears, eyebrows, beard and face.',
+        'https://images-na.ssl-images-amazon.com/images/I/71RnrdJlEsL._SL1500_.jpg',
+        'care', '14.99'
+);
+
+INSERT INTO PRODUCT
+    (ID, NAME, DESCRIPTION, IMG_URL, CATEGORY, PRICE
+    )
+values
+    (
+        NULL, 'BESTOPE Makeup Brushes 16 PCs',
+        'This set has 5 pcs big kabuki makeup brushes and 11PCs precise make up brushes. It is perfect for both beginners and professional makeup artists',
+        'https://images-na.ssl-images-amazon.com/images/I/71JHl9cr4NL._SL1500_.jpg',
+        'care', '11.99'
+);
+
+INSERT INTO PRODUCT
+    (ID, NAME, DESCRIPTION, IMG_URL, CATEGORY, PRICE
+    )
+values
+    (
+        NULL, 'Philips Norelco MG7750/49 Multigroom',
+        'The all in 1 trimmer for your choice of beard, head, body, and/or face hair styling with 23 pieces for all your trimming needs',
+        'https://images-na.ssl-images-amazon.com/images/I/71N1XALIjJL._SL1300_.jpg',
+        'care', '44.95'
+);
+
+INSERT INTO PRODUCT
+    (ID, NAME, DESCRIPTION, IMG_URL, CATEGORY, PRICE
+    )
+values
+    (
+        NULL, 'Olaplex Hair Perfector No 3 Repairing Treatment',
+        'Repairs damaged and compromised hair, strengthens and protects hair structure, restores healthy appearance and texture',
+        'https://images-na.ssl-images-amazon.com/images/I/71gnxxwxAXL._SL1500_.jpg',
+        'care', '28.00'
+);
+
+INSERT INTO PRODUCT
+    (ID, NAME, DESCRIPTION, IMG_URL, CATEGORY, PRICE
+    )
+values
+    (
+        NULL, 'TruSkin Vitamin C Serum for Face',
+        'Vitamin C blends with Botanical Hyaluronic Acid, Vitamin E, Witch Hazel, and Jojoba Oil to promote your skin',
+        'https://images-na.ssl-images-amazon.com/images/I/613sw2JnGdL._SL1250_.jpg',
+        'care', '19.99'
 );

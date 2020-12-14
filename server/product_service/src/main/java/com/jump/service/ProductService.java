@@ -3,9 +3,13 @@ package com.jump.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.jump.exception.ProductNotFoundException;
+import com.jump.exception.ProductPageNotFoundException;
 import com.jump.model.Product;
 import com.jump.repository.ProductRepository;
 
@@ -49,6 +53,13 @@ public class ProductService {
 	public Product updateProduct(Product product) {
 		getProductById(product.getProductId());
 		return productRepository.save(product);
+	}
+	
+	public List<Product> getProductsByPages(int page, int size) {
+		Page<Product> productPage = productRepository.findAll(PageRequest.of(page, size));
+		if (productPage.hasContent()) {
+			return productPage.getContent();
+		} else throw new ProductPageNotFoundException();
 	}
 	
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.jump.exception.ProductIdNotMatchException;
 import com.jump.exception.ProductNotFoundException;
+import com.jump.exception.ProductPageNotFoundException;
 
 @RestControllerAdvice
 public class ProductControllerAdvice {
@@ -34,6 +35,13 @@ public class ProductControllerAdvice {
 	public ResponseEntity<?> handelProductIdNotMatch(ProductIdNotMatchException e) {
 		ExceptionResponse response = 
 				new ExceptionResponse("ProductId not match the body", "Product-404", new Date());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+	}
+	
+	@ExceptionHandler(ProductPageNotFoundException.class)
+	public ResponseEntity<?> handelProductPageNotMatch(ProductPageNotFoundException e) {
+		ExceptionResponse response = 
+				new ExceptionResponse("Product Page not Found", "Product-404", new Date());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
 	}
 }

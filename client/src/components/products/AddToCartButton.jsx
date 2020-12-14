@@ -17,6 +17,10 @@ const AddToCartButton = ({ product, qty, triggerQtyWarning }) => {
             triggerQtyWarning();
             return;
         }
+        if (user.auth === false) {
+            history.push("/signIn");
+            return;
+        }
         const index = checkOutList && checkOutList.findIndex(c => c.produntId === product.produntId);
         product["qty"] = qty;
         postProductToCart(product, user.cartId).then(res => {

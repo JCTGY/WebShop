@@ -20,6 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.jump.exception.ProductIdNotMatchException;
 import com.jump.model.Product;
+import com.jump.repository.ProductRepository;
 import com.jump.service.ProductService;
 
 @RestController
@@ -74,4 +75,9 @@ public class ProductController {
 			return ResponseEntity.ok("Updated!");
 		} else throw new ProductIdNotMatchException();
 	}
-}
+	
+	@GetMapping("/seperate")
+	public List<Product> findProductsPerPage(@RequestParam int page, @RequestParam int size) {
+		return productService.getProductsByPages(page, size);
+	}
+ }
