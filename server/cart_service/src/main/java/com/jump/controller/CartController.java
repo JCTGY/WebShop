@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -86,6 +87,25 @@ public class CartController {
 		return ResponseEntity.ok(cartservice.addProductToCart(cart_id, product));
 	}
 	
+	//update
+	@PutMapping("/update/increaseByOne")
+	public ResponseEntity<?> increaseByOne(@RequestParam Integer cart_id, @RequestParam Integer product_id){
+		
+		return ResponseEntity.ok(cartservice.increaseQtyByOne(cart_id, product_id));
+	}
+	
+	//update
+		@PutMapping("/update/decreaseByOne")
+		public ResponseEntity<?> decreaseByOne(@RequestParam Integer cart_id, @RequestParam Integer product_id){
+			
+			return ResponseEntity.ok(cartservice.increaseQtyByOne(cart_id, product_id));
+		}
+	
+	//update
+	@PutMapping("/update/updateQty")
+	public ResponseEntity<?> updateQty(@RequestParam Integer cart_id, @RequestParam Integer product_id, @RequestParam int qty){	
+		return ResponseEntity.ok(cartservice.updateQty(cart_id, product_id, qty));
+	}
 	
 	//delete
 	@DeleteMapping("/delete/clearCart/{cart_id}")
@@ -93,6 +113,14 @@ public class CartController {
 			
 			return ResponseEntity.ok(cartservice.clearCart(cart_id));
 	}
+	
+	//delete
+	@DeleteMapping("/delete/deleteProduct")
+	public ResponseEntity<?> delProduct(@RequestParam Integer cart_id, @RequestParam Integer product_id){
+			
+			return ResponseEntity.ok(cartservice.deleteProduct(cart_id, product_id));
+	}
+	
 
 
 

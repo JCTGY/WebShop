@@ -6,11 +6,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jump.exceptions.CartNotFoundException;
 import com.jump.exceptions.ProductIDMismatchException;
+import com.jump.exceptions.ProductNotFoundException;
 import com.jump.model.Cart;
 import com.jump.model.Product;
 import com.jump.repository.CartRepository;
@@ -22,8 +25,9 @@ public class CartService {
 	@Autowired
 	CartRepository cartRepository;
 	
+	
 	@Autowired
-	ProductsRepository productservice;
+	ProductsRepository productRepository;
 	
 //------------------------cart methods-------------------------------------------
 	public List<Cart> retrieveCarts(){
@@ -64,24 +68,81 @@ public class CartService {
 		return total;
 	}
 	
-	
+	//update
 	public Cart addProductToCart(Integer cart_id, Product product) {
 		Cart currentCart = retrieveCart(cart_id);
 	
 		List<Product> currentProducts = currentCart.getProducts();
 		
-//		if(productservice.findById(product.getId()) == null) {
-//			System.out.print("good");
-//			currentProducts.add(product);
-//		}else {
-//			Product exProduct = productservice.findById(product.getId()).orElseThrow(ProductIDMismatchException::new);
-//			exProduct.setQty(exProduct.getQty()+product.getQty());
-//			System.out.print("bad");
-//		}
+		if(currentProducts.isEmpty()) {
+			currentProducts.add(product);
+			System.out.println("check 1");
+		}else {
+			for(Product p: currentProducts) {
+				if(p.getId().equals(product.getId())) {
+					p.setQty(p.getQty()+product.getQty());
+					p.setSubtotal(p.getPrice()*p.getQty());
+					return cartRepository.save(currentCart);
+				}
+			}
+			
+			currentProducts.add(product);
+		}
 		
-		product.setSubtotal(product.getPrice()*product.getQty());
-		currentProducts.add(product);
 		return cartRepository.save(currentCart);
+	}
+	
+	//update
+	public boolean increaseQtyByOne(Integer cart_id, Integer product_id) {
+		Cart currentCart = retrieveCart(cart_id);
+		Product currentProduct = productRepository.findById(product_id).orElseThrow(ProductIDMismatchException::new);
+		
+		int qty = currentProduct.getQty();
+		currentProduct.setQty(qty+1);
+		currentProduct.setSubtotal(currentProduct.getPrice()*qty);
+		
+		productRepository.save(currentProduct);
+		return true;
+	}
+	
+	//update
+	public boolean decreaseQtyByOne(Integer cart_id, Integer product_id) {
+		Cart currentCart = retrieveCart(cart_id);
+		Product currentProduct = productRepository.findById(product_id).orElseThrow(ProductIDMismatchException::new);
+		
+		int qty = currentProduct.getQty();
+		currentProduct.setQty(qty-1);
+		if(currentProduct.getQty() < 0) {
+			currentProduct.setQty(0);
+		}
+
+		currentProduct.setSubtotal(currentProduct.getPrice()*qty);
+				
+		productRepository.save(currentProduct);
+		return true;
+	}
+	
+	
+	
+	//update
+	public boolean updateQty(Integer cart_id, Integer product_id, int qty) {
+		
+		Cart currentCart = retrieveCart(cart_id);
+		Product currentProduct = productRepository.findById(product_id).orElseThrow(ProductIDMismatchException::new);
+		
+		if(qty <= 0) {
+			
+			currentProduct.setQty(0);
+			currentProduct.setSubtotal(0);
+		}else {	
+			currentProduct.setQty(qty);
+			currentProduct.setSubtotal(currentProduct.getPrice()*qty);
+		}
+		
+		
+		productRepository.save(currentProduct);
+		
+		return true;
 	}
 	
 	//delete
@@ -90,10 +151,33 @@ public class CartService {
 		List<Product> products = cart.getProducts();
 		cart.setProducts(null);
 		products.stream().forEach(p -> {
-			productservice.delete(p);
+			productRepository.delete(p);
 		});
 		System.out.println("delete Cart");
 		System.out.println("cart:" + cartRepository.save(cart));
 		return true;
 	}
+	//delete
+	public boolean deleteProduct(Integer cart_id, Integer product_id) {
+		
+		Cart currentCart = retrieveCart(cart_id);	
+		List<Product> currentProducts = currentCart.getProducts();
+		for(Product product:currentProducts) {
+			System.out.println(product.getId());
+			if(product.getId()==product_id) {	
+				currentProducts.remove(product);
+				currentCart.setProducts(currentProducts);
+				productRepository.deleteById(product_id);
+				cartRepository.save(currentCart);			
+				return true;
+			}
+		}
+		return false;
+	}
+//------------------------product------------------------------
+	//read
+	public Product retrieveProductById(Integer product_id) {
+		return productRepository.findById(product_id).orElseThrow(ProductNotFoundException::new);
+	}
+	
 }
