@@ -12,7 +12,7 @@ Microservice Include -
 ## Table of Contents
 - [Application screenshots](#application-screenshots)
 - [Technology stack](#technology-stack)
-  * [Client - Frontend/UI](#client---frontend-ui)
+  * [Client - Frontend/UI](#client---frontendui)
   * [Server - Backend](#server---backend)
   * [Data](#data)
   * [Libraries](#libraries)
