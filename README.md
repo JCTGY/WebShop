@@ -49,9 +49,9 @@ Microservice Include -
 * [openfeign](https://spring.io/projects/spring-cloud-openfeign) - makes writing web service clients easier. To use Feign create an interface and annotate it.
 
 ## Prerequisites
-Spring Boot v2.3.6
-Java 11
-Node v14.15.0
+Spring Boot v2.3.6 \
+Java 11 \
+Node v14.15.0 \
 
 ## How to use
 * 	Download the zip or clone the Git repository
