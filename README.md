@@ -18,6 +18,7 @@ Microservice Include -
   * [Libraries](#libraries)
 - [Prerequisites](#prerequisites)
 - [How to use](#how-to-use)
+- [Team Member](#team-member)
 
 ## Application screenshots
 <img src="resources\LandingPage.png"/>
@@ -64,3 +65,9 @@ Node v14.15.0
 $ npm install
 $ npm start
 ```
+
+## Team Member
+[Jeffrey Chaing](https://github.com/JCTGY)
+[Derek Mccool](https://github.com/derekmccool)
+[Victor Martinez](https://github.com/xerophytic7)
+[Monwen Shen](https://github.com/monwen)
