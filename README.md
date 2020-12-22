@@ -9,10 +9,10 @@ React, Redux, Css, Bootstrap, Axios, Jira, Github
 - [Technology stack](#technology-stack)
 
 ## Application screenshots
-<img src="resources\Landing.png"/>
+<img src="resources\LandingPage.png"/>
 <img src="resources\ProductPage.png"/>
 <img src="resources\ProductItemPage.png"/>
-<img src="resources\Cart.png"/>
+<img src="resources\CartPage.png"/>
 
 ## Technology stack
 
