@@ -16,6 +16,8 @@ Microservice Include -
   * [Server - Backend](#server---backend)
   * [Data](#data)
   * [Libraries](#libraries)
+- [Prerequisites](#prerequisites)
+- [How to use](#how-to-use)
 
 ## Application screenshots
 <img src="resources\LandingPage.png"/>
@@ -45,3 +47,20 @@ Microservice Include -
 * [Validation](https://github.com/spring-projects/spring-boot) - Make sure data is valid before REST api call
 * [Lombok](https://projectlombok.org/) - Never write another getter or equals method again, with one annotation your class has a fully featured builder
 * [openfeign](https://spring.io/projects/spring-cloud-openfeign) - makes writing web service clients easier. To use Feign create an interface and annotate it.
+
+## Prerequisites
+Spring Boot v2.3.6
+Java 11
+Node v14.15.0
+
+## How to use
+* 	Download the zip or clone the Git repository
+* 	Unzip the zip file (if you downloaded one)
+* 	Open Eclipse
+	* File -> Import -> Existing Maven Project -> Navigate to the folder where you unzipped the zip -> server
+* Start all the Microservices
+* cd into client folder and run
+``` 
+$ npm install
+$ npm start
+```
