@@ -1,8 +1,13 @@
 # WebShop
 ## Purpose
-Designed a e-commerce full stack website with Spring Cloud as backend and React as fronted end
-Technologies: Spring web, Eureka, H2 database, Lombok, Validation, Actuator, Openfeign, Zuul(Api gateway)
-React, Redux, Css, Bootstrap, Axios, Jira, Github
+Designed a e-commerce full stack website with Spring Cloud as backend and React as frontend \
+Combine 5 microservice using [Zuul](server/apigateway)(Api Gateway) and [Eureka](https://github.com/spring-cloud/spring-cloud-netflix)(Loadbalancer) \
+Microservice Include - 
+  * [Customer Service](server/customer_service)
+  * [Product Service](server/product_service)
+  * [Cart Service](server/cart_service)
+  * [Shipping Service](server/shipping_service)
+  * [Order Service](server/order_service)
 
 ## Table of Contents
 - [Application screenshots](#application-screenshots)
