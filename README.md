@@ -29,7 +29,9 @@ Microservice Include -
 ## Technology stack
 
 ### Client - Frontend/UI
-* [React](https://reactjs.org/) - One of the popular frontend libaray that makes it painless to create interactive UIs. Design simple views for each state in your application
+* [React](https://reactjs.org/) - One of the popular frontend libaray that makes it painless to create interactive UIs. Design simple views for each state in your application]
+* [Redux](https://redux.js.org/) - Centralizing your application's state and logic enables powerful capabilities like undo/redo, state persistence, and much more.
+* [Axios](https://github.com/axios/axios) - Make http requests from REST api clean and easy
 * [Bootstrap](https://react-bootstrap.github.io/) - Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development
 
 
