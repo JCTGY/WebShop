@@ -67,7 +67,7 @@ $ npm start
 ```
 
 ## Team Member
-[Jeffrey Chaing](https://github.com/JCTGY)
-[Derek Mccool](https://github.com/derekmccool)
-[Victor Martinez](https://github.com/xerophytic7)
+[Jeffrey Chaing](https://github.com/JCTGY) \
+[Derek Mccool](https://github.com/derekmccool) \
+[Victor Martinez](https://github.com/xerophytic7) \
 [Monwen Shen](https://github.com/monwen)
