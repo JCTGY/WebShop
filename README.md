@@ -11,7 +11,6 @@ React, Redux, Css, Bootstrap, Axios, Jira, Github
 
 
 ## Technology stack
-* 	[H2 Database Engine](https://www.h2database.com/html/main.html) - Java SQL database. Embedded and server modes; in-memory databases
 
 ### Client - Frontend/UI
 * [React](https://reactjs.org/) - One of the popular frontend libaray that makes it painless to create interactive UIs. Design simple views for each state in your application
@@ -23,3 +22,6 @@ React, Redux, Css, Bootstrap, Axios, Jira, Github
 * 	[JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) - Java™ Platform, Standard Edition Development Kit
 * 	[Spring Boot](https://spring.io/projects/spring-boot) - Framework to ease the bootstrapping and development of new Spring Applications
 * 	[Maven](https://maven.apache.org/) - Dependency Management
+
+### Data
+* 	[H2 Database Engine](https://www.h2database.com/html/main.html) - Java SQL database. Embedded and server modes; in-memory databases
