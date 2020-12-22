@@ -51,7 +51,7 @@ Microservice Include -
 ## Prerequisites
 Spring Boot v2.3.6 \
 Java 11 \
-Node v14.15.0 \
+Node v14.15.0
 
 ## How to use
 * 	Download the zip or clone the Git repository
