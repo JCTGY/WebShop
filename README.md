@@ -3,12 +3,16 @@
 Designed a e-commerce full stack website with Spring Cloud as backend and React as fronted end
 Technologies: Spring web, Eureka, H2 database, Lombok, Validation, Actuator, Openfeign, Zuul(Api gateway)
 React, Redux, Css, Bootstrap, Axios, Jira, Github
-![]()
 
 ## Table of Contents
 - [Application screenshots](#application-screenshots)
 - [Technology stack](#technology-stack)
 
+## Application screenshots
+<img src="resources\Landing.png"/>
+<img src="resources\ProductPage.png"/>
+<img src="resources\ProductItemPage.png"/>
+<img src="resources\Cart.png"/>
 
 ## Technology stack
 
