@@ -12,6 +12,10 @@ Microservice Include -
 ## Table of Contents
 - [Application screenshots](#application-screenshots)
 - [Technology stack](#technology-stack)
+  * [Client - Frontend/UI](#client---frontend-ui)
+  * [Server - Backend](#server---backend)
+  * [Data](#data)
+  * [Libraries](#libraries)
 
 ## Application screenshots
 <img src="resources\LandingPage.png"/>
@@ -34,3 +38,10 @@ Microservice Include -
 
 ### Data
 * 	[H2 Database Engine](https://www.h2database.com/html/main.html) - Java SQL database. Embedded and server modes; in-memory databases
+
+### Libraries
+* [JPA](https://spring.io/projects/spring-data-jpa) - This module deals with enhanced support for JPA based data access layers. It makes it easier to build Spring-powered applications that use data access technologies
+* [Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html) - Actuator endpoints let you monitor and interact with your application
+* [Validation](https://github.com/spring-projects/spring-boot) - Make sure data is valid before REST api call
+* [Lombok](https://projectlombok.org/) - Never write another getter or equals method again, with one annotation your class has a fully featured builder
+* [openfeign](https://spring.io/projects/spring-cloud-openfeign) - makes writing web service clients easier. To use Feign create an interface and annotate it.
